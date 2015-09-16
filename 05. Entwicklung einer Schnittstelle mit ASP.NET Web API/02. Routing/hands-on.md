@@ -1,0 +1,1 @@
+Routing für /posts/popular, /posts/latest
