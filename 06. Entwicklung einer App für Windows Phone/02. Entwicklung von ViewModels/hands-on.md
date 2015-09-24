@@ -16,22 +16,22 @@ Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 1. <a href="#Exercise1">Einbinden des Datenmodells der API</a><br/>
 2. <a href="#Exercise2">Erstellen des ViewModels und Einrichten der Datenbindung</a><br/>
 3. <a href="#Exercise3">Verwenden eines IValueConverters</a><br/>
-4. <a href="#Exercise4">Erstellen von Commands für den Like-Button und die Sortierung</a><br/>
+4. <a href="#Exercise4">Erstellen von Commands für den Like-Button, die Sortierung und Datenaktualisierung</a><br/>
 
 <a name="Exercise1"></a>
 ##Übung 1: Einbinden des Datenmodells der API
 In dieser Übung werden Sie die Datenklassen der API in das Windows Phone Projekt einbinden.
 
 ###Aufgabe 1 - Datenklassen kopieren
-Die Klassen des Datenmodells der API enthalten unnötige Annotationen, die in einem Windows Runtime Projekt nicht aufgelöst werden können. Die Datenklassen wurden davon bereinigt und im Ordner **Files/DataModel** des aktuellen Hands-Ons bereitgestellt.
+Die Klassen des Datenmodells der API enthalten unnötige Annotationen, die in einem Windows Phone Projekt nicht aufgelöst werden können. Die Datenklassen wurden davon bereinigt im Ordner **Files/DataModel** des aktuellen Hands-Ons bereitgestellt.
 
 1. Erzeugen Sie einen neuen Ordner **DataModel** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im **Projektmappen-Explorer** tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner DataModel und wählen **Hinzufügen/Vorhandenes Element**. 
+2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataModel** und wählen **Hinzufügen/Vorhandenes Element**. 
 3. Im Dialogfeld navigieren Sie in den Ordner **Files/DataModel** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:<br/><br/>
    ![](images/datamodel-added.png?raw=true "Abbildung 1")
 	
-Sie haben nun das Datenmodell der API eingebunden und können deren Datentypen verwenden.
+Sie haben nun das Datenmodell der API eingebunden und können dessen Datentypen verwenden.
 
 <a name="Exercise2"></a>
 ##Übung 2: Erstellen des ViewModels und Einrichten der Datenbindung
@@ -40,7 +40,7 @@ In dieser Übung werden Sie das ViewModel für die Hauptseite erstellen und die Da
 ###Aufgabe 1 - ViewModel Klasse erstellen
 In diesem Schritt wird die ViewModel Klasse mit Testdaten für die Datenbindung erstellt.
 
-1. Erzeugen Sie eine neue Klasse **MainViewModel** im Ordner ViewModels, indem Sie auf den Ordner einen Rechtsklick machen und **Hinzufügen/Neues Element** wählen.<br/><br/>
+1. Erzeugen Sie eine neue Klasse **MainViewModel** im Ordner ViewModels, indem Sie auf den Ordner einen Rechtsklick machen und **Hinzufügen/Klasse** wählen.<br/><br/>
    ![](images/add-mainviewmodel.png?raw=true "Abbildung 2")
 2. Fügen Sie dem using-Block die folgenden Namespace-Verweise hinzu:
 
@@ -70,7 +70,7 @@ In diesem Schritt wird die ViewModel Klasse mit Testdaten für die Datenbindung e
 	}
     ```
 	
-5. Laden Sie folgende Testdaten in die Posts-Auflistung im **Konstruktor** des **MainPageViewModels**:
+5. Fügen Sie der Klasse einen Konstruktor hinzu und laden Sie dort folgende Testdaten:
 
     ```C#
 	this.posts = new List<Post>
@@ -129,7 +129,7 @@ namespace ImageApp.ViewModels
 ###Aufgabe 2 - Datenbindung auf der XAML-View erstellen
 In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite eingebunden und die Datenbindung hergestellt.
 
-1. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element**  das folgende Attribut hinzu: **xmlns:vm="using:ImageApp.ViewModels"**.
+1. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element**  das folgende Attribut hinzu: **xmlns:vm="using:ImageApp.ViewModels"**
 2. Fügen Sie oberhalb des **Grid-Elements** den folgenden Block ein:
 
     ```XML  
@@ -152,6 +152,7 @@ In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite e
     ```
 	
 6. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das Pivot gebunden und es werden die Bilder mit ihren Titel im Pivot angezeigt.
+7. Inspizieren Sie den Code zur Datenbindung, auch im Vergleich auf die Klasse **Post**.
 
 Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten Datenbindung erzeugt.
 
@@ -216,13 +217,13 @@ In dieser Übung kommt der **CollectionToVisibilityConverter** aus dem Commons-Or
 - Elemente in einer Auflistung vorhanden -> sichtbar
 - Leere Auflistung -> unsichtbar
 
-Wird ein **ConverterParameter** angegeben, wird der Sichtbarkeitszustand invertiert.
+Wird ein **ConverterParameter** angegeben, so wird der Sichtbarkeitszustand invertiert.
 
 ###Aufgabe 1 - IValueConverter in die Hauptseite einbinden
 In diesem Schritt wird der **CollectionToVisibilityConverter** in die Hauptseite eingebunden.
 
-1. Öffnen Sie die Datei **CollectionToVisibilityConverter** im **Projektmappen-Explorer** im Ordner **Common**. Inspizieren Sie den Code, um die Funktionsweise eines Converters zu verstehen.
-2. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element** das folgende Attribut hinzu: **xmlns:common="using:ImageApp.Common"**.
+1. Öffnen Sie die Datei **CollectionToVisibilityConverter** im **Projektmappen-Explorer** im Ordner **Common**. Inspizieren Sie den Code, um sich mit der Funktionsweise eines Converters vertraut zu machen.
+2. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element** das folgende Attribut hinzu: **xmlns:common="using:ImageApp.Common"**
 3. Fügen Sie oberhalb des **Grid-Elements** den folgenden Block ein:
 
     ```XML  
@@ -231,7 +232,7 @@ In diesem Schritt wird der **CollectionToVisibilityConverter** in die Hauptseite
 	</Page.Resources>
     ``` 
  
-Sie haben mit diesen Schritten der Hauptseite den Konverter über den Alias **CollectionToVisibilityConverter** bekanntgemacht.
+Sie haben mit diesen Schritten der Hauptseite den Konverter über den Alias **CollectionToVisibilityConverter** bekannt gemacht.
 
 ###Aufgabe 2 - Infomeldung erstellen: "Es sind keine Elemente vorhanden"
 
@@ -245,19 +246,19 @@ Sie haben mit diesen Schritten der Hauptseite den Konverter über den Alias **Col
 
 2. Starten Sie das Debugging. Der TextBlock sollte nicht angezeigt werden, da Daten vorhanden sind.
 3. Öffnen Sie die Datei **MainPageViewModel.cs** und entfernen die Testdaten.
-4. Starten Sie das Debugging. Der TextBlock sollte nun angezeigt werden. Das Pivot wird automatisch ausgeblendet, falls keine Elemente vorhanden sind. Falls das nicht der Fall wäre, könnte genau dieser Konverter ebenfalls zu diesem Zweck verwendet werden.
+4. Starten Sie das Debugging. Der TextBlock sollte nun angezeigt werden. Das Pivot wird automatisch ausgeblendet, da keine Elemente vorhanden sind. Falls das nicht der Fall wäre, könnte genau dieser Konverter ebenfalls zu diesem Zweck verwendet werden.
 
 In dieser Übung haben Sie einen Konverter erstellt, der eine Anzahl von Elementen in einer Auflistung in einen Sichtbarkeitszustand umwandelt und den MVVM-Prinzipien entspricht.
 	
 <a name="Exercise4"></a>
-##Übung 4: Erstellen von Commands für den Like-Button und die Sortierung
-In dieser Übung werden Sie mehrere Commands für die Like- und Sortierungs-Funktion auf der Hauptseite erstellen.
+##Übung 4: Erstellen von Commands für den Like-Button, die Sortierung und Datenaktualisierung
+In dieser Übung werden Sie mehrere Commands für die Like-, Sortierungs-, und Datenaktualisierungs-Funktion auf der Hauptseite erstellen.
 
 ###Aufgabe 1 - Commands im ViewModel anlegen
 In diesem Schritt werden die Commands im ViewModel angelegt.
 	
 1. Öffnen Sie die Datei **MainViewModel.cs** in Visual Studio.
-2. Fügen Sie der Klasse den folgenden Code hinzu:
+2. Fügen Sie der Klasse die Definition der einzelnen Commands hinzu:
 
     ```C#
 	/// <summary>
@@ -279,7 +280,11 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 	/// Gets or sets the command to refresh the posts.
 	/// </summary>
 	public DelegateCommand RefreshCommand { get; set; }
+    ```
 
+3. Fügen Sie der Klasse die Implementierung der Command-Logik hinzu:
+
+    ```C#
 	private async void Like(object obj)
 	{
 		var dialog = new Windows.UI.Popups.MessageDialog("Like command works!");
@@ -300,11 +305,12 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 	
 	private async void RefreshData(object obj)
 	{
-		await this.GetPostsAsync(this.currentSorting);
+		var dialog = new Windows.UI.Popups.MessageDialog("Refresh command works!");
+		await dialog.ShowAsync();
 	}
     ```
 
-3. Um die Commands mit den Methoden zu verbinden, fügen Sie dem Konstruktor die folgenden Zeilen hinzu:
+4. Um die Commands mit den Methoden zu verbinden, fügen Sie dem Konstruktor die folgenden Zeilen hinzu:
 
     ```C#
 	this.SortDateCommand = new DelegateCommand(this.SortByDate);
@@ -313,17 +319,17 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 	this.RefreshCommand = new DelegateCommand(this.RefreshData);
     ```
 
-Sie haben in dieser Aufgabe drei Commands erstellt, die nun auf der Hauptseite verwendet werden können. Hierzu muss im nächsten Schritt die Datenbindung in XAML aufgebaut werden.
+Sie haben in dieser Aufgabe Commands erstellt, die nun auf der Hauptseite verwendet werden können. Hierzu muss im nächsten Schritt die Datenbindung mit XAML aufgebaut werden.
 
 ###Aufgabe 2 - Datenbindung für Commands festlegen
 In diesem Schritt werden die Commands mit der Hauptseite verbunden.
 
 1. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
-2. Fügen Sie der Schaltfläche zum Sortieren nach Bewertung das folgende Attribut hinzu: **Command="{Binding SortRatingCommand}"**
-3. Fügen Sie der Schaltfläche zum Sortieren nach dem Datum das folgende Attribut hinzu: **Command="{Binding SortDateCommand}"**
+2. Fügen Sie der Schaltfläche zum "Sortieren nach Bewertung" das folgende Attribut hinzu: **Command="{Binding SortRatingCommand}"**
+3. Fügen Sie der Schaltfläche zum "Sortieren nach dem Datum" das folgende Attribut hinzu: **Command="{Binding SortDateCommand}"**
 4. Fügen Sie der Schaltfläche zum Liken in der **BottomAppBar** das folgende Attribut hinzu: **Command="{Binding LikeCommand}"**
 5. Fügen Sie der Schaltfläche zum Aktualisieren in der **BottomAppBar** das folgende Attribut hinzu: **Command="{Binding RefreshCommand}"**
-6. Starten sie den Debugger und Testen Sie die drei Schaltflächen.
+6. Starten sie das Debugging und Testen Sie die Schaltflächen.
 
 In dieser Übung haben Sie gelernt, wie man Commands verwendet.
 

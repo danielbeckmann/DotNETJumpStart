@@ -7,23 +7,23 @@ In diesem Hands-On lernen Sie den FileOpenPicker der Windows Phone API kennen un
 ##Ziele
 - Den FileOpenPicker kennenlernen
 - Ein Bild vom Mobilgerät auf der API veröffentlichen
-- Ein neues Post auf der API erstellen
+- Einen Post auf der API erstellen
 
 ##Übungen
 Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 1. <a href="#Exercise1">Hinzufügen eines FileOpenPickers</a><br/>
-2. <a href="#Exercise2">Neues Post erstellen</a><br/>
+2. <a href="#Exercise2">Post erstellen</a><br/>
 
 <a name="Exercise1"></a>
 ##Übung 1: Hinzufügen eines FileOpenPickers
 In dieser Übung werden Sie der **AddPostPage.xaml** einen FileOpenPicker hinzufügen, um ein Bild auf dem Gerät auswählen zu können.
 
-###Aufgabe 1 - FileOpenPicker starten
+###Aufgabe 1 - FileOpenPicker aufrufen
 
 1. Öffnen Sie die View **AddPostPage.xaml** im XAML-Designer.
-2. Machen Sie sich mit der View vertraut, beachten Sie, dass die "Bild wählen"-Schaltfläche bereits mit dem Command mit dem Namen **AddPostCommand** verbunden ist.
+2. Machen Sie sich mit der View vertraut, beachten Sie, dass die **Bild wählen- und Speichern-Schaltflächen** bereits mit Commands im ViewModel verbunden ist.
 3. Öffnen Sie das zugehörige ViewModel **AddPostViewModel.cs**.
-4. Fügen Sie der Datei die folgenden using-Direktiven hinzu:
+4. Stellen Sie sicher, dass folgende using-Direktiven im ViewModel enthalten sind:
 
     ```C#
 	using Windows.Storage;
@@ -31,7 +31,7 @@ In dieser Übung werden Sie der **AddPostPage.xaml** einen FileOpenPicker hinzufü
 	using Windows.Storage.Streams;
     ```
 
-5. Navigieren Sie zur Methode, die vom **AddPostCommand** aufgerufen wird.
+5. Navigieren Sie zur Methode, die vom **PickFileCommand** aufgerufen wird.
 6. Fügen Sie der Methode **PickImage** den folgenden Code hinzu:
 
     ```C#
@@ -94,16 +94,16 @@ Der FileOpenPicker kehrt nach Auswahl einer Datei auf die Ursprungsseite der App
 6. Setzen Sie den Cursor auf die Zeile **this.viewModel.Image = file;** und wählen im Menü **Debuggen/Haltepunkt umschalten** oder drücken F9.
 7. Starten Sie das Debugging, wählen Sie eine Datei mit dem FileOpenPicker aus und warten, bis der Haltepunkt im obigen Code erreicht wird. Inspizieren Sie das dort zurückgegebene Objekt vom Typ **StorageFile**.<br/><br/>
    ![](images/debugging-storagefile.png?raw=true "Abbildung 1")
-8. Entfernen Sie den Haltepunkt wieder, indem Sie F9 in der jeweiligen Zeile drücken.
+8. Entfernen Sie den Haltepunkt wieder, indem Sie F9 in der markierten Zeile drücken.
 
-Es sind nun alle Informationen im ViewModel vorhanden, um ein neues Post auf der API zu erstellen.
+Es sind nun alle Informationen im ViewModel vorhanden, um einen neuen Post auf der API zu erstellen.
 
 <a name="Exercise2"></a>
-##Übung 2: Neues Post erstellen
-In dieser Übung werden Sie den images-Endpunkt verwenden, um das ausgewählte Bild auf der API zu posten. Daraufhin werden Sie auf dem post-Endpunkt ein neues Post hinzufügen.
+##Übung 2: Post erstellen
+In dieser Übung werden Sie den images-Endpunkt verwenden, um das ausgewählte Bild auf der API hinzuzufügen. Daraufhin werden Sie auf dem post-Endpunkt einen neuen Post hinzufügen.
 
 ###Aufgabe 1 - Bild hinzufügen
-Der Prozess sieht vor, dass im ersten Schritt der API ein Bild auf dem images-Endpunkt hinzugefügt wird, der daraufhin die ID des Bildes zurückliefert. Diese kann dann verwendet werden, um ein neues Post zu erstellen.
+Der Prozess sieht vor, dass im ersten Schritt der API ein Bild über den images-Endpunkt hinzugefügt wird, welcher daraufhin die Id des Bildes zurückliefert. Diese kann dann verwendet werden, um einen neuen Post zu erstellen.
 
 1. Öffnen Sie die Datei **AddPostViewModel.cs**.
 2. Ersetzen Sie die Methode **AddImageAndPost** durch den folgenden Code:
@@ -119,7 +119,13 @@ Der Prozess sieht vor, dass im ersten Schritt der API ein Bild auf dem images-En
 	}
     ```
 	
-3. Ersetzen Sie die Methode **AddImageAsync** durch den folgenden Code und ersetzen Sie den Platzhalter für die API-Adresse:
+3. Fügen Sie der Datei die folgenden using-Direktiven hinzu:
+
+    ```C#
+	using ImageApp.DataModel;
+	using RestSharp.Portable;
+    ```
+4. Ersetzen Sie die Methode **AddImageAsync** durch den folgenden Code und ersetzen Sie den Platzhalter für die API-Adresse:
 
 	```C#
 	/// <summary>
@@ -147,9 +153,9 @@ Der Prozess sieht vor, dass im ersten Schritt der API ein Bild auf dem images-En
 	}
     ```
 	
-4. Machen Sie sich mit dem Code zum hinzufügen eines neues Bildes zur API vertraut. Beachten Sie insbesondere den Aufruf der Methode **ReadFileAsync**, die das geladene Bild vom FileOpenPicker in den Speicher lädt.
-5. Setzen Sie einen Haltepunkt auf die Zeile unterhalb von **var imageId = await this.AddImageAsync();**.
-6. Starten Sie das Debugging, navigieren Sie auf die "Neuer Post"-Seite, tragen Sie einen Titel ein, wählen ein Bild aus und wählen anschließend **Speichern**. Inspizieren Sie den Wert von **imageId**, der nun von der API zurückgeliefert werden sollte.<br/><br/>
+5. Machen Sie sich mit dem Code zum hinzufügen eines neues Bildes zur API vertraut. Beachten Sie insbesondere den Aufruf der Methode **ReadFileAsync**, die das geladene Bild vom FileOpenPicker in den Speicher lädt.
+6. Setzen Sie einen Haltepunkt in die zuvor eingefügte Methode **AddImageAndPost** in die Zeile unterhalb von **var imageId = await this.AddImageAsync();**.
+7. Starten Sie das Debugging, navigieren Sie auf die **Post hinzufügen-Seite**, tragen Sie einen Titel ein, wählen ein Bild aus und wählen anschließend **Speichern**. Inspizieren Sie den Wert von **imageId**, der nun von der API zurückgeliefert werden sollte.<br/><br/>
    ![](images/debugging-imageid.png?raw=true "Abbildung 2")
 
 Mit der imageId kann nun ein Post auf der API erstellt werden.
@@ -208,8 +214,9 @@ In dieser Aufgabe wird nun ein POST auf dem post-Endpunkt durchgeführt, um ein n
 	}
     ```
 
-4. Starten Sie das Debugging und fügen ein neues Bild mit einen beliebigen Titel hinzu.
-5. Sie werden automatisch auf die Hauptseite zurückgeleitet. Betrachten Sie dort ihr neu hinzugefügtes Bild.
+4. Machen Sie sich mit den eben eingefügten Methoden vertraut und betrachten Sie den Datenfluss von **AddImageAndPost** bis hin zu **AddPostAsync**.
+5. Starten Sie das Debugging und fügen ein neues Bild mit einen beliebigen Titel hinzu.
+6. Sie werden automatisch auf die Hauptseite zurückgeleitet. Betrachten Sie dort ihr neu hinzugefügtes Bild.
 
 ##Zusammenfassung
 Mit Beendung dieser Session haben Sie gelernt:  

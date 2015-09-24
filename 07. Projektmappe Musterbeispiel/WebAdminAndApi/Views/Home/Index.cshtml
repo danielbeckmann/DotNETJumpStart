@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebAdminAndApi.Models.Post>
+@{
+    ViewBag.Title = "Übersicht";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+            </hgroup>
+            <p>
+                Mit der Image App können die Benutzer Bilder teilen, betrachten und liken. Hier in der Web-Admin-Oberfläche können die einzelnen Einträge verwaltet werden.
+            </p>
+        </div>
+    </section>
+}
+<h3>Die letzten Postings:</h3>
+<ul>
+@foreach (var item in Model)
+{
+    <li>
+        <h5>@Html.DisplayFor(modelItem => item.Title) <small>von @Html.DisplayFor(m => item.User.Name)</small></h5> <br />
+        <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
+        <span>@Html.ActionLink("Details", "Details", "Posts", new { id = item.Id }, null)</span>
+    </li>
+}
+</ul>

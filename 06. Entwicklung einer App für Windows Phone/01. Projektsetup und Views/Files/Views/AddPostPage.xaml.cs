@@ -28,14 +28,5 @@ namespace ImageApp
             this.InitializeComponent();
             this.viewModel = this.DataContext as AddPostViewModel;
         }
-
-        public void ContinueFileOpenPicker(FileOpenPickerContinuationEventArgs args)
-        {
-            if (args.Files.Count > 0)
-            {
-                var pickedImage = args.Files[0];
-                this.viewModel.Image = pickedImage;
-            }
-        }
     }
 }

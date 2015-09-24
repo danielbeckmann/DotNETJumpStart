@@ -1,8 +1,0 @@
-- HandsOn: 
-	- Installation Visual Studio mit Emulatoren
-    - Web-Projekt aufsetzen
-    - Starten
-    - NuGet aktualsieren
-    - Inhalte ändern
-    - Neu kompilieren
-    - Änderungen betrachten

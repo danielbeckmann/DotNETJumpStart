@@ -1,0 +1,68 @@
+﻿@model WebAdminAndApi.Models.Post
+
+@{
+    ViewBag.Title = Html.DisplayFor(model => model.Title);
+}
+
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+
+<fieldset>
+    <legend>Post</legend>
+    <section class="contact">
+        <header><h3>Details</h3></header>
+        <br />
+        <div class="display-field">
+            <a href="~/Uploads/@Model.Image.FileName"><img src="~/Uploads/@Model.Image.FileName" width="250" alt="Bild" /></a>
+        </div>
+        <p>
+            <span class="label">
+                @Html.DisplayNameFor(model => model.User):
+            </span>
+            <span>
+                @Html.DisplayFor(model => model.User.Name)
+            </span>
+        </p>
+        <p>
+            <span class="label">
+                @Html.DisplayNameFor(model => model.Likes):
+            </span>
+            <span>
+                @Html.DisplayFor(model => model.Likes.Count)
+            </span>
+        </p>
+        <p>
+            <span class="label">
+                @Html.DisplayNameFor(model => model.Created):
+            </span>
+            <span>
+                @Html.DisplayFor(model => model.Created)
+            </span>
+        </p>
+    </section>
+    <section class="contact">
+        <header><h3>Die letzten 10 Likes</h3></header>
+        <p>
+            <table>
+                <thead>
+                    <tr>
+                        <td><span class="label">Benutzer</span></td>
+                        <td><span class="label">Datum</span></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var like in @Model.Likes.OrderByDescending(l => l.Created).Take(10))
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => like.User.Name)</td>
+                            <td>@Html.DisplayFor(model => like.Created)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </p>
+    </section>
+</fieldset>
+<p>
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Zurück", "Index")
+</p>
