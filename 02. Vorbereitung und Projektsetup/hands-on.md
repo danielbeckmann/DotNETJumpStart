@@ -71,7 +71,7 @@ In dieser Aufgabe werden Sie die Webanwendung starten.
 
 1. Drücken Sie **F5**, um die Webanwendung mit Debugging zu starten.
 2. Der IIS-Webserver wird automatisch gestartet und ein Tab im Webbrowser geöffnet.
-3. Sie sollten nun die Startseite mit der ASP.NET-Standardvorlage sehen:<br/>
+3. Sie sollten nun die Startseite mit der ASP.NET-Standardvorlage sehen:<br/><br/>
     ![](images/asp.net-projekt.png?raw=true "Abbildung 6")
 4. Beenden Sie das aktive Debugging mit Umschalt+F5.
 
