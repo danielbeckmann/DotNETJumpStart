@@ -9,4 +9,4 @@ Sehen Sie sich die zu dem Modul gehörende [Präsentation](02. Vorbereitung und Pr
 Hier finden Sie die [Hands-On Session](hands-on.md) zu diesem Modul.
 
 ##Quellcode
-Die Projektmappe, die aus diesem Modul entsteht ist im Ordner [completed](completed/) abgelegt.
+Die fertige Projektmappe, die letztendlich aus diesem Modul entsteht, ist im Ordner [completed](completed/) abgelegt.
