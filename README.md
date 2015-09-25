@@ -10,5 +10,5 @@ In diesem GitHub Repository sind alle Inhalte zum .NET Jump Start Workshop entha
 - Modul 6: [Entwicklung einer App für Windows Phone](06. Entwicklung einer App für Windows Phone)
 
 ##Fertiger Quellcode
-Die vollständige Projektmappe zu allen Hands-Ons als Musterbeispiel finden Sie unter 
+Die vollständige Projektmappe zu allen Hands-Ons als Musterbeispiel finden Sie unter  
 [07. Projektmappe Musterbeispiel](07. Projektmappe Musterbeispiel).
