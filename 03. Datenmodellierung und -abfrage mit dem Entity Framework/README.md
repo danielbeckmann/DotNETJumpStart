@@ -1,11 +1,12 @@
-- Fertige Datenbank vorstellen - als Ziel des Tages
+Modul 2 - Datenmodellierung und -abfrage mit dem Entity Framework
+=======================================
+
+##Ziele
 - Grundlagen: Entity Framework (Model-First, Database-First, Code-First)
-- HandsOn: Datenmodell aufbauen
-
 - Grundlagen: Datenzugriffsmethoden
-- Grundlagen: Visual Studio SQL Explorer
-- HandsOn: Datenzugriff über EF
+- Grundlagen: Die Razor Syntax und View Rendering
 
-- Grundlagen: Die Razor Syntax
-- Grundlagen: View Rendering
+##Übungen
+- HandsOn: Datenmodell aufbauen
+- HandsOn: Datenzugriff über EF
 - HandsOn: Daten anzeigen in der View
