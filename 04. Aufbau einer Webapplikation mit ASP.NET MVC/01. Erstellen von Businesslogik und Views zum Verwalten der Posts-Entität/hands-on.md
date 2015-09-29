@@ -1,29 +1,29 @@
-Modul 4/01 - Aufbau einer Webapplikation mit ASP.NET MVC: Erstellen von Businesslogik und Views zum Verwalten der Posts-Entität
+Modul 4/01 - Aufbau einer Webapplikation mit ASP.NET MVC: Erstellen von Businesslogik und Views zum Verwalten der Posts-EntitÃ¤t
 =======================================
 
 ##Ziele
-In diesem Hands-On lernen Sie 
--Wie man Scaffolding verwendet, um Ansicht auf Basis einer Vorlage anzulegen
--Wie man Entitysets gezielt nach Einträgen filtert
--Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen
--Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann
--Wie man die seitenübergreifende Navigationsleiste bearbeiten kann
--Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet
+In diesem Hands-On lernen Sie   
+-Wie man Scaffolding verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
+-Wie man Entitysets gezielt nach EintrÃ¤gen filtert  
+-Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+-Wie man Ã¼ber das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder Ã¼bermitteln kann  
+-Wie man die seitenÃ¼bergreifende Navigationsleiste bearbeiten kann  
+-Wie man CSS-Style zu einer Seite hinzufÃ¼gt und dieses anwendet  
 
-##Übungen
-Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereitgestellt sowie die Projektmappe für die gewünschten Ansichten vorbereitet. In der zweiten Übung werden die durch das Scaffolding erzeugten Ansichten erweitert.
+##Ãœbungen
+Dieses Modul besteht aus zwei Ãœbungen. In der ersten werden Businesslogik bereitgestellt sowie die Projektmappe fÃ¼r die gewÃ¼nschten Ansichten vorbereitet. In der zweiten Ãœbung werden die durch das Scaffolding erzeugten Ansichten erweitert.
 
-###Übung 1 - Bereitstellen der Businesslogik
+###Ãœbung 1 - Bereitstellen der Businesslogik
 ###Aufgabe 1 - Erweitern des PostsController
 
-1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
-2. Machen Sie einen Rechtsklick auf den Ordner **Controllers** und wählen **Hinzufügen/Vorhandenes Element**
-3. Im Dialogfeld navigieren Sie in den Ordner **Files/Controllers** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder Ã¶ffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+2. Machen Sie einen Rechtsklick auf den Ordner **Controllers** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**
+3. Im Dialogfeld navigieren Sie in den Ordner **Files/Controllers** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](images/1.png?raw=true "Abbildung 1")
 
-5. Öffnen Sie die Datei **PostsController.cs**
+5. Ã–ffnen Sie die Datei **PostsController.cs**
 6. Ersetzen Sie den Code der Methode **Create** durch den folgendenen 
 
     ```C#
@@ -89,26 +89,26 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
         }
     ```
 
-###Aufgabe 2 - Vorbereiten der Projektmappe für neue Ansichten
+###Aufgabe 2 - Vorbereiten der Projektmappe fÃ¼r neue Ansichten
 
-1. Erzeugen Sie einen neuen Ordner **Views/Posts** im aktuellen Projekt. Sie können das über einen Rechtsklick auf den Ordner **Views** im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
+1. Erzeugen Sie einen neuen Ordner **Views/Posts** im aktuellen Projekt. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf den Ordner **Views** im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
 2. Die Projektmappe sollte nun wie folgt aussehen:
 	
 ![](images/2.png?raw=true "Abbildung 2")
 
-###Aufgabe 3 - Hinzufügen von Ansichten für das Bearbeiten, Editieren und Löschen von Posts
+###Aufgabe 3 - HinzufÃ¼gen von Ansichten fÃ¼r das Bearbeiten, Editieren und LÃ¶schen von Posts
 
-1. Wählen Sie den Ordner **Views/Posts** an und fügen ihm über einen Rechtsklick durch einen Klick auf die Schaltfläche **Hinzufügen/Neues Gerüstelement** eine neue Ansicht hinzu
-2. Wählen Sie im aufgehenden Dialog die Vorlage **MVC5-Ansicht**
+1. WÃ¤hlen Sie den Ordner **Views/Posts** an und fÃ¼gen ihm Ã¼ber einen Rechtsklick durch einen Klick auf die SchaltflÃ¤che **HinzufÃ¼gen/Neues GerÃ¼stelement** eine neue Ansicht hinzu
+2. WÃ¤hlen Sie im aufgehenden Dialog die Vorlage **MVC5-Ansicht**
 
 ![](images/3.png?raw=true "Abbildung 3")
 
-3. Ersellen Sie eine Ansicht unter der Vorlage **Create** mit dem Namen **Create** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
+3. Ersellen Sie eine Ansicht unter der Vorlage **Create** mit dem Namen **Create** fÃ¼r die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
 ![](images/4.png?raw=true "Abbildung 4")
 
-4. Wiederholen Sie die Schritte **1** bis **3** für die Ansichten mit den Namen **Delete**, **Details** und **Edit** sowie deren korrespondierenden Vorlagen
-5. Erstellen Sie eine Ansicht unter der Vorlage **List** mit dem Namen **Index** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
+4. Wiederholen Sie die Schritte **1** bis **3** fÃ¼r die Ansichten mit den Namen **Delete**, **Details** und **Edit** sowie deren korrespondierenden Vorlagen
+5. Erstellen Sie eine Ansicht unter der Vorlage **List** mit dem Namen **Index** fÃ¼r die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
 ![](images/5.png?raw=true "Abbildung 5")
 
@@ -116,35 +116,35 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 
 ![](images/6.png?raw=true "Abbildung 6")
 
-###Aufgabe 4 - Seitenübergreifende Navigationsleiste bearbeiten
+###Aufgabe 4 - SeitenÃ¼bergreifende Navigationsleiste bearbeiten
 
-1. Öffnen Sie die Datei **Views/Shared/_Layout.cshtml**
-2. Finden Sie das Markup für die Auflistung der Menünavigation:
+1. Ã–ffnen Sie die Datei **Views/Shared/_Layout.cshtml**
+2. Finden Sie das Markup fÃ¼r die Auflistung der MenÃ¼navigation:
 
     ```XML
 	<ul class="nav navbar-nav"> 
     ```
 	
-3. Fügen Sie dieser Auflistung einen weiteren **ActionLink** hinzu mit dem Titel **Posts** hinzu, der die Action **Index** innerhalb des *PostsController* aufruft
+3. FÃ¼gen Sie dieser Auflistung einen weiteren **ActionLink** hinzu mit dem Titel **Posts** hinzu, der die Action **Index** innerhalb des *PostsController* aufruft
 
     ```XML
 	<li>@Html.ActionLink("Posts", "Index", "Posts", new { area = "" }, null)</li>
 	```
 	
-4. Öffnen Sie die Datei **Views/Home/Index.cshtml**
+4. Ã–ffnen Sie die Datei **Views/Home/Index.cshtml**
 5. Finden Sie das Element, dass das Bild eines Posts anzeigt
 
     ```XML
 	<a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
     ```
 	
-6. Fügen Sie **unterhalb** dieses Elements einen **ActionLink** mit dem Titel **Details** ein, der die Action **Details** innerhalb des **PostsController** aufruft
+6. FÃ¼gen Sie **unterhalb** dieses Elements einen **ActionLink** mit dem Titel **Details** ein, der die Action **Details** innerhalb des **PostsController** aufruft
 
     ```XML
 	<span>@Html.ActionLink("Details", "Details", "Posts", new { id = item.Id }, null)</span>
     ```
 	
-7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+7. Speichern Sie Ihre Ã„nderungen und starten Sie die Anwendung
 8. Die Anwendung sollte nun wie folgt aussehen:
 
 ![](images/7.png?raw=true "Abbildung 7")
@@ -153,10 +153,10 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 
 ![](images/8.png?raw=true "Abbildung 8")
 
-##Übung 2 - Ansichten anpassen
-###Aufgabe 5 - Mehr Felder in der Übersicht aller Posts
+##Ãœbung 2 - Ansichten anpassen
+###Aufgabe 5 - Mehr Felder in der Ãœbersicht aller Posts
 
-1. Öffnen sie die Datei **Views/Posts/Index.cshtml**
+1. Ã–ffnen sie die Datei **Views/Posts/Index.cshtml**
 2. Ersetzen Sie den Inhalt der Datei mit folgendem:
 
     ```XML
@@ -166,7 +166,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	}
 	<h2>Posts</h2>
 	<p>
-		@Html.ActionLink("Hinzufügen", "Create")
+		@Html.ActionLink("HinzufÃ¼gen", "Create")
 	</p>
 
 	<table class="table">
@@ -215,7 +215,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 				<td>
 					@Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
 					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-					@Html.ActionLink("Löschen", "Delete", new { id = item.Id })
+					@Html.ActionLink("LÃ¶schen", "Delete", new { id = item.Id })
 				</td>
 			</tr>
 		}
@@ -224,14 +224,14 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	
 ###Aufgabe 6 - Detailansicht eines Posts erweitern
 	
-3. Öffnen Sie die Datei **Views/Posts/Details.cshtml**
+3. Ã–ffnen Sie die Datei **Views/Posts/Details.cshtml**
 4. Suchen Sie **Description List** Element
 
     ```XML
 	<dl class="dl-horizontal">
     ```
 
-5. Fügen Sie der **Description List** ein Anzeigepaar hinzu, dass die **Anzahl** der **Likes** für den **aktuellen Post** darstellt
+5. FÃ¼gen Sie der **Description List** ein Anzeigepaar hinzu, dass die **Anzahl** der **Likes** fÃ¼r den **aktuellen Post** darstellt
 
     ```XML
 	<dt>
@@ -242,7 +242,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</dd>
     ```
 	
-6. Fügen Sie am Anfang der **Description List** ein Anzeigepaar hinzu, dass den **Namen des Erstellers** für den **aktuellen Post** ausgbibt
+6. FÃ¼gen Sie am Anfang der **Description List** ein Anzeigepaar hinzu, dass den **Namen des Erstellers** fÃ¼r den **aktuellen Post** ausgbibt
 
     ```XML
         <dt>
@@ -253,7 +253,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
         </dd>
     ```
 		
-7. Fügen Sie unterhalb der **Description List** eine **Tabelle** ein, die die **letzten 10 Likes** jeweils mit **Datum und Benutzername** für den aktuellen Post ausgibt
+7. FÃ¼gen Sie unterhalb der **Description List** eine **Tabelle** ein, die die **letzten 10 Likes** jeweils mit **Datum und Benutzername** fÃ¼r den aktuellen Post ausgibt
 
     ```XML
     <div>
@@ -280,7 +280,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
     </div>
     ```
 
-8. Fügen Sie als erstes Element der **Description List** ein **Link-Element** ein, das das Bild des aktuellen Posts ausgibt
+8. FÃ¼gen Sie als erstes Element der **Description List** ein **Link-Element** ein, das das Bild des aktuellen Posts ausgibt
 
     ```XML
         <dd>
@@ -288,7 +288,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
         </dd>
     ```
 
-9. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+9. Speichern Sie Ihre Ã„nderungen und starten Sie die Anwendung
 10. Rufen Sie die Detailansicht eines Posts auf
 11. Ihre Anwendung sollte nun wie folgt aussehen:
 
@@ -296,8 +296,8 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 
 ###Aufgabe 7 - Seite um einen CSS-Style erweitern
 
-1. Öffnen sie die Datei **Content/Site.css**
-2. Fügen Sie folgenden CSS-Style ein
+1. Ã–ffnen sie die Datei **Content/Site.css**
+2. FÃ¼gen Sie folgenden CSS-Style ein
 
     ```CSS
 	.btn-file {
@@ -322,9 +322,9 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
     }
     ```
 	
-###Aufgabe 8 - Bearbeitungsansicht für einen Post um ein Upload-Feld erweitern
+###Aufgabe 8 - Bearbeitungsansicht fÃ¼r einen Post um ein Upload-Feld erweitern
 
-1. Öffnen Sie die Datei **Views/Posts/Edit.cshtml**
+1. Ã–ffnen Sie die Datei **Views/Posts/Edit.cshtml**
 2. Suchen Sie den Aufruf des **HtmlHelpers**, der den Bereich eines Formulares einleitet
 
     ```XML
@@ -337,13 +337,13 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     ```
 
-4. Suchen Sie den Eintrag, der ein verstecktes Feld für die Eigenschaft **Id** des aktuellen Posts erzeugt
+4. Suchen Sie den Eintrag, der ein verstecktes Feld fÃ¼r die Eigenschaft **Id** des aktuellen Posts erzeugt
 
     ```XML
 	@Html.HiddenFor(model => model.Id)
 	```
 
-5. Fügen Sie zwei versteckte Felder für die Eigenschaften **Image.Id** sowie **Image.FileName** hinzu
+5. FÃ¼gen Sie zwei versteckte Felder fÃ¼r die Eigenschaften **Image.Id** sowie **Image.FileName** hinzu
 	
     ```XML
     @Html.HiddenFor(model => model.Image.Id)
@@ -360,7 +360,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</div>
     ```
 	
-7. Fügen Sie vor dieser **form-group** eine weitere **form-group** ein, die das aktuelle Bild des Posts anzeigt sowie ein **Upload-Feld** bereitstellt
+7. FÃ¼gen Sie vor dieser **form-group** eine weitere **form-group** ein, die das aktuelle Bild des Posts anzeigt sowie ein **Upload-Feld** bereitstellt
 
     ```XML
 	<div class="form-group">
@@ -375,7 +375,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</div>
     ```
 	
-8. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+8. Speichern Sie Ihre Ã„nderungen und starten Sie die Anwendung
 9. Ihre Anwendung sollte nun wie folgt aussehen:
 
 	
@@ -383,7 +383,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 
 ###Aufgabe 9 - Ansicht zum Erstellen eines Posts um ein Upload-Feld erweitern
 
-1. Öffnen Sie die Datei **Views/Posts/Create.cshtml**
+1. Ã–ffnen Sie die Datei **Views/Posts/Create.cshtml**
 2. Suchen Sie den Aufruf des **HtmlHelpers**, der den Bereich eines Formulares einleitet
 
     ```XML
@@ -406,7 +406,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</div>
     ```
 
-5. Fügen Sie oberhalb der letzten **form-group** eine neue **form-group** ein, in **Upload-Feld** angezeigt wird
+5. FÃ¼gen Sie oberhalb der letzten **form-group** eine neue **form-group** ein, in **Upload-Feld** angezeigt wird
 
     ```XML
 	<div class="form-group">
@@ -421,7 +421,7 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</div>
     ```
 
-6. **Suchen** und **löschen** Sie die **form-group** für die Eigenschaften **Created**
+6. **Suchen** und **lÃ¶schen** Sie die **form-group** fÃ¼r die Eigenschaften **Created**
 
     ```XML
 	<div class="form-group">
@@ -433,13 +433,13 @@ Dieses Modul besteht aus zwei Übungen. In der ersten werden Businesslogik bereit
 	</div>
     ```
 
-7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+7. Speichern Sie Ihre Ã„nderungen und starten Sie die Anwendung
 
 ##Zusammenfassung
-In diesem Hands-On haben Sie gelernt
--Was Scaffolding ist und wie man es verwendet, um Ansicht auf Basis einer Vorlage anzulegen
--Wie man Entitysets gezielt nach Einträgen filtert
--Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen
--Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann
--Wie man die seitenübergreifende Navigationsleiste bearbeiten kann
--Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet
+In diesem Hands-On haben Sie gelernt  
+-Was Scaffolding ist und wie man es verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
+-Wie man Entitysets gezielt nach EintrÃ¤gen filtert  
+-Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+-Wie man Ã¼ber das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder Ã¼bermitteln kann  
+-Wie man die seitenÃ¼bergreifende Navigationsleiste bearbeiten kann  
+-Wie man CSS-Style zu einer Seite hinzufÃ¼gt und dieses anwendet  
