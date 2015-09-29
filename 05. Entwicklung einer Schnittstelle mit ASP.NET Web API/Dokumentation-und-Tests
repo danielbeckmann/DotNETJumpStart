@@ -1,0 +1,15 @@
+# ASP.NET Web Test Client
+
+## Installation
+http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
+
+## Testing
+Install-Package WebApiTestClient
+
+# Swagger
+
+## Installation
+Install-Package Swashbuckle -Version 5.2.1 
+
+## Aufruf
+http://localhost:XXXX/swagger
