@@ -2,36 +2,36 @@ Modul 5/01 - Entwicklung einer Schnittstelle mit ASP.NET Web API: ASP.NET Web AP
 =======================================
 
 ##Ziele
-In diesem Hands-On lernen Sie
--Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen
--Wie Sie ein Entityset sortieren
--Wie Sie einer Api-Methode über Attribute mitteilen, welchen Typ sie zurückgibt
--Wie man mit Hilfe von Postman eine Api schnell testen kann
+In diesem Hands-On lernen Sie  
+-Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen  
+-Wie Sie ein Entityset sortieren  
+-Wie Sie einer Api-Methode Ã¼ber Attribute mitteilen, welchen Typ sie zurÃ¼ckgibt  
+-Wie man mit Hilfe von Postman eine Api schnell testen kann  
 
-###Übung 1 - ApiControllers erstellen und vervollständigen
+###Ãœbung 1 - ApiControllers erstellen und vervollstÃ¤ndigen
 
-###Aufgabe 1 - Dto-Klassen hinzufügen
+###Aufgabe 1 - Dto-Klassen hinzufÃ¼gen
 
-1.	Erzeugen Sie einen neuen Ordner **Dtos** unterhalb des Ordners **Models**. Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner Models/Dtos und wählen **Hinzufügen/Vorhandenes Element**.
-3.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1.	Erzeugen Sie einen neuen Ordner **Dtos** unterhalb des Ordners **Models**. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
+2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner Models/Dtos und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**.
+3.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 4.	Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](images/1.png?raw=true "Abbildung 1")
 
 ###Aufgabe 2 - ApiController vorbereiten
 
-1.	Erzeugen Sie einen neuen Ordner **ApiControllers** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner **ApiControllers** und wählen **Hinzufügen/Vorhandenes Element**.
-3.	Im Dialogfeld navigieren Sie in den Ordner **Files/ApiControllers** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1.	Erzeugen Sie einen neuen Ordner **ApiControllers** im aktuellen Projekt. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
+2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner **ApiControllers** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**.
+3.	Im Dialogfeld navigieren Sie in den Ordner **Files/ApiControllers** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 4.	Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](images/2.png?raw=true "Abbildung 2")
 
 ###Aufgabe 3 - ApiController um Businesslogik erweitern
 
-1.	Öffnen Sie die Datei **ApiControllers/PostsController.cs**
-2.	Fügen Sie eine Methode hinzu, die über die Route **api/posts/popular** erreichbar ist und die 10 Posts mit der höchsten Beliebtheit in absteigender Reihenfolge zurückgibt
+1.	Ã–ffnen Sie die Datei **ApiControllers/PostsController.cs**
+2.	FÃ¼gen Sie eine Methode hinzu, die Ã¼ber die Route **api/posts/popular** erreichbar ist und die 10 Posts mit der hÃ¶chsten Beliebtheit in absteigender Reihenfolge zurÃ¼ckgibt
 
     ```C#
 		// GET api/posts/popular
@@ -42,7 +42,7 @@ In diesem Hands-On lernen Sie
 		}
     ```
 	
-3.	Öffnen Sie die Datei **ApiControllers/LikesController**
+3.	Ã–ffnen Sie die Datei **ApiControllers/LikesController**
 4.	Ersetzen Sie den Code der Methode **PostLike** mit folgendem:
 
     ```C#
@@ -88,7 +88,7 @@ In diesem Hands-On lernen Sie
         }
     ```
 	
-5.	Teilen Sie der Methode **PostLike** über das Attribut **ResponseType** mit, dass es ein Objekt vom Typ **Like** zurückgibt
+5.	Teilen Sie der Methode **PostLike** Ã¼ber das Attribut **ResponseType** mit, dass es ein Objekt vom Typ **Like** zurÃ¼ckgibt
 
     ```C#
         // POST: api/likes
@@ -96,7 +96,7 @@ In diesem Hands-On lernen Sie
         public IHttpActionResult PostLike(LikeDto likeDto)
     ```
 
-6.	Öffnen Sie die Datei **ApiControllers/UsersController.cs**
+6.	Ã–ffnen Sie die Datei **ApiControllers/UsersController.cs**
 7.	Ersetzen Sie den Code der Methode **GetUser** mit folgendem:
 
     ```C#
@@ -114,15 +114,15 @@ In diesem Hands-On lernen Sie
         }
     ```
 	
-8.	Teilen Sie der Methode **GetUser** über das Attribut **ResponseType** mit, dass es ein Objekt vom Typ **UserDto** zurückgibt
+8.	Teilen Sie der Methode **GetUser** Ã¼ber das Attribut **ResponseType** mit, dass es ein Objekt vom Typ **UserDto** zurÃ¼ckgibt
 
     ```C#
         [ResponseType(typeof(UserDto))]
     ```
 
-##Übung 2 (Optional) - Api testen mit Postman
+##Ãœbung 2 (Optional) - Api testen mit Postman
 
-1.	Öffnen Sie den Chrome Browser, falls installiert
+1.	Ã–ffnen Sie den Chrome Browser, falls installiert
 2.	Navigierien Sie zum Chrome Web Store
 
 https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
@@ -130,26 +130,26 @@ https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddom
 ![](images/3.png?raw=true "Abbildung 3")
 
 3.	Installieren Sie sich die App **Postman**
-4.	Öffnen Sie Chrome.
+4.	Ã–ffnen Sie Chrome.
 5.	Geben Sie oben in die Adressleiste **chrome://apps** ein.
-6.	Drücken Sie die Eingabetaste.
-7.	Öffnen Sie Postman
+6.	DrÃ¼cken Sie die Eingabetaste.
+7.	Ã–ffnen Sie Postman
 
 ![](images/4.png?raw=true "Abbildung 4")
 
 8.	Starten Sie Ihre Anwendung aus Visual Studio heraus und speichern Sie sich die Url zu dieser in der Zwischenablage (z.B. http://localhost:60783/)
 9.	Wechseln Sie zum Chrome Browser
-10.	In der Zeile **Enter request URL here** fügen Sie die Url zu Ihrer Anwendung und erweitern diese um die Api, die Sie testen wollen 
+10.	In der Zeile **Enter request URL here** fÃ¼gen Sie die Url zu Ihrer Anwendung und erweitern diese um die Api, die Sie testen wollen 
 http://localhost:60783/api/posts/popular
-11.	Drücken Sie auf die Schaltfläche **Send**
+11.	DrÃ¼cken Sie auf die SchaltflÃ¤che **Send**
 
 ![](images/5.png?raw=true "Abbildung 5")
 
-12.	Prüfen Sie, ob die Daten angezeigt werden, die Sie erwartet haben
+12.	PrÃ¼fen Sie, ob die Daten angezeigt werden, die Sie erwartet haben
 
 ##Zusammenfassung
-In diesem Hands-On haben Sie gelernt
--Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen
--Wie Sie ein Entityset sortieren
--Wie Sie einer Api-Methode über Attribute mitteilen, welchen Typ sie zurückgibt
--Wie man mit Hilfe von Postman eine Api schnell testen kann
+In diesem Hands-On haben Sie gelernt  
+-Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen  
+-Wie Sie ein Entityset sortieren  
+-Wie Sie einer Api-Methode Ã¼ber Attribute mitteilen, welchen Typ sie zurÃ¼ckgibt  
+-Wie man mit Hilfe von Postman eine Api schnell testen kann  
