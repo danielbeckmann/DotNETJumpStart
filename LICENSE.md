@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 Felix Radzanowski, Constantin Petsch, Daniel Beckmann (Acando GmbH)
+Copyright (c) 2017 Acando GmbH
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
