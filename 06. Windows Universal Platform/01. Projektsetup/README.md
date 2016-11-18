@@ -5,6 +5,8 @@
 In diesem Hands-On werden Sie das Windows Phone Projekt aufsetzen und die Hauptseite der App mit XAML erstellen.
 
 TODO: Ankersprünge zu Übungen
+TODO: check entwicklerlizenz -> notwendig?
+TODO: Projektmappenkonfiguration > App als Startprojekt + Bereitstellen, Starten
 
 ## Ziele
 
@@ -30,6 +32,8 @@ In dieser Übung werden Sie das Projekt in Visual Studio erstellen und die benö
 
 In diesem Schritt wird das Projekt in Visual Studio angelegt.
 
+TODO: Projektmappe hinzufügen, Startprojekt wechseln
+
 1. Starten Sie **Visual Studio**.
 2. In Visual Studio wählen Sie **Datei/Neu/Projekt**.
 3. Im Dialog **Neues Projekt**:
@@ -37,7 +41,8 @@ In diesem Schritt wird das Projekt in Visual Studio angelegt.
    2. Wählen Sie **Leere App (Windows Phone)**.
    3. Nennen Sie das Projekt **ImageApp** und bestätigen mit **OK**.<br/><br/>
    ![](_images/create-project.png?raw=true "Abbildung 1")<br/>
-
+4. TODO: Anniversary Edition...
+   
 Falls auf dem System keine Entwicklerlizenz installiert ist, werden Sie nun in einem Dialog aufgefordert, eine solche zu beantragen. Sollte das nicht der Fall sein, können Sie die nächste Aufgabe überspringen.
 
 #### Aufgabe 2: Abrufen einer Windows Entwickler Lizenz
