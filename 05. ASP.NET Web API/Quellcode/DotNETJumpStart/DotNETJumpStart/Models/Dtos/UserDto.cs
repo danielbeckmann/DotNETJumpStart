@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace WebAdminAndApi.Models.Dtos
+namespace DotNETJumpStart.Models.Dtos
 {
     /// <summary>
     /// Data transfer object for user objects.
@@ -19,7 +19,7 @@ namespace WebAdminAndApi.Models.Dtos
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public static UserDto Map(WorkshopMVC.Models.User user)
+        public static UserDto Map(User user)
         {
             return new UserDto { Identifier = user.Identifier, Name = user.Name };
         }

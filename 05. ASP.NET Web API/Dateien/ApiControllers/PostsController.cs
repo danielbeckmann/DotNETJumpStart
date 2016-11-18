@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebAdminAndApi.Models;
-using WebAdminAndApi.Models.Dtos;
-using WebAdminAndApi.Utils;
+using DotNETJumpStart.Models;
+using DotNETJumpStart.Models.Dtos;
+using DotNETJumpStart.Utils;
 
-namespace WebAdminAndApi.ApiControllers
+namespace DotNETJumpStart.ApiControllers
 {
     public class PostsController : ApiController
     {

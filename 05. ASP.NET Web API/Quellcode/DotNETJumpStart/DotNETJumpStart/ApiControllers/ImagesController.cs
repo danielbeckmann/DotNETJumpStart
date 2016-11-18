@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebAdminAndApi.Models;
-using WebAdminAndApi.Utils;
+using DotNETJumpStart.Models;
+using DotNETJumpStart.Utils;
 
-namespace WebAdminAndApi.ApiControllers
+namespace DotNETJumpStart.ApiControllers
 {
     public class ImagesController : ApiController
     {

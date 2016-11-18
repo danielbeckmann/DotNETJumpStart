@@ -2,9 +2,9 @@
 using System.IO;
 using System.Web;
 using System.Web.Helpers;
-using WebAdminAndApi.Models;
+using DotNETJumpStart.Models;
 
-namespace WebAdminAndApi.Utils
+namespace DotNETJumpStart.Utils
 {
     /// <summary>
     /// Provides functions for image handling.

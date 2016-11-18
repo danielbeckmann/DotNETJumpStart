@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAdminAndApi.Models.Post>
+﻿@model IEnumerable<DotNETJumpStart.Models.Post>
 @{
     ViewBag.Title = "Übersicht";
 }
@@ -9,7 +9,6 @@
         <li>
             <h5>@Html.DisplayFor(modelItem => item.Title) <small>von @Html.DisplayFor(m => item.User.Name)</small></h5> <br />
             <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
-            <span>@Html.ActionLink("Details", "Details", "Posts", new { id = item.Id }, null)</span>
         </li>
     }
 </ul>

@@ -6,7 +6,7 @@ In diesem Modul werden die Vorbereitungen für die darauffolgenden Hands-On-Sessi
 
 ## Präsentation
 
-Sehen Sie sich die zu dem Modul gehörende [Präsentation](02. Vorbereitung und Projektsetup.pptx) an.
+Sehen Sie sich die [Präsentation](Vorbereitung und Projektsetup.pptx) zum Modul an.
 
 ## Ziele
 
@@ -27,7 +27,7 @@ Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 <a name="Exercise1"></a>
 
 ### Übung 1: Microsoft-Konto anlegen
-Für das Modul 6 zum Thema App-Entwicklung wird eine Entwicklerlizenz von Microsoft benötigt. Diese ist zum Entwickeln und Testen von Apps kostenlos. Hierfür benötigen Sie ein Konto bei Microsoft. Falls Sie bereits ein Konto besitzen, können Sie diese Aufgabe überspringen.
+Für das Modul 6 (Windows Universal Platform) wird eine Entwicklerlizenz von Microsoft benötigt. Diese ist kostenlos. Hierfür benötigen Sie ein Konto bei Microsoft. Falls Sie bereits ein Konto besitzen, können Sie diese Übung überspringen.
 
 #### Aufgabe 1 - Microsoft-Konto anlegen
 In diesem Schritt legen Sie Ihr persönliches Microsoft-Konto an.
@@ -38,12 +38,12 @@ In diesem Schritt legen Sie Ihr persönliches Microsoft-Konto an.
 3. Bei der Registrierung können Sie eine bereits bestehende E-Mail-Adresse als Konto verwenden oder eine neue E-Mail-Adresse bei Microsoft anlegen.<br/><br/>
    ![](_images/account-2.png?raw=true "Abbildung 0b")
 
-Sie haben nun ein Microsoft-Konto angelegt und damit die nötige Vorbereitung für Modul 6 getroffen.  
+Sie haben nun ein Microsoft-Konto angelegt und damit die nötige Vorbereitung getroffen.  
 
 <a name="Exercise2"></a>
 ### Übung 2: Erstellen einer ASP.NET Webanwendung
 
-In dieser Übung werden Sie das Webprojekt in Visual Studio über eine der Projektvorlagen erstellen, die Entwicklungspakete auf den neusten Stand bringen und die Webanwendung starten.
+In dieser Übung werden Sie das Webprojekt in Visual Studio erstellen, die Entwicklungspakete auf den neusten Stand bringen und die Webanwendung starten.
 
 #### Aufgabe 1 - Erstellen einer ASP.NET Webanwendung mit MVC und Web API
 In dieser Aufgabe wird das Projekt in Visual Studio angelegt.
@@ -52,7 +52,7 @@ In dieser Aufgabe wird das Projekt in Visual Studio angelegt.
 2. In Visual Studio wählen Sie **Datei/Neu/Projekt**.
 3. Im Dialog **Neues Projekt**:
    1. Wählen Sie **Vorlagen/Visual C#/Web**.
-   2. Wählen Sie **ASP.NET-Webanwendung**
+   2. Wählen Sie **ASP.NET-Webanwendung (.NET Framework)**
    3. Nennen Sie das Projekt **DotNETJumpStart** und bestätigen mit **OK**.<br/><br/>
    ![](_images/new-web-project.png?raw=true "Abbildung 1")
 4. Im Dialog für das **ASP.NET-Projekt**:
@@ -71,10 +71,10 @@ In dieser Aufgabe werden Sie die NuGet-Pakete für das eben erstellte Projekt akt
 
 1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 4")
-2. Im Dialogfeld wählen Sie links **Aktualisierungen/nuget.org** und daraufhin **Alle aktualisieren**.<br/><br/>
+2. Im Paketmanager wählen Sie links oben **Alle Pakete auswählen** und daraufhin **Aktualisieren**.<br/><br/>
    ![](_images/update-nuget-packages.png?raw=true "Abbildung 5")
 
-Nach einem Moment sind alle Pakete für die Entwicklung auf dem neusten Stand und Sie sind bereit mit der Entwicklung zu starten.
+Nach einem Moment sind alle Pakete auf dem neusten Stand und Sie sind bereit mit der Entwicklung zu starten.
 
 #### Aufgabe 3 - Webanwendung im IIS-Express starten
 In dieser Aufgabe werden Sie die Webanwendung starten.
@@ -83,7 +83,8 @@ In dieser Aufgabe werden Sie die Webanwendung starten.
 2. Der IIS-Webserver wird automatisch gestartet und ein Tab im Webbrowser geöffnet.
 3. Sie sollten nun die Startseite mit der ASP.NET-Standardvorlage sehen:<br/><br/>
     ![](_images/asp.net-projekt.png?raw=true "Abbildung 6")
-4. Beenden Sie das aktive Debugging mit Umschalt+F5.
+4. Sehen Sie sich die Start- und Unterseiten an, indem Sie durch die Webanwendung navigieren.
+5. Schließen Sie das Browserfenster und beenden Sie das aktive Debugging mit Umschalt+F5.
 
 #### Aufgabe 4 - Machen Sie sich mit der Projektmappe vertraut
 Für die nächsten Sessions werden Sie viel innerhalb der Projektstruktur arbeiten. Somit sollen Sie sich mit der Projektmappe vertraut machen.

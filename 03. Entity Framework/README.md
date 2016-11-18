@@ -4,8 +4,7 @@
 
 In diesem Modul werden Sie die Grundlagen zum Entity Framework kennenlernen.
 
-TODO: Ziele dieses Modus
-TODO: Ankersprünge zu Übungen
+TODO: Ziele dieses Modus TODO: Ankersprünge zu Übungen TODO: Review
 
 ## Präsentation
 
@@ -13,7 +12,7 @@ Sehen Sie sich die zu dem Modul gehörende [Präsentation](03. Datenmodellierung u
 
 ## Ziele
 
-- Grundlagen: Entity Framework (Model-First, Database-First, Code-First)
+- Das Entity Framework kennenlernen
 - Grundlagen: Datenzugriffsmethoden
 - Grundlagen: Die Razor Syntax und View Rendering
 
@@ -116,8 +115,8 @@ Abbildung 1: Das fertige Datenmodell
         users.ForEach(s => context.Users.Add(s));
         context.SaveChanges();
 
-        // Create some _images
-        var _images = new List<Image>
+        // Create some images
+        var images = new List<Image>
         {
             new Image { FileName = "business-q-c-1024-768-9.jpg" },
             new Image { FileName = "cats-q-c-1024-768-4.jpg" },
@@ -126,17 +125,17 @@ Abbildung 1: Das fertige Datenmodell
             new Image { FileName = "technics-q-c-1024-768-4.jpg" }
         };
 
-        _images.ForEach(s => context._images.Add(s));
+        images.ForEach(s => context.Images.Add(s));
         context.SaveChanges();
 
         // Create some posts
         var posts = new List<Post>
         {
-            new Post { Title = "Business stuff", User = users.First(), Image = _images.First() },
-            new Post { Title = "My cat", User = users.First(), Image = _images.Skip(1).First() },
-            new Post { Title = "Random bridge", User = users.Skip(1).First(), Image = _images.Skip(2).First() },
-            new Post { Title = "Surfin' U.S.A.", User = users.Skip(1).First(), Image = _images.Skip(3).First() },
-            new Post { Title = "Technics", User = users.First(), Image = _images.Skip(4).First() }
+            new Post { Title = "Business stuff", User = users.First(), Image = images.First() },
+            new Post { Title = "My cat", User = users.First(), Image = images.Skip(1).First() },
+            new Post { Title = "Random bridge", User = users.Skip(1).First(), Image = images.Skip(2).First() },
+            new Post { Title = "Surfin' U.S.A.", User = users.Skip(1).First(), Image = images.Skip(3).First() },
+            new Post { Title = "Technics", User = users.First(), Image = images.Skip(4).First() }
         };
 
         posts.ForEach(s => context.Posts.Add(s));
@@ -167,23 +166,33 @@ Abbildung 1: Das fertige Datenmodell
 
 #### Aufgabe 5 - DbContext und DbInitializer bekannt machen 
 1. Öffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
-2. Ersetzen Sie die Konfigurationssektion **entityFramework** mit folgendem Inhalt
+2. Ersetzen Sie die Konfigurationssektion **connectionStrings** durch folgenden Inhalt
+
+    ``XML
+      <connectionStrings>
+        <add name="DefaultConnection" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\app-db.mdf;Integrated Security=True;" providerName="System.Data.SqlClient" />
+      </connectionStrings>
+    ```
+    
+3. Ersetzen Sie die Konfigurationssektion **entityFramework** durch folgenden Inhalt
 
 	```XML
     <entityFramework>
     <contexts>
-      <context type="WebAdminAndApi.Models.ImageAppDbContext, DotNETJumpStart">
-        <databaseInitializer type="WebAdminAndApi.Models.ImageAppDbInitializer, DotNETJumpStart" />
+      <context type="DotNETJumpStart.Models.ImageAppDbContext, DotNETJumpStart">
+        <databaseInitializer type="DotNETJumpStart.Models.ImageAppDbInitializer, DotNETJumpStart" />
       </context>
     </contexts>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
     <providers>
       <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
     </providers>
-    </entityFramework>
+  </entityFramework>
 	```
 	
-3. Speichern Sie Ihre Änderungen und erstellen die Projektmappe neu.
+4. Speichern Sie Ihre Änderungen und erstellen die Projektmappe neu.
+
+Durch diese Änderung haben Sie sichergestellt, das die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
 
 ### Übung 2: Datenzugriff
 
@@ -217,10 +226,10 @@ In dieser Übung werden wir:
 2. Stellen Sie sicher, dass folgende using-Direktiven im HomeController enthalten sind:
 
     ```C#
-	using WebAdminAndApi.Models;
+	using DotNETJumpStart.Models;
     ```
 	
-3. Ändern Sie die Methode **Index()** so ab, dass Sie nur die 10 neuesten Posts anzeigt
+3. Ändern Sie die Methode **Index()** so ab, dass Sie einen Datenbankzugriff macht und die 10 neuesten Posts ausliest.
 
     ```C#
 	private ImageAppDbContext db = new ImageAppDbContext();
@@ -234,24 +243,15 @@ In dieser Übung werden wir:
 	
 4. Speichern und schließen Sie die Datei
 
-#### Aufgabe 3 - PostsController hinzufügen
-1. Machen Sie einen Rechtsklick auf den neu Ordner **Controllers** und wählen **Hinzufügen/Vorhandenes Element**.
-2. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Controllers** aus dem aktuellen Hands-On und wählen alle Dateien aus.
-3. Die Projektmappe sollte nun wie folgt aussehen:
-
-![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
-
-4. Starten Sie Ihre Anwendung über die Menüleiste **Debuggen/Debugging starten** oder das Tastenkürzel **F5**
-
-![](_images/start-asp-net.png?raw=true "Abbildung 3")
-
-5. Beenden Sie das Debugging durch das Schließen des Browsers oder über die Menüleiste **Debugging/Debugging beenden** innerhalb von Visual Studio
+#### Aufgabe 3 - Anwendung starten
+1. Starten Sie Ihre Anwendung über die Menüleiste **Debuggen/Debugging starten** oder das Tastenkürzel **F5**
+2. Durch den Zugriff auf den **ImageAppDbContext** im HomeController wird die Datenbank automatisch generiert und Testdaten werden eingefügt
+3. Beenden Sie das Debugging durch das Schließen des Browsers oder über die Menüleiste **Debugging/Debugging beenden** innerhalb von Visual Studio
 
 #### Aufgabe 4 - Tabelldaten anzeigen
-1. Öffnen Sie den **Server-Explorer**
-2. Suchen Sie die zuvor hinzugefügte Verbindung zur lokalen Datenbank und klappen Sie sie auf
-3. Klappen Sie die 
-4. Ihr Server-Explorer sollte nun wie folgt aussehen:
+1. Öffnen Sie den **Server-Explorer**. Am einfachsten geben Sie **Server-Explorer** oben rechts in die Suche ein oder drücken Strg+Q auf der Tastatur.
+2. Suchen Sie die zuvor hinzugefügte Verbindung zur lokalen Datenbank und klappen Sie sie auf (unter Datenverbindungen / DefaultConnection / Tabellen)
+3. Ihr Server-Explorer sollte nun die Tabellen der einzelnen Entitäten (Image, Like, Post und User enthalten):
 
 ![](_images/table-view.png?raw=true "Abbildung 9")
 
@@ -263,8 +263,7 @@ In dieser Übung werden wir:
 ### Übung 3: Datenanzeige mit der Razor-Syntax
 
 In dieser Übung werden wir:
-- Die Razor-Syntax verwenden, um auf Eigenschaften eines ViewModels zuzugreifen
-- HTML verwenden, um Daten aus einem ViewModel anzuzeigen
+- Die Razor-Syntax im HTML zu verwenden, um auf Daten des Models zuzugreifen und diese auf der View anzuzeigen
 
 #### Aufgabe 1 - Posts auf der Startseite anzeigen
 1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
@@ -272,7 +271,7 @@ In dieser Übung werden wir:
 3. Ersetzen Sie den Inhalt der Datei mit folgendem, um die Daten aus der zuvor angepassten **Index**-Methode des **HomeController**s anzuzeigen:
 
 	```XML
-	@model IEnumerable<WebAdminAndApi.Models.Post>
+	@model IEnumerable<DotNETJumpStart.Models.Post>
 	@{
 		ViewBag.Title = "Übersicht";
 	}
@@ -294,23 +293,25 @@ In dieser Übung werden wir:
 
 ![](_images/posts-on-start.png?raw=true "Abbildung 1")
 
-7. Beenden Sie das Debugging **nicht**
-8. Wechseln Sie zu **Visual Studio**
-9. Öffnen Sie die Datei **Views/Home/Index.cshtml**
-10. Umhüllen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im Großformat anzeigt
+#### Aufgabe 2 - Bilder in voller Größe anzeigen
+1. Beenden Sie das Debugging **nicht**
+2. Wechseln Sie zu **Visual Studio**
+3. Öffnen Sie die Datei **Views/Home/Index.cshtml**
+4. Umhüllen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im Großformat anzeigt
 
 	```XML
     <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
 	```
 	
-11. Speichern Sie Ihre Änderungen
-12. Wechseln Sie in Ihren Browser
-13. **Aktualisieren** Sie die Seite
-14. Klicken Sie auf eines der Bilder:
+5. Speichern Sie Ihre Änderungen
+6. Wechseln Sie in Ihren Browser
+7. **Aktualisieren** Sie die Seite
+8. Klicken Sie auf eines der Bilder:
 
-![](_images/image.png?raw=true "Abbildung 2")
+![](_images/image.png?raw=true "Abbildung 2")  
 
-15. Beenden Sie das Debugging
+
+9. Beenden Sie das Debugging
 
 ## Zusammenfassung
 Mit Beendung dieser Session haben Sie gelernt:  

@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebAdminAndApi.Models;
-using WebAdminAndApi.Models.Dtos;
-using WorkshopMVC.Models;
+using DotNETJumpStart.Models;
+using DotNETJumpStart.Models.Dtos;
 
-namespace WebAdminAndApi.ApiControllers
+namespace DotNETJumpStart.ApiControllers
 {
     public class UsersController : ApiController
     {

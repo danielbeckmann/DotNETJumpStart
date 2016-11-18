@@ -6,6 +6,8 @@ In diesem Modul lernen Sie die Grundlagen zu ASP.NET Web API kennen.
 
 TODO: Ziele dieses Modus
 TODO: Ankersprünge zu Übungen
+TODO: Umstellung auf JSON in WebApiConfig
+TODO: Doku über /Help Page
 
 ## Präsentation
 
@@ -137,7 +139,8 @@ In diesem Hands-On lernen Sie:
     ```C#
         [ResponseType(typeof(UserDto))]
     ```
-
+    
+    
 ### Übung 2 - APIs Testen und Dokumentieren
 
 #### Aufgabe 1 - API testen mit Postman

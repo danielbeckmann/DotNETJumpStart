@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebAdminAndApi.Models
+namespace DotNETJumpStart.Models
 {
     /// <summary>
     /// The image entity

@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
-using WorkshopMVC.Models;
+using DotNETJumpStart.Models;
 
-namespace WebAdminAndApi.Models
+namespace DotNETJumpStart.Models
 {
     /// <summary>
     /// This class defines the database context which uses entity framework to access the database.

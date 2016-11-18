@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WorkshopMVC.Models;
+using DotNETJumpStart.Models;
 
-namespace WebAdminAndApi.Models
+namespace DotNETJumpStart.Models
 {
     /// <summary>
     /// The post entity which defines a posted image in the app.

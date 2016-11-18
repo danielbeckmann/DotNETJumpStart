@@ -39,6 +39,7 @@ namespace DotNETJumpStart
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                // Legen Sie im Produktionsmodus "AllowInsecureHttp = false" fest.
                 AllowInsecureHttp = true
             };
 

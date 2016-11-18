@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace WebAdminAndApi.Models.Dtos
+namespace DotNETJumpStart.Models.Dtos
 {
     /// <summary>
     /// Data transfer object for adding new posts.

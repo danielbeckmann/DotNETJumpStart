@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using WebAdminAndApi.Models;
-using WebAdminAndApi.Utils;
+using DotNETJumpStart.Models;
+using DotNETJumpStart.Utils;
 
-namespace WebAdminAndApi.Controllers
+namespace DotNETJumpStart.Controllers
 {
     public class PostsController : Controller
     {
@@ -40,7 +40,7 @@ namespace WebAdminAndApi.Controllers
                 // Assign the image to the post
                 post.Image = image;
 
-                // Only the admin can post images here, so select admin
+                // Only the admin can post _images here, so select admin
                 post.User = db.Users.FirstOrDefault(x => x.Name == "Admin");
 
                 // Save post to db

@@ -2,9 +2,9 @@
 using System.IO;
 using System.Web;
 using System.Web.Helpers;
-using WebAdminAndApi.Models;
+using DotNETJumpStart.Models;
 
-namespace WebAdminAndApi.Utils
+namespace DotNETJumpStart.Utils
 {
     /// <summary>
     /// Provides functions for image handling.
@@ -70,6 +70,7 @@ namespace WebAdminAndApi.Utils
 
             // Resize image with web image helper
             webImage = webImage.Resize(1024, 768, true, true);
+
 
             // Create random name
             var guid = Guid.NewGuid();

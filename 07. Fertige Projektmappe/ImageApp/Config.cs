@@ -8,6 +8,6 @@ namespace ImageApp
 {
     public class Config
     {
-        public const string ApiAddress = "http://acando-workshop.azurewebsites.net/api/";
+        public const string ApiAddress = "http://localhost:50983/api/";
     }
 }

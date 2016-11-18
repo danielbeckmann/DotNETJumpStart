@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using WorkshopMVC.Models;
+using DotNETJumpStart.Models;
 
-namespace WebAdminAndApi.Models
+namespace DotNETJumpStart.Models
 {
     /// <summary>
     /// Handles the creation of database test data.

@@ -6,20 +6,22 @@ In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen.
 
 TODO: Ziele dieses Modus
 TODO: Ankersprünge zu Übungen
+TODO: Review
+TODO: Aufzählungspunkte fangen nach einem Bild wieder bei 1 an -> korrigieren
 
 ## Präsentation
 
-Sehen Sie sich die zu dem Modul gehörende [Präsentation](04. Aufbau einer Webapplikation mit ASP.NET MVC.pptx) an.
+Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.pptx) zum Modul an.
 
 ## Ziele
 
 In diesem Hands-On lernen Sie   
--Wie man Scaffolding verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
--Wie man Entitysets gezielt nach Einträgen filtert  
--Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
--Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann  
--Wie man die seitenübergreifende Navigationsleiste bearbeiten kann  
--Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet  
+- Wie man Scaffolding verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
+- Wie man Entitysets gezielt nach Einträgen filtert  
+- Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+- Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann  
+- Wie man die seitenübergreifende Navigationsleiste bearbeiten kann  
+- Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet  
 
 ---
 
@@ -41,7 +43,7 @@ In dieser Übung werden wir: ...
 ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
 5. Öffnen Sie die Datei **PostsController.cs**
-6. Ersetzen Sie den Code der Methode **Create** durch den folgendenen 
+6. Wir fügen nun den Code hinzu, der einen neuen Post erstellt. Ersetzen Sie hierzu den Code der Methode **public ActionResult Create(Post post)** durch:
 
     ```C#
         [HttpPost]
@@ -60,7 +62,7 @@ In dieser Übung werden wir: ...
                 var image = ImageUtility.SaveImageFromRequest();
 
                 // Save image to db
-                image = db._images.Add(image);
+                image = db.Images.Add(image);
                 db.SaveChanges();
 
                 // Assign the image to the post
@@ -80,7 +82,7 @@ In dieser Übung werden wir: ...
         }
     ```
 
-7. Ersetzen Sie den Code der Methode **DeleteConfirmed** durch folgenden
+7. Wir fügen nun den Code hinzu, der einen Post löscht. Ersetzen Sie hierzu den Code der Methode **ActionResult DeleteConfirmed(int id)** durch:
 
     ```C#
         [HttpPost, ActionName("Delete")]
@@ -120,7 +122,7 @@ In dieser Übung werden wir: ...
 
 ![](_images/mvc-view.png?raw=true "Abbildung 3")
 
-3. Ersellen Sie eine Ansicht unter der Vorlage **Create** mit dem Namen **Create** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
+3. Erstellen Sie eine Ansicht unter der Vorlage **Create** mit dem Namen **Create** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
 ![](_images/scaffolding-1.png?raw=true "Abbildung 4")
 
@@ -166,12 +168,13 @@ In dieser Übung werden wir: ...
 
 ![](_images/posts.png?raw=true "Abbildung 7")
 
-9. Klicken Sie in der **Navigationsleiste** auf den Eintrag **Posts**
+9. Klicken auf einen der **Details** Links um zu der Detailseite eines Post zu gelangen.
+10. Klicken Sie in der **Navigationsleiste** auf den Eintrag **Posts**, um zur Auflistung aller Posts zu gelangen.
 
 ![](_images/posts-list.png?raw=true "Abbildung 8")
 
 ### Übung 2 - Ansichten anpassen
-In dieser Übung...
+TODO: In dieser Übung...
 
 #### Aufgabe 1 - Mehr Felder in der Übersicht aller Posts
 
@@ -179,66 +182,68 @@ In dieser Übung...
 2. Ersetzen Sie den Inhalt der Datei mit folgendem:
 
     ```XML
-	@model IEnumerable<WebAdminAndApi.Models.Post>
-	@{
-		ViewBag.Title = "Posts";
-	}
-	<h2>Posts</h2>
-	<p>
-		@Html.ActionLink("Hinzufügen", "Create")
-	</p>
+	@model IEnumerable<DotNETJumpStart.Models.Post>
 
-	<table class="table">
-		<tr>
-			<th>
-				#
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Title)
-			</th>
-			<th>
-				Bild
-			</th>
-			<th>
-				User
-			</th>
-			<th>
-				Likes
-			</th>
-			<th>
-				Datum
-			</th>
-			<th></th>
-		</tr>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(m => item.Id)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Title)
-				</td>
-				<td>
-					<img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" />
-				</td>
-				<td>
-					@Html.DisplayFor(m => item.User.Name)
-				</td>
-				<td>
-					@Html.DisplayFor(m => item.Likes.Count)
-				</td>
-				<td>
-					@Html.DisplayFor(m => item.CreatedShort)
-				</td>
-				<td>
-					@Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
-					@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-					@Html.ActionLink("Löschen", "Delete", new { id = item.Id })
-				</td>
-			</tr>
-		}
-	</table>
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Posts</h2>
+    <p>
+        @Html.ActionLink("Hinzufügen", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Bild
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Likes
+            </th>
+            <th>
+                Datum
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" />
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.User.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Likes.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.CreatedShort)
+                </td>
+                <td>
+                    @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Löschen", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
     ```
 	
 
@@ -399,8 +404,10 @@ In dieser Übung...
 8. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
 9. Ihre Anwendung sollte nun wie folgt aussehen:
 
-	
 ![](_images/posts-edit.png?raw=true "Abbildung 10")
+
+10. Testen Sie den Upload, indem Sie das Bild eines Posts ersetzen.
+11. Sie sehen bei dem neu hochgeladenen Bild nun erstmals Ihr eingestelltes Wasserzeichen
 
 #### Aufgabe 5 - Ansicht zum Erstellen eines Posts um ein Upload-Feld erweitern
 
@@ -455,6 +462,7 @@ In dieser Übung...
     ```
 
 7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+8. Testen Sie den Upload, indem Sie einen neuen Post erstellen
 
 ## Zusammenfassung
 

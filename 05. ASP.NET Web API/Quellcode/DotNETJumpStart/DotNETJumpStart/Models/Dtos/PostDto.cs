@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebAdminAndApi.Utils;
+using DotNETJumpStart.Utils;
 
-namespace WebAdminAndApi.Models.Dtos
+namespace DotNETJumpStart.Models.Dtos
 {
     /// <summary>
     /// Data transfer object for post objects.

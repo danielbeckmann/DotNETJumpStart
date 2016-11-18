@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebAdminAndApi.Models;
+using DotNETJumpStart.Models;
 
-namespace WorkshopMVC.Models
+namespace DotNETJumpStart.Models
 {
     /// <summary>
     /// The user entity.
@@ -41,6 +41,5 @@ namespace WorkshopMVC.Models
         /// Gets or sets the users posts.
         /// </summary>
         public virtual ICollection<Post> Posts { get; set; }
-
     }
 }

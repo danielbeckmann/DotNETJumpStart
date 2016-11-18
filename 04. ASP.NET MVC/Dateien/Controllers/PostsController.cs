@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using WebAdminAndApi.Models;
-using WebAdminAndApi.Utils;
+using DotNETJumpStart.Models;
+using DotNETJumpStart.Utils;
 
-namespace WebAdminAndApi.Controllers
+namespace DotNETJumpStart.Controllers
 {
     public class PostsController : Controller
     {
