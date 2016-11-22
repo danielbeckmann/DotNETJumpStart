@@ -7,6 +7,7 @@ In diesem Hands-On werden Sie das Windows Phone Projekt aufsetzen und die Haupts
 TODO: Ankersprünge zu Übungen
 TODO: check entwicklerlizenz -> notwendig?
 TODO: Projektmappenkonfiguration > App als Startprojekt + Bereitstellen, Starten
+TODO: Linkware (Backlink to http://www.alienvalley.com required)
 
 ## Ziele
 
