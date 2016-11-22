@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
+using Windows.Graphics.Display;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -33,9 +34,9 @@ namespace ImageApp.Views
         // Variable to track splash screen dismissal status.
         internal bool dismissed = false;
 
-        // Variable to store the reference to the root frame of the app.
-        internal Frame rootFrame;
-        
+        //Variable to hold the device scale factor (use to determine phone screen resolution)´.
+        internal double scaleFactor; 
+
         public SplashPage(SplashScreen splashscreen)
         {
             this.InitializeComponent();
@@ -43,6 +44,8 @@ namespace ImageApp.Views
             // Listen for window resize events to reposition the extended splash screen image accordingly.
             // This ensures that the extended splash screen formats properly in response to window resizing.
             Window.Current.SizeChanged += new WindowSizeChangedEventHandler(ExtendedSplash_OnResize);
+
+            scaleFactor = (double)DisplayInformation.GetForCurrentView().ResolutionScale / 100;
 
             splash = splashscreen;
 
@@ -58,9 +61,6 @@ namespace ImageApp.Views
                 // Optional: Add a progress ring to your splash screen to show users that content is loading
                 PositionRing();
             }
-
-            // Create a Frame to act as the navigation context
-            rootFrame = new Frame();
         }
 
         // Position the extended splash screen image in the same location as the system splash screen image.
@@ -68,8 +68,8 @@ namespace ImageApp.Views
         {
             extendedSplashImage.SetValue(Canvas.LeftProperty, splashImageRect.X);
             extendedSplashImage.SetValue(Canvas.TopProperty, splashImageRect.Y);
-            extendedSplashImage.Height = splashImageRect.Height;
-            extendedSplashImage.Width = splashImageRect.Width;
+            extendedSplashImage.Width = splashImageRect.Width / scaleFactor;
+            extendedSplashImage.Height = splashImageRect.Height / scaleFactor;
         }
 
         // Position the the progress ring a bit below the image.
@@ -107,11 +107,18 @@ namespace ImageApp.Views
 
         private void DismissExtendedSplash()
         {
-            // Navigate to mainpage
-            rootFrame.Navigate(typeof(MainPage));
+            Frame rootFrame = Window.Current.Content as Frame;
 
-            // Place the frame in the current Window
-            Window.Current.Content = rootFrame;
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context
+                rootFrame = new Frame();
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            rootFrame.Navigate(typeof(MainPage));
         }
     }
 }

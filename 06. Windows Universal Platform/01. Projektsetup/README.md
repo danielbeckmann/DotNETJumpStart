@@ -8,6 +8,7 @@ TODO: Ankersprünge zu Übungen
 TODO: check entwicklerlizenz -> notwendig?
 TODO: Projektmappenkonfiguration > App als Startprojekt + Bereitstellen, Starten
 TODO: Linkware (Backlink to http://www.alienvalley.com required)
+TODO: Add SDKs for Mobile + Desktop for hardwareid
 
 ## Ziele
 
@@ -167,7 +168,7 @@ In dieser Aufgabe wird die Navigation von der Hauptseite zur "Post hinzufügen"-
 	this.Frame.Navigate(typeof(AddPostPage));
     ```
 
-3. Starten Sie das Debugging und Testen die Navigation über den Hinzufügen-Button. Versuchen Sie über den Zurück-Pfeil des Emulators auf die Hauptseite zurückzukehren. 
+3. Starten Sie das Debugging und Testen die Navigation über den Hinzufügen-Button. TODO: Versuchen Sie über den Zurück-Pfeil des Emulators auf die Hauptseite zurückzukehren. 
 
 Standardmäßig schließt sich hierbei die App. Der Code zum Zurücknavigieren über den Hardware-Button muss manuell hinzugefügt werden.
 
