@@ -96,9 +96,6 @@ namespace ImageApp.Views
         {
             dismissed = true;
 
-            // TODO: Complete app setup operations here...
-            await System.Threading.Tasks.Task.Delay(100);
-
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 DismissExtendedSplash();

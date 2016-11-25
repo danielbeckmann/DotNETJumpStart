@@ -15,11 +15,17 @@ namespace DotNETJumpStart.ApiControllers
         [ResponseType(typeof(Like))]
         public IHttpActionResult PostLike(LikeDto likeDto)
         {
-            // Get user
+            // Get or create user
             var user = db.Users.FirstOrDefault(u => u.Identifier == likeDto.UserIdentifier);
             if (user == null)
             {
-                return BadRequest("Invalid user");
+                user = new User
+                {
+                    Identifier = likeDto.UserIdentifier
+                };
+
+                db.Users.Add(user);
+                db.SaveChanges();
             }
 
             // Get post

@@ -6,31 +6,54 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:vm="using:ImageApp.ViewModels">
+    xmlns:vm="using:ImageApp.ViewModels"
+    xmlns:common="using:ImageApp.Common">
 
     <Page.DataContext>
         <vm:MainViewModel />
     </Page.DataContext>
+
+    <Page.Resources>
+        <common:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
+    </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
-        <FlipView ItemsSource="{Binding Posts}">
+        <FlipView ItemsSource="{Binding Posts}" SelectedItem="{Binding CurrentPost, Mode=TwoWay}">
             <FlipView.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding ImageUri}" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Title}" FontSize="42" />
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Style="{StaticResource BaseTextBlockStyle}"
+                               Text="Likes: "/>
+                            <TextBlock Style="{StaticResource BaseTextBlockStyle}"
+                               Text="{Binding Likes}" />
+                        </StackPanel>
+                        <Image Source="{Binding ImageUri}" Grid.Row="2" />
+                    </Grid>
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
+
+        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Margin="24"
+               Text="Es sind keine Elemente vorhanden."
+               Visibility="{Binding Posts, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=1}"/>
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Like" Label="Like"/>
+            <AppBarButton Icon="Like" Label="Like" Command="{Binding LikeCommand}"/>
             <AppBarButton Icon="Camera" Label="Hinzufügen" Click="CameraButton_Click" />
-            <AppBarButton Icon="Refresh" Label="Refresh" />
+            <AppBarButton Icon="Refresh" Label="Refresh" Command="{Binding RefreshCommand}" />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" />
-                <AppBarButton Icon="Sort" Label="Nach Datum sortieren" />
+                <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" Command="{Binding SortRatingCommand}" />
+                <AppBarButton Icon="Sort" Label="Nach Datum sortieren" Command="{Binding SortDateCommand}" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

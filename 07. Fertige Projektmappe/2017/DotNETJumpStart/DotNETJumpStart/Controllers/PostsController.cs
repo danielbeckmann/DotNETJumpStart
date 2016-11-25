@@ -6,7 +6,6 @@ using DotNETJumpStart.Utils;
 
 namespace DotNETJumpStart.Controllers
 {
-    [Authorize(Users = "Admin")]
     public class PostsController : Controller
     {
         private ImageAppDbContext db = new ImageAppDbContext();

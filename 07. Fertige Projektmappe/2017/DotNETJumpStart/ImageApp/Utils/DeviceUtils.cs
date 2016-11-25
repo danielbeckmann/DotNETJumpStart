@@ -1,17 +1,19 @@
-﻿using System;
+﻿using ImageApp.DataModel;
+using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.System.Profile;
-using System.Net.Http;
 
-namespace ImageApp.Services
+namespace ImageApp.Utils
 {
     /// <summary>
     /// The service to 
     /// </summary>
-    public class SessionService
+    public class DeviceUtils
     {
         /// <summary>
         /// Gets the unique device id.
@@ -34,34 +36,9 @@ namespace ImageApp.Services
                 }
                 else
                 {
-                    return "NO ID PRESENT";
+                    return "UNKNOWN";
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets or sets a username for the current session.
-        /// </summary>
-        public static string UserName { get; set; }
-
-        /// <summary>
-        /// Performs a login on the api.
-        /// </summary>
-        /// <returns>True on success</returns>
-        public async Task<bool> LoginAsync()
-        {
-            // TODO: replace
-            return true;
-        }
-
-        /// <summary>
-        /// Registers the user on the api.
-        /// </summary>
-        /// <returns>True on success</returns>
-        public async Task<bool> RegisterAsync(string userName)
-        {
-            // TODO: replace
-            return true;
         }
     }
 }

@@ -104,9 +104,8 @@
     <Compile Include="DataModel\Like.cs" />
     <Compile Include="DataModel\Post.cs" />
     <Compile Include="DataModel\User.cs" />
-    <Compile Include="Services\SessionService.cs" />
+    <Compile Include="Utils\DeviceUtils.cs" />
     <Compile Include="ViewModels\AddPostViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\AddPostPage.xaml.cs">
       <DependentUpon>AddPostPage.xaml</DependentUpon>

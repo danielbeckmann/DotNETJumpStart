@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "FubarCoder.RestSharp.Portable": "3.3.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
   },
   "frameworks": {

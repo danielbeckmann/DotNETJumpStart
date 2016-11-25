@@ -35,17 +35,26 @@ namespace DotNETJumpStart.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            // Map dto to user object
-            var user = new User
+            // Check if user is already existing
+            var user = db.Users.FirstOrDefault(u => u.Identifier == userDto.Identifier);
+            if (user == null)
             {
-                Identifier = userDto.Identifier,
-                Name = userDto.Name
-            };
+                // Map dto to user object
+                var newUser = new User
+                {
+                    Identifier = userDto.Identifier,
+                    Name = userDto.Name
+                };
 
-            db.Users.Add(user);
-            db.SaveChanges();
+                db.Users.Add(newUser);
+                db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = userDto.Identifier }, userDto);
+                return CreatedAtRoute("DefaultApi", new { id = userDto.Identifier }, userDto);
+            }
+            else
+            {
+                return Ok(user);
+            }
         }
 
         protected override void Dispose(bool disposing)

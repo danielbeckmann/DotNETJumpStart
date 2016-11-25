@@ -5,10 +5,14 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ImageApp.Common;
-using ImageApp.Services;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
+using RestSharp.Portable.HttpClient;
+using RestSharp.Portable;
+using ImageApp.DataModel;
+using ImageApp.Utils;
 
 namespace ImageApp.ViewModels
 {
@@ -17,7 +21,9 @@ namespace ImageApp.ViewModels
     /// </summary>
     public class AddPostViewModel : BindableBase
     {
-        private StorageFile image;
+        private BitmapImage previewImage;
+
+        private StorageFile imageFile;
       
         private string title;
 
@@ -43,11 +49,12 @@ namespace ImageApp.ViewModels
         /// <summary>
         /// Sets the new image file.
         /// </summary>
-        public StorageFile Image
+        public BitmapImage PreviewImage
         {
+            get { return this.previewImage; }
             set
             {
-                this.SetProperty(ref this.image, value);
+                this.SetProperty(ref this.previewImage, value);
                 this.AddPostCommand.RaiseCanExecuteChanged();
             }
         }
@@ -67,37 +74,34 @@ namespace ImageApp.ViewModels
         /// </summary>
         private bool CanAddImageAndPost(object obj)
         {
-            return !string.IsNullOrWhiteSpace(this.title) && this.image != null;
+            return !string.IsNullOrWhiteSpace(this.title) && this.imageFile != null;
         }
 
         /// <summary>
-        /// Adds an image and then the post to the api.
+        /// Uses the filepicker to open an image.
         /// </summary>
-        /// <param name="obj"></param>
-        private async void AddImageAndPost(object obj)
+        private async void PickImage(object obj)
         {
-            // TODO
-        }
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
 
-        /// <summary>
-        /// Posts an image to the api.
-        /// </summary>
-        /// <returns></returns>
-        private async Task<int?> AddImageAsync()
-        {
-            // TODO
-			return null;
-        }
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var stream = await file.OpenAsync(FileAccessMode.Read);
+                var image = new BitmapImage();
+                image.SetSource(stream);
 
-        /// <summary>
-        /// Adds a post to the api.
-        /// </summary>
-        /// <param name="imageId"></param>
-        /// <returns></returns>
-        private async Task<bool> AddPostAsync(int imageId)
-        {
-            // TODO
-			return true;
+                // Set file reference
+                this.imageFile = file;
+
+                // Set preview image
+                this.PreviewImage = image;
+            }
         }
 
         /// <summary>
@@ -122,11 +126,69 @@ namespace ImageApp.ViewModels
         }
 
         /// <summary>
-        /// Uses the filepicker to open an image.
+        /// Adds an image and then the post to the api.
         /// </summary>
-        private void PickImage(object obj)
+        /// <param name="obj"></param>
+        private async void AddImageAndPost(object obj)
         {
-            // TODO
+            var imageId = await this.AddImageAsync();
+            if (imageId != null)
+            {
+                if (await this.AddPostAsync(imageId.Value))
+                {
+                    NavigationService.Current.GoBack();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Posts an image to the api.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<int?> AddImageAsync()
+        {
+            using (var client = new RestClient("http://localhost:55298/api/"))
+            {
+                var request = new RestRequest("images", Method.POST);
+                var data = await ReadFileAsync(this.imageFile);
+                request.AddFile(FileParameter.Create("file", data, this.imageFile.Name));
+
+                try
+                {
+                    var image = await client.Execute<Image>(request);
+                    return image.Data.Id;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds a post to the api.
+        /// </summary>
+        /// <param name="imageId"></param>
+        /// <returns></returns>
+        private async Task<bool> AddPostAsync(int imageId)
+        {
+            using (var client = new RestClient("http://localhost:55298/api/"))
+            {
+                var request = new RestRequest("posts", Method.POST);
+
+                var addPost = new AddPostRequest { ImageId = imageId, Title = this.title, UserIdentifier = DeviceUtils.DeviceId };
+                request.AddJsonBody(addPost);
+
+                try
+                {
+                    await client.Execute(request);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
     }
 }

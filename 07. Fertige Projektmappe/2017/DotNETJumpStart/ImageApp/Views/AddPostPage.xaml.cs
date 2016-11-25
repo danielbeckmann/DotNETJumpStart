@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,9 +24,12 @@ namespace ImageApp.Views
     /// </summary>
     public sealed partial class AddPostPage : Page
     {
+        private AddPostViewModel viewModel;
+
         public AddPostPage()
         {
             this.InitializeComponent();
+            this.viewModel = this.DataContext as AddPostViewModel;
         }
     }
 }
