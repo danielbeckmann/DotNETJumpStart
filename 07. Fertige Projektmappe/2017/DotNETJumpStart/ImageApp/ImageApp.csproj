@@ -99,11 +99,9 @@
     <Compile Include="Common\CollectionToVisibilityConverter.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Common\NavigationService.cs" />
-    <Compile Include="DataModel\AddPostRequest.cs" />
     <Compile Include="DataModel\Image.cs" />
     <Compile Include="DataModel\Like.cs" />
     <Compile Include="DataModel\Post.cs" />
-    <Compile Include="DataModel\User.cs" />
     <Compile Include="Utils\DeviceUtils.cs" />
     <Compile Include="ViewModels\AddPostViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -160,6 +158,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

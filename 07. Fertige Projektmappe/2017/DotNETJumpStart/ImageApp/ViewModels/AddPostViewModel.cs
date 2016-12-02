@@ -21,16 +21,16 @@ namespace ImageApp.ViewModels
     /// </summary>
     public class AddPostViewModel : BindableBase
     {
+        private string title;
+
         private BitmapImage previewImage;
 
         private StorageFile imageFile;
-      
-        private string title;
 
         public AddPostViewModel()
         {
-            this.AddPostCommand = new DelegateCommand(this.AddImageAndPost, this.CanAddImageAndPost);
             this.PickFileCommand = new DelegateCommand(this.PickImage);
+            this.AddPostCommand = new DelegateCommand(this.AddImageAndPost, this.CanAddImageAndPost);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace ImageApp.ViewModels
             {
                 var request = new RestRequest("posts", Method.POST);
 
-                var addPost = new AddPostRequest { ImageId = imageId, Title = this.title, UserIdentifier = DeviceUtils.DeviceId };
+                var addPost = new Post { ImageId = imageId, Title = this.title, UserIdentifier = DeviceUtils.DeviceId };
                 request.AddJsonBody(addPost);
 
                 try

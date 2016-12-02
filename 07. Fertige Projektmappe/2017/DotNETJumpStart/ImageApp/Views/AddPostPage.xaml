@@ -26,7 +26,7 @@
 
         <StackPanel Grid.Row="2" Orientation="Vertical" Margin="24,0">
             <TextBlock Text="Titel:" Style="{StaticResource BaseTextBlockStyle}"/>
-            <TextBox Margin="0,12" Text="{Binding Title, Mode=TwoWay}"/>
+            <TextBox Margin="0,12" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Button Content="Bild wählen" Command="{Binding PickFileCommand}"/>
             <Image Width="240" Margin="0,12,0,0" HorizontalAlignment="Left" Source="{Binding PreviewImage}" />

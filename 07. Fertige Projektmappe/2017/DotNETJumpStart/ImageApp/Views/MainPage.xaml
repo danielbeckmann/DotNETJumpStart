@@ -16,8 +16,8 @@
     <Page.Resources>
         <common:CollectionToVisibilityConverter x:Key="CollectionToVisibilityConverter" />
     </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
+
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
         <FlipView ItemsSource="{Binding Posts}" SelectedItem="{Binding CurrentPost, Mode=TwoWay}">
             <FlipView.ItemTemplate>
                 <DataTemplate>
@@ -39,6 +39,34 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
+
+        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Margin="24"
+               Text="Es sind keine Elemente vorhanden."
+               Visibility="{Binding Posts, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=1}"/>
+    </Grid>-->
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
+        <GridView ItemsSource="{Binding Posts}" IsItemClickEnabled="False" SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="12" Width="320" Height="320">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
+                        <Image Source="{Binding ImageUri}" Grid.Row="1" />
+
+                        <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
+                            <TextBlock FontSize="18" Text="Likes:"/>
+                            <TextBlock FontSize="18" Text="{Binding Likes}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
 
         <TextBlock Style="{StaticResource BaseTextBlockStyle}" Margin="24"
                Text="Es sind keine Elemente vorhanden."

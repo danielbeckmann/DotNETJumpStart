@@ -15,11 +15,16 @@ namespace ImageApp.DataModel
 
         public string User { get; set; }
 
+        public string UserIdentifier { get; set; }
+
         public string Title { get; set; }
+
+        public int ImageId { get; set; }
 
         public string ImageUri { get; set; }
 
         private int likes;
+
         public int Likes 
         {
             get { return this.likes; }

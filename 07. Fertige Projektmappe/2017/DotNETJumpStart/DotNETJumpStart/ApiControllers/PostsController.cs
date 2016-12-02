@@ -35,8 +35,8 @@ namespace DotNETJumpStart.ApiControllers
         }
 
         // POST: api/posts
-        [ResponseType(typeof(AddPostDto))]
-        public IHttpActionResult PostPost(AddPostDto postDto)
+        [ResponseType(typeof(PostDto))]
+        public IHttpActionResult PostPost(PostDto postDto)
         {
             if (!ModelState.IsValid)
             {

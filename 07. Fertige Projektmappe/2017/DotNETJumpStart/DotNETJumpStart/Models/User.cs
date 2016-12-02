@@ -27,6 +27,7 @@ namespace DotNETJumpStart.Models
         /// <summary>
         /// Gets or sets the users name
         /// </summary>
+        [DisplayFormat(NullDisplayText = "App-Benutzer")]
         public string Name { get; set; }
 
         /// <summary>

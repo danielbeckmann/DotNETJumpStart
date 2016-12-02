@@ -40,7 +40,7 @@ namespace DotNETJumpStart.Controllers
                 // Assign the image to the post
                 post.Image = image;
 
-                // Only the admin can post _images here, so select admin
+                // Only the admin can post images here, so select admin
                 post.User = db.Users.FirstOrDefault(x => x.Name == "Admin");
 
                 // Save post to db
