@@ -15,7 +15,11 @@ namespace DotNETJumpStart.Models.Dtos
 
         public string User { get; set; }
 
+        public string UserIdentifier { get; set; }
+
         public string Title { get; set; }
+
+        public int ImageId { get; set; }
 
         public string ImageUri { get; set; }
 
@@ -30,7 +34,9 @@ namespace DotNETJumpStart.Models.Dtos
                 Id = post.Id,
                 Title = post.Title,
                 ImageUri = ImageUtility.GetFileUri(post.Image.FileName),
+                ImageId = post.Image.Id,
                 User = post.User.Name,
+                UserIdentifier = post.User.Identifier,
                 Likes = post.Likes.Count,
                 Created = post.Created
             };

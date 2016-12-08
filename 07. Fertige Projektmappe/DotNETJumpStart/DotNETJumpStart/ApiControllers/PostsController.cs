@@ -15,6 +15,10 @@ namespace DotNETJumpStart.ApiControllers
         private bool disposed = false;
 
         // GET api/posts
+        /// <summary>
+        /// Gibt alle Posts als Liste zurück.
+        /// </summary>
+        /// <returns>alle posts werden zurückgegeben</returns>
         public IEnumerable<PostDto> Get()
         {
             return this.db.Posts.ToList().Select(p => PostDto.Map(p));
@@ -24,14 +28,14 @@ namespace DotNETJumpStart.ApiControllers
         [Route("api/posts/latest")]
         public IEnumerable<PostDto> GetLatest()
         {
-            return this.db.Posts.OrderByDescending(o => o.Created).Take(10).ToList().Select(p => PostDto.Map(p));
+            return this.db.Posts.OrderByDescending(o => o.Created).ToList().Select(p => PostDto.Map(p));
         }
 
         // GET api/posts/popular
         [Route("api/posts/popular")]
         public IEnumerable<PostDto> GetPopular()
         {
-            return this.db.Posts.OrderByDescending(o => o.Likes.Count).Take(10).ToList().Select(p => PostDto.Map(p));
+            return this.db.Posts.OrderByDescending(o => o.Likes.Count).ToList().Select(p => PostDto.Map(p));
         }
 
         // POST: api/posts

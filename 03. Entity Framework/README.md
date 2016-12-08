@@ -1,14 +1,16 @@
-# Modul 3 - Datenmodellierung und -abfrage mit dem Entity Framework: Erstellen des Datenmodells
+# Modul 3 - Datenmodellierung und -abfrage mit dem Entity Framework
 
 ## Übersicht 
 
-In diesem Modul werden Sie die Grundlagen zum Entity Framework kennenlernen.
+In diesem Modul lernen Sie die Grundlagen zum Entity Framework kennen.
 
-TODO: Ziele dieses Modus TODO: Ankersprünge zu Übungen TODO: Review
+TODO: Ziele dieses Modus   
+TODO: Ankersprünge zu Übungen   
+TODO: Review
 
 ## Präsentation
 
-Sehen Sie sich die zu dem Modul gehörende [Präsentation](03. Datenmodellierung und -abfrage mit dem Entity Framework) an.
+Sehen Sie sich die [Präsentation](Datenmodellierung und -abfrage mit dem Entity Framework) zu diesem Modul an.
 
 ## Ziele
 

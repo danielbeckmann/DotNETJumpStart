@@ -41,9 +41,9 @@ namespace DotNETJumpStart.ApiControllers
             {
                 // Remove the like and return
                 db.Likes.Remove(like);
-                db.SaveChanges();
 
-                return Ok(like);
+                db.SaveChanges();
+                return Ok();
             }
             else
             {

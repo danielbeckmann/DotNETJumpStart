@@ -6,7 +6,7 @@ In diesem Modul werden die Vorbereitungen für die darauffolgenden Hands-On-Sessi
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Vorbereitung und Projektsetup.pptx) zum Modul an.
+Sehen Sie sich die [Präsentation](Vorbereitung und Projektsetup.pptx) zu diesem Modul an.
 
 ## Ziele
 
@@ -79,7 +79,7 @@ Nach einem Moment sind alle Pakete auf dem neusten Stand und Sie sind bereit mit
 #### Aufgabe 3 - Webanwendung im IIS-Express starten
 In dieser Aufgabe werden Sie die Webanwendung starten.
 
-1. Drücken Sie **F5**, um die Webanwendung mit Debugging zu starten.
+1. Starten Sie mit **F5** die Webanwendung mit Debugging.
 2. Der IIS-Webserver wird automatisch gestartet und ein Tab im Webbrowser geöffnet.
 3. Sie sollten nun die Startseite mit der ASP.NET-Standardvorlage sehen:<br/><br/>
     ![](_images/asp.net-projekt.png?raw=true "Abbildung 6")

@@ -1,17 +1,18 @@
-# Modul 4 - Aufbau einer Webapplikation mit ASP.NET MVC: Erstellen von Businesslogik und Views zum Verwalten der Posts-Entität
+# Modul 4 - Aufbau einer Webapplikation mit ASP.NET MVC
 
 ## Übersicht 
 
-In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen.
+In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen. Hierzu werden
+Sie die Businesslogik und Views zum Verwalten der Posts-Entität erstellen.
 
-TODO: Ziele dieses Modus
-TODO: Ankersprünge zu Übungen
-TODO: Review
+TODO: Ziele dieses Modus  
+TODO: Ankersprünge zu Übungen  
+TODO: Review  
 TODO: Aufzählungspunkte fangen nach einem Bild wieder bei 1 an -> korrigieren
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.pptx) zum Modul an.
+Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.pptx) zu diesem Modul an.
 
 ## Ziele
 
