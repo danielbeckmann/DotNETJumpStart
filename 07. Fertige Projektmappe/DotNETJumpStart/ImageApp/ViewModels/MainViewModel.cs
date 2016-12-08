@@ -19,8 +19,6 @@ namespace ImageApp.ViewModels
 
         private List<Post> posts;
 
-        private Post currentPost;
-
         public MainViewModel()
         {
             this.posts = new List<Post>();
@@ -37,15 +35,6 @@ namespace ImageApp.ViewModels
         {
             get { return this.posts; }
             set { this.SetProperty(ref this.posts, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets the current post.
-        /// </summary>
-        public Post CurrentPost
-        {
-            get { return currentPost; }
-            set { this.SetProperty(ref this.currentPost, value); }
         }
 
         /// <summary>
@@ -90,11 +79,11 @@ namespace ImageApp.ViewModels
         /// <summary>
         /// Toggles the like of the current post on the api.
         /// </summary>
-        public async Task LikePostAsync()
+        public async Task LikePostAsync(Post post)
         {
             var like = new Like
             {
-                PostId = this.CurrentPost.Id,
+                PostId = post.Id,
                 UserIdentifier = DeviceUtils.DeviceId
             };
 
@@ -107,18 +96,22 @@ namespace ImageApp.ViewModels
 
                 if (result.StatusCode == System.Net.HttpStatusCode.Created)
                 {
-                    this.CurrentPost.Likes++;
+                    post.Likes++;
                 }
                 else
                 {
-                    this.CurrentPost.Likes--;
+                    post.Likes--;
                 }
             }
         }
 
         private async void Like(object obj)
         {
-            await this.LikePostAsync();
+            var post = obj as Post;
+            if (post != null)
+            {
+                await this.LikePostAsync(post);
+            }
         }
 
         private async void SortByRating(object obj)

@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:ImageApp.ViewModels"
-    xmlns:common="using:ImageApp.Common">
+    xmlns:common="using:ImageApp.Common"
+    x:Name="mainPage">
 
     <Page.DataContext>
         <vm:MainViewModel />
@@ -18,44 +19,7 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
-        <!-- Adaptive triggers -->
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-
-                <!-- Desktop State -->
-                <VisualState >
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1024" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                       
-                    </VisualState.Setters>
-                </VisualState>
-
-                <!-- Tablet State -->
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        
-                    </VisualState.Setters>
-                </VisualState>
-
-                <!-- Mobile State -->
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                      
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
-        <GridView x:Name="gridView"
-                  ItemsSource="{Binding Posts}" 
+        <GridView ItemsSource="{Binding Posts}" 
                   IsItemClickEnabled="False" 
                   SelectionMode="None">
             <GridView.ItemTemplate>
@@ -71,7 +35,7 @@
                         <Image Source="{Binding ImageUri}" Grid.Row="1" />
 
                         <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
-                            <Button Click="Button_Click" Content="Like!" />
+                            <Button Content="Like!" Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}" />
                             <TextBlock FontSize="18" Text="Likes:"/>
                             <TextBlock FontSize="18" Text="{Binding Likes}" />
                         </StackPanel>
@@ -87,7 +51,6 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Like" Label="Like" Command="{Binding LikeCommand}"/>
             <AppBarButton Icon="Camera" Label="Hinzufügen" Click="CameraButton_Click" />
             <AppBarButton Icon="Refresh" Label="Refresh" Command="{Binding RefreshCommand}" />
 
