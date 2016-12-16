@@ -14,11 +14,10 @@ namespace DotNETJumpStart.ApiControllers
         private ImageAppDbContext db = new ImageAppDbContext();
         private bool disposed = false;
 
-        // GET api/posts
         /// <summary>
         /// Gibt alle Posts als Liste zurück.
         /// </summary>
-        /// <returns>alle posts werden zurückgegeben</returns>
+        /// <returns>Liste aller Posts</returns>
         public IEnumerable<PostDto> Get()
         {
             return this.db.Posts.ToList().Select(p => PostDto.Map(p));

@@ -5,10 +5,7 @@
 In diesem Modul lernen Sie die Grundlagen zum ASP.NET Web API-Framework kennen.
 Hierzu werden Sie eine Schnittstelle implementieren, über die eine App Posts abrufen und erstellen kann.
 
-TODO: Ziele dieses Modus  
 TODO: Ankersprünge zu Übungen  
-TODO: Umstellung auf JSON in WebApiConfig  
-TODO: Doku über /Help Page  
 
 ## Präsentation
 
@@ -17,10 +14,10 @@ Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET W
 ## Ziele
 
 In diesem Hands-On lernen Sie:
-- Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen  
-- Wie Sie ein Entityset sortieren  
-- Wie Sie einer Api-Methode über Attribute mitteilen, welchen Typ sie zurückgibt  
-- Wie man mit Hilfe von Postman eine Api schnell testen kann  
+- Wie man WebAPI Controller einsetzt, um Daten über eine Schnittstelle bereitzustellen
+- Wie Sie DTO-Klassen für den Datenaustausch verwenden
+- Wie Sie JSON als Datenformat konfigurieren
+- Wie man eine API dokumentieren kann
 
 ---
 
@@ -146,17 +143,49 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 
 #### Aufgabe 1 - Help Pages betrachten
 
-In WebAPI wird vom Framework automatisch eine Dokumentationsseite aus Ihren API Controllern erzeugt.
+In Ihrer Projektmappe wird vom Framework bereits automatisch eine Dokumentationsseite aus Ihren API Controllern erzeugt.
 
 1. Starten Sie die Webanwendung und wählen in der Navigation den Punkt **API**.
-2. Betrachten Sie die automatisch erzeugte Dokumentation
+2. Betrachten Sie die automatisch erzeugte Dokumentation.
 3. Beenden Sie das Debugging.
 
 #### Aufgabe 2 - Quellcode Kommentare hinzufügen
 
-Um Ihre Kommentare im Quellcode ebenfalls in der Dokumentation anzuzeigen, muss die Ausgabe der XML-Dokumentation aktiviert werden.
+Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die Ausgabe der **XML-Dokumentation** aktiviert werden.
 
-...
+1. Öffnen Sie hierzu die Datei **Areas/HelpPage/App_Start/HelpPageConfig.cs** und kommentieren Sie folgende Zeile aus:
+    
+    ```C#
+    config.SetDocumentationProvider(new XmlDocumentationProvider(
+        HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
+    ```
+
+2. Machen Sie nun einen Rechtsklick im Projektmappen-Explorer auf das Projekt **DotNETJumpStart** und öffnen die **Eigenschaften**.
+3. Dort navigieren Sie zum Bereich **Erstellen**  
+
+  ![](_images/project-settings.png?raw=true "Abbildung 3")
+
+3. Dort aktivieren Sie die Funktion **XML-Dokumentationsdatei** und tragen folgenden Dateinamen ein: "**App_Data/XmlDocument.xml**".
+
+ ![](_images/project-settings-doc.png?raw=true "Abbildung 3")
+
+4. Öffnen Sie die Datei **ApiControllers/PostsController** und fügen für ein paar Funktionen eine XML-Dokumentation hinzu. Beispielsweise:
+
+    ```C#
+        /// <summary>
+        /// Gibt alle Posts als Liste zurück.
+        /// </summary>
+        /// <returns>Liste aller Posts</returns>
+        public IEnumerable<PostDto> Get()
+        {
+            return this.db.Posts.ToList().Select(p => PostDto.Map(p));
+        }
+    ```
+
+5. Starten Sie wieder die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare auftauchen.
+
+  ![](_images/help-page.png?raw=true "Abbildung 3")
+
 
 ## Zusammenfassung
 
