@@ -29,7 +29,6 @@ namespace ImageApp.Views
         public MainPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
             this.viewModel = this.DataContext as MainViewModel;
         }
 
