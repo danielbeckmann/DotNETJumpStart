@@ -4,13 +4,14 @@
 
 In diesem Hands-On werden Sie das Projekt aufsetzen und die Hauptseite der App mit XAML erstellen.
 
-Hinweis: Wir verwenden einige Logos mit der freundlichen Unterstützung von http://www.alienvalley.com
+_Hinweis: Wir verwenden einige Logos von externen Quellen, mit der freundlichen Unterstützung von_ http://www.alienvalley.com
 
 ## Ziele
 
 Die Ziele dieses Moduls sind:
 - Ein Visual Studio Projekt für die universelle Windows Plattform erstellen
 - Eine Entwicklerlizenz beantragen
+- Das App-Manifest einrichten  
 - Die Hauptseite der App mit XAML erstellen
 - Die In-App-Navigation einrichten
 
@@ -39,22 +40,22 @@ In diesem Schritt wird das Projekt in Visual Studio angelegt und der aktuellen P
    2. Wählen Sie **Leere App (Universelle Windows-App)**.
    3. Nennen Sie das Projekt **ImageApp** und bestätigen mit **OK**.<br/><br/>
    ![](_images/create-project.png?raw=true "Abbildung 2")<br/>
-4. Wählen Sie folgende Einstellungen für die Zielversion in dem sich öffnenden Dialog aus:
+4. Wählen Sie folgende Einstellungen für die Zielversion in dem sich öffnenden Dialog:<br/><br/>
    ![](_images/version-select.png?raw=true "Abbildung 3")<br/>
    
-Falls auf dem System keine Entwicklerlizenz installiert ist, werden Sie nun in einem Dialog aufgefordert, eine solche zu beantragen. Sollte das nicht der Fall sein, können Sie die nächste Aufgabe überspringen.
+Falls auf dem System keine Entwicklerlizenz installiert ist, werden Sie nun mit einem Dialog aufgefordert, eine solche zu beantragen. Sollte das nicht der Fall sein, können Sie die nächste Aufgabe überspringen.
 
 #### Aufgabe 2: Abrufen einer Windows Entwickler Lizenz
 
 Wenn Sie zum ersten Mal eine App auf einem Gerät ausführen oder debuggen wollen, werden Sie aufgefordert, eine Entwicklerlizenz für diesen Computer oder dieses Gerät herunterzuladen. Diese ist zum Entwickeln und Testen kostenlos.
 
 1. Lesen Sie sich die Lizenzbedingungen durch und klicken Sie auf die Schaltfläche zum Akzeptieren der Bedingungen<br/><br/>
- ![](_images/license-1.png?raw=true "Abbildung 2")<br/>
+ ![](_images/license-1.png?raw=true "Abbildung 4")<br/>
 2. Klicken Sie im Dialogfeld Benutzerkontensteuerung Control (UAC) auf Ja, um den Vorgang fortzusetzen.
 3. Melden Sie sich mit Ihrem Microsoft-Konto an.<br/><br/>
- ![](_images/license-2.png?raw=true "Abbildung 3")<br/>
+ ![](_images/license-2.png?raw=true "Abbildung 5")<br/>
 4. Nachdem Sie die Lizenz auf dem lokalen Computer installiert haben, wird auf diesem Computer erst dann wieder eine entsprechende Benutzeraufforderung eingeblendet, wenn die Lizenz abläuft.<br/><br/>
- ![](_images/license-3.png?raw=true "Abbildung 4")<br/>
+ ![](_images/license-3.png?raw=true "Abbildung 6")<br/>
 
 #### Aufgabe 3: Startprojekt setzen
 
@@ -63,7 +64,7 @@ Vor den nächsten Schritten muss das neue Projekt noch als **Startprojekt** fest
 1. Machen Sie einen Rechtsklick auf das neue Projekt **ImageApp** und wählen **Als Startprojekt festlegen**.
 2. Machen Sie einen Rechtsklick auf die Projektmappe **DotNETJumpStart** und öffnen den **Konfigurations-Manager**.
 3. Dort wählen Sie bei der **ImageApp** die Optionen "**Erstellen**" und "**Bereitstellen**" an.<br><br>
-  ![](_images/konfig-manager.png?raw=true "Abbildung 5")<br/>
+  ![](_images/config-manager.png?raw=true "Abbildung 7")<br/>
 4. Wenn Sie nun das Debugging mit **F5** starten, so wird die App automatisch erstellt und gestartet.
 
 _Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordner sind im Projekt enthalten:
@@ -79,9 +80,9 @@ _Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordn
 Um gerätespezifische Funktionen auf Desktop-PCs und Smartphones verwenden zu können, müssen noch sogenannte "**Extension SDKs**" hinzugefügt werden.
 
 1. Hierzu machen Sie einen Rechtsklick auf **Verweise** in der Projektmappe und wählen **Verweis hinzufügen** aus.<br><br>
-  ![](_images/verweise.png?raw=true "Abbildung 6")<br/>
+  ![](_images/verweise.png?raw=true "Abbildung 8")<br/>
 2. Im neu geöffneten Fenster wählen Sie links **Universal Windows/Erweiterungen** und selektieren eine auf Ihrem System vorhandene Version vom **Windows Mobile Extensions for the UWP**.<br><br>
-  ![](_images/verweise-extensions.png?raw=true "Abbildung 7")<br/>
+  ![](_images/extensions.png?raw=true "Abbildung 9")<br/>
 3. Bestätigen Sie mit **OK**.
 4. Starten Sie das Debugging. Sollte eine Fehlermeldung angezeigt werden, öffnen Sie erneut die **Verweisübersicht** und wählen eine andere Version des SDKs aus.
 
@@ -95,18 +96,18 @@ Diese Einstellungen können im sogenannten **App-Manifest** getroffen werden.
 3. Überschreiben Sie alle bereits vorhandenen Dateien.
 4. Machen Sie im **Projektmappen-Explorer** einen Doppelklick auf das **Package.appxmanifest**, um das Manifest zu öffnen.
 5. Ändern Sie den Anzeigenamen der App zu einem beliebigen Namen (hier **SnapIt**) und wechseln dann auf den Reiter **Visuelle Assets**.<br/><br/>
-   ![](_images/manifest-1.png?raw=true "Abbildung 5")<br/>
+   ![](_images/manifest-1.png?raw=true "Abbildung 10")<br/>
 6. Wählen Sie links im Menü **Alle Bildanlagen** aus.
 7. Wählen Sie in der Kategorie **Kachel** bei der Option **Name anzeigen** aus, dass der App-Name auf dem **Quadratischen 150x150 Logo** angezeigt werden soll.
 8. Tragen Sie in der Kategorie **Begrüßungsbildschirm** als Hintergrundfarbe "**white**" ein.<br/><br/>
-   ![](_images/manifest-2.png?raw=true "Abbildung 6")<br/><br/>
+   ![](_images/manifest-2.png?raw=true "Abbildung 11")<br/><br/>
 9. Wechseln Sie nun auf den Reiter **Funktionen** und stellen Sie sicher, dass die Funktion **Internet (Client)** ausgewählt ist.<br/><br/>
-   ![](_images/manifest-3.png?raw=true "Abbildung 7")<br/>
+   ![](_images/manifest-3.png?raw=true "Abbildung 12")<br/>
 10. Wählen Sie **Debugging starten** aus dem Menü **Debuggen** oder drücken Sie **F5**.
 11. Die App sollte nun gestartet werden. Sie sollten bereits im Ladebildschirm das eingestellte Logo sehen.
 12. Beenden Sie das Debugging und öffnen im Windows Startmenü **Alle Apps**.
 13. Dort finden Sie bereits Ihre App mit dem eingestellten Namen.<br/><br/>
-   ![](_images/windows-start-menu.png?raw=true "Abbildung 8")<br/>
+   ![](_images/windows-start-menu.png?raw=true "Abbildung 13")<br/>
 
 #### Aufgabe 4: Benötigte Dateien referenzieren
 
@@ -117,7 +118,7 @@ Es wurden für Sie bereits einige Dateien vorbereitet, die häufig in App-Projek
 3. Wiederholen Sie die Schritte 1 und 2 für die Ordner **Views**, **Utils** und **ViewModels**.
 
 Mit diesen Schritten haben Sie die benötigten Dateien für die App eingebunden. Ihre Projektmappe sollte nun wie folgt aussehen:<br/><br/>
-   ![](_images/solution-explorer.png?raw=true "Abbildung 8")<br/>
+   ![](_images/solution-explorer-after-adding.png?raw=true "Abbildung 14")<br/>
 
 <a name="Exercise2"></a>
 ### Übung 2: Erstellen der Hauptseite der App
@@ -185,7 +186,7 @@ Zunächst wird die bereits bestehende Hauptseite der App angepasst. Hierzu wird 
   
 4. Inspizieren Sie den XAML-Code und die daraus resultierenden Steuerelemente im Designer.
 5. Starten Sie das Debugging und sehen sich das Ergebnis an. <br/><br/>
- ![](_images/main-page.png?raw=true "Abbildung 10")<br/>
+ ![](_images/main-page.png?raw=true "Abbildung 15")<br/>
 
 #### Aufgabe 2 - In-App-Navigation hinzufügen
 In dieser Aufgabe wird die Navigation von der Hauptseite zur **"Post hinzufügen"**-Seite eingerichtet und die Schaltfläche zum Zurücknavigieren für alle Views aktiviert.
@@ -283,7 +284,7 @@ Die Schaltfläche zum Zurücknavigieren muss manuell aktiviert werden. Sie werde
     }
     ```
 5. Starten Sie die App und versuchen von der **Hinzufügen-Seite** zurück zu navigieren. Es sollte eine neue Schaltfläche angezeigt werden.<br/><br/>
- ![](_images/back-button.png?raw=true "Abbildung 10")<br/>
+ ![](_images/back-button-app.png?raw=true "Abbildung 16")<br/>
 
 Auf Smartphones wird im Vergleich keine "Zurück-Schaltfläche" angezeigt. Durch den hinzugefügten Code wird jedoch die Zurück-Taste auf dem Gerät aktiviert.
 
