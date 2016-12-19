@@ -67,17 +67,17 @@ Vor den nächsten Schritten muss das neue Projekt noch als **Startprojekt** fest
   ![](_images/config-manager.png?raw=true "Abbildung 7")<br/>
 4. Wenn Sie nun das Debugging mit **F5** starten, so wird die App automatisch erstellt und gestartet.
 
-_Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordner sind im Projekt enthalten:
+Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordner sind im Projekt enthalten:
 - **Assets/**: Enthält App-Logos.
 - **App.xaml**: Die Hauptdatei der App, die für den Startvorgang verantwortlich ist.
 - **MainPage.xaml**: Die erste Seite der App, die automatisch bei App-Start aufgerufen wird.
-- ***.TemporaryKey.pfx**: Temporäres Entwicklerzertifikat
+- **.TemporaryKey.pfx**: Temporäres Entwicklerzertifikat
 - **Package.appxmanifest**: Die Manifestdatei, in der App-Einstellungen getroffen werden.
 - **project.json**: Projektdatei von Visual Studio
 
 #### Aufgabe 4: Mobile Extension hinzufügen
 
-Um gerätespezifische Funktionen auf Desktop-PCs und Smartphones verwenden zu können, müssen noch sogenannte "**Extension SDKs**" hinzugefügt werden.
+Um gerätespezifische Funktionen auf Desktop-PCs und Smartphones verwenden zu können, müssen noch sogenannte "**Extension SDKs**" hinzugefügt werden. Dieses benötigen wir in einem der späteren Hands-Ons.
 
 1. Hierzu machen Sie einen Rechtsklick auf **Verweise** in der Projektmappe und wählen **Verweis hinzufügen** aus.<br><br>
   ![](_images/verweise.png?raw=true "Abbildung 8")<br/>
@@ -110,7 +110,6 @@ Diese Einstellungen können im sogenannten **App-Manifest** getroffen werden.
    ![](_images/windows-start-menu.png?raw=true "Abbildung 13")<br/>
 
 #### Aufgabe 4: Benötigte Dateien referenzieren
-
 Es wurden für Sie bereits einige Dateien vorbereitet, die häufig in App-Projekten benötigt werden. Auch werden einige Views vorgegeben, um im zeitlichen Rahmen der Veranstaltung zu bleiben. Die Dateien sollen in diesem Schritt in das Projekt eingebunden werden.
 
 1. Erzeugen Sie einen neuen Ordner **Common** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im **Projektmappen-Explorer** tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
@@ -125,7 +124,7 @@ Mit diesen Schritten haben Sie die benötigten Dateien für die App eingebunden.
 In dieser Übung werden Sie die Hauptseite der App mit XAML erstellen. XAML ist eine von Microsoft entwickelte Beschreibungssprache für Oberflächen von Anwendungen, die auf XML basiert.
 
 #### Aufgabe 1 - Anpassen der Hauptseite
-Zunächst wird die bereits bestehende Hauptseite der App angepasst. Hierzu wird die Datei **MainPage.xaml** verwendet.
+Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) angepasst und eine App-Bar hinzugefügt.
 
 1. Verschieben Sie die Datei "**MainPage.xaml**" per Drag-and-Drop in den Ordner **Views**.
 2. Öffnen Sie die Datei **MainPage.xaml** mit einem Doppelklick im XAML-Designer.
@@ -185,7 +184,7 @@ Zunächst wird die bereits bestehende Hauptseite der App angepasst. Hierzu wird 
     ``` 
   
 4. Inspizieren Sie den XAML-Code und die daraus resultierenden Steuerelemente im Designer.
-5. Starten Sie das Debugging und sehen sich das Ergebnis an. <br/><br/>
+5. Starten Sie das Debugging und sehen sich das Ergebnis an.<br/><br/>
  ![](_images/main-page.png?raw=true "Abbildung 15")<br/>
 
 #### Aufgabe 2 - In-App-Navigation hinzufügen
@@ -200,6 +199,7 @@ In dieser Aufgabe wird die Navigation von der Hauptseite zur **"Post hinzufügen
 
 3. Starten Sie das Debugging und Testen die Navigation über den Hinzufügen-Button.
 
+Sie werden feststellen, dass Sie keine Möglichkeit haben, zur Hauptseite der App zurückzukehren.
 Die Schaltfläche zum Zurücknavigieren muss manuell aktiviert werden. Sie werden hierzu die Schaltfläche global für alle Views aktivieren:
 
 1. Öffnen Sie die Codeansicht der App-Hauptdatei **App.xaml**, indem Sie auf die Datei **App.xaml** rechtsklicken und **Code anzeigen** wählen.
@@ -286,7 +286,7 @@ Die Schaltfläche zum Zurücknavigieren muss manuell aktiviert werden. Sie werde
 5. Starten Sie die App und versuchen von der **Hinzufügen-Seite** zurück zu navigieren. Es sollte eine neue Schaltfläche angezeigt werden.<br/><br/>
  ![](_images/back-button-app.png?raw=true "Abbildung 16")<br/>
 
-Auf Smartphones wird im Vergleich keine "Zurück-Schaltfläche" angezeigt. Durch den hinzugefügten Code wird jedoch die Zurück-Taste auf dem Gerät aktiviert.
+Auf Smartphones wird im Vergleich keine Zurück-Schaltfläche angezeigt. Durch den hinzugefügten Code wird jedoch die Zurück-Taste auf dem Gerät aktiviert.
 
 ## Zusammenfassung
 
