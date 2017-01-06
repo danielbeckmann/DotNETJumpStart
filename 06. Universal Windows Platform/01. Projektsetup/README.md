@@ -8,7 +8,6 @@ _Hinweis: Wir verwenden einige Logos von externen Quellen, mit der freundlichen 
 
 ## Ziele
 
-Die Ziele dieses Moduls sind:
 - Ein Visual Studio Projekt für die universelle Windows Plattform erstellen
 - Eine Entwicklerlizenz beantragen
 - Das App-Manifest einrichten  
@@ -172,7 +171,7 @@ Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) ang
         <Page.BottomAppBar>
             <CommandBar>
                 <AppBarButton Icon="Camera" Label="Hinzufügen" />
-                <AppBarButton Icon="Refresh" Label="Refresh" />
+                <AppBarButton Icon="Refresh" Label="Aktualisieren" />
 
                 <CommandBar.SecondaryCommands>
                     <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" />

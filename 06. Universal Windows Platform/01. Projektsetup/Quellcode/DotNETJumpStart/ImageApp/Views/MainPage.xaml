@@ -6,8 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:vm="using:ImageApp.ViewModels"
-    xmlns:common="using:ImageApp.Common"
     x:Name="mainPage">
 
     <!-- TODO: add Page.DataContext here -->
@@ -15,8 +13,7 @@
     <!-- TODO: add Page.Resources here -->
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
-        <GridView ItemsSource="{Binding Posts}" 
-                  IsItemClickEnabled="False" 
+        <GridView IsItemClickEnabled="False" 
                   SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate>
@@ -39,7 +36,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Camera" Label="Hinzufügen" Click="AppBarButton_Click" />
-            <AppBarButton Icon="Refresh" Label="Refresh" />
+            <AppBarButton Icon="Refresh" Label="Aktualisieren" />
 
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" />

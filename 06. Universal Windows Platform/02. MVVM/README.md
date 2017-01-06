@@ -1,18 +1,16 @@
-# Modul 6/02 - Entwicklung einer Windows Universal App: Entwicklung von ViewModels
+# Modul 6/02 - Entwicklung einer App für die universelle Windows Plattform: MVVM Grundlagen
 
 ## Übersicht
 
 In diesem Hands-On werden Sie das ViewModel für die Hauptseite entwickeln und die Datenbindung einrichten.
 
-TODO: Ankersprünge zu Übungen
-
 ## Ziele
 
 - Das Datenmodell der API einbinden
-- Das ViewModel für die Hauptseite erstellen
+- Das ViewModel mit der Business-Logik für die Hauptseite erstellen
 - Die Datenbindung einrichten
-- Einen IValueConverter verwenden
-- Commands verwenden
+- Einen IValueConverter verwenden, um die Sichtbarkeit eines Elements zu steuern
+- Commands verwenden, um Schaltflächen mit Aktionen im ViewModel zu verbinden
 
 ---
 
@@ -26,18 +24,19 @@ Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 
 <a name="Exercise1"></a>
 ### Übung 1: Einbinden des Datenmodells der API
-In dieser Übung werden Sie die Datenklassen der API in das Windows Phone Projekt einbinden.
+In dieser Übung werden Sie die Datenklassen der vorhin entwickelten API in das App-Projekt einbinden.
 
-#### Aufgabe 1 - Datenklassen kopieren
-Die Klassen des Datenmodells der API enthalten unnötige Annotationen, die in einem Windows Phone Projekt nicht aufgelöst werden können. Die Datenklassen wurden davon bereinigt im Ordner **Dateien/DataModel** des aktuellen Hands-Ons bereitgestellt.
+#### Aufgabe 1 - Datenklassen hinzufügen
+Die Klassen des Datenmodells der API enthalten unnötige Annotationen, die in einem App-Projekt nicht
+benötigt werden (z.B. [Required]). Die Datenklassen wurden im Vorfeld bereinigt und im Ordner **Dateien/DataModel** des aktuellen Hands-Ons bereitgestellt.
 
 1. Erzeugen Sie einen neuen Ordner **DataModel** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im **Projektmappen-Explorer** tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataModel** und wählen **Hinzufügen/Vorhandenes Element**. 
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataModel** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:<br/><br/>
-   ![](_images/datamodel-added.png?raw=true "Abbildung 1")
+   ![](_images/datamodel-added.png?raw=true "Abbildung 1")<br/>
 	
-Sie haben nun das Datenmodell der API eingebunden und können dessen Datentypen verwenden.
+Sie haben nun das Datenmodell der API eingebunden und können es im aktuellen Projekt verwenden.
 
 <a name="Exercise2"></a>
 ### Übung 2: Erstellen des ViewModels und Einrichten der Datenbindung
@@ -55,7 +54,7 @@ In diesem Schritt wird die ViewModel Klasse mit Testdaten für die Datenbindung e
 	using ImageApp.DataModel;
     ```
 
-3. Annotieren Sie die Klasse wie folgt:
+3. Annotieren Sie die Klasse wie folgt, um die Datenbindung für das ViewModel zu aktivieren:
 
     ```C#
 	public class MainViewModel : BindableBase
@@ -90,7 +89,7 @@ In diesem Schritt wird die ViewModel Klasse mit Testdaten für die Datenbindung e
 	
 6. Wählen Sie im Menü **Erstellen** die Aktion **Projektmappe erstellen** aus.
 
-Sie haben nun das ViewModel für die Hauptseite erstellt, das eine Liste von Posts bereitstellt, die nun angezeigt werden sollen. Im nächsten Schritt wird die Datenbindung auf der Hauptseite eingerichtet.
+Sie haben nun das ViewModel für die Hauptseite implementiert, das eine Liste von Posts bereitstellt, die nun angezeigt werden sollen. Im nächsten Schritt wird die Datenbindung auf der Hauptseite eingerichtet.
 
 **C#-Quellcode zum Vergleich**:
 
@@ -105,38 +104,38 @@ using ImageApp.DataModel;
 
 namespace ImageApp.ViewModels
 {
-	public class MainViewModel : BindableBase
-	{
-		private List<Post> posts;
+    public class MainViewModel : BindableBase
+    {
+        private List<Post> posts;
 
-		public MainViewModel()
-		{
-			this.posts = new List<Post>
-			{
-				new Post { Title = "Baseball", ImageUri = "http://lorempixel.com/400/300/sports/1" },
-				new Post { Title = "Surfen", ImageUri = "http://lorempixel.com/400/300/sports/2" },
-				new Post { Title = "Katze", ImageUri = "http://lorempixel.com/400/300/cats/1" },
-				new Post { Title = "Noch eine Katze", ImageUri = "http://lorempixel.com/400/300/cats/5" }
-			};
-		}
+        public MainViewModel()
+        {
+            this.posts = new List<Post>
+            {
+                new Post { Title = "Baseball", ImageUri = "http://lorempixel.com/400/300/sports/1" },
+                new Post { Title = "Surfing", ImageUri = "http://lorempixel.com/400/300/sports/2" },
+                new Post { Title = "Cat", ImageUri = "http://lorempixel.com/400/300/cats/1" },
+                new Post { Title = "Another cat", ImageUri = "http://lorempixel.com/400/300/cats/5" }
+            };
+        }
 
-		/// <summary>
-		/// Gets or sets the list of posts.
-		/// </summary>
-		public List<Post> Posts
-		{
-			get { return this.posts; }
-			set { this.SetProperty(ref this.posts, value); }
-		}
-	}
+        /// <summary>
+        /// Gets or sets the list of posts.
+        /// </summary>
+        public List<Post> Posts
+        {
+            get { return this.posts; }
+            set { this.SetProperty(ref this.posts, value); }
+        }
+    }
 }
 ```
 	
 #### Aufgabe 2 - Datenbindung auf der XAML-View erstellen
 In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite eingebunden und die Datenbindung hergestellt.
 
-1. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element**  das folgende Attribut hinzu: **xmlns:vm="using:ImageApp.ViewModels"**
-2. Fügen Sie oberhalb des **Grid-Elements** den folgenden Block ein:
+1. Öffnen Sie die **MainPage.xaml** im XAML-Designer (über einen Doppelklick) und fügen dem **Page**-Element das folgende Attribut hinzu: **xmlns:vm="using:ImageApp.ViewModels"**
+2. Fügen Sie oberhalb des **Grid**-Elements den folgenden Block ein, um die MainPage mit dem ViewModel zu verbinden:
 
     ```XML  
 	<Page.DataContext>
@@ -144,21 +143,24 @@ In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite e
 	</Page.DataContext>
     ``` 
   
-3. Fügen Sie dem Pivot-Element das folgende Attribut hinzu: **ItemsSource="{Binding Posts}"**
-4. Legen Sie als **Pivot.HeaderTemplate** den Titel des aktuellen Posts fest, indem Sie innerhalb des **DataTemplates** das folgende Element einfügen:
+3. Fügen Sie dem **GridView**-Element das folgende Attribut hinzu: **ItemsSource="{Binding Posts}"**. Dadurch wird eine Datenbindung zwischen dem GridView und der Eigenschaft **Posts** im ViewModel erzeugt.
+4. Fügen Sie innerhalb des **DataTemplate** des **GridViews** (bei der TODO-Annotation) folgenden XAML-Codeblock hinzu und machen Sie sich mit dem Code vertraut.
 
     ```XML  
-	<TextBlock Text="{Binding Title}" FontSize="42" />
+    <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
+    <Image Source="{Binding ImageUri}" Grid.Row="1" />
+
+    <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
+        <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}" />
+        <TextBlock FontSize="18" Margin="0,6,0,0">
+            <Run Text="(" />
+            <Run Text="0" />
+            <Run Text=")" />
+        </TextBlock>
+    </StackPanel>
     ``` 
   
-5. Legen Sie als **Pivot.ItemTemplate** das eigentliche Bild des Posts fest, indem Sie innerhalb des **DataTemplates** das folgende Element einfügen:
- 
-    ```XML  
-	<Image Source="{Binding ImageUri}"/>
-    ```
-	
-6. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das Pivot gebunden und es werden die Bilder mit ihren Titel im Pivot angezeigt.
-7. Inspizieren Sie den Code zur Datenbindung, auch im Vergleich auf die Klasse **Post**.
+5. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das GridView gebunden und es werden die Bilder mit ihren Titel in einer Listendarstellung angezeigt.
 
 Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten Datenbindung erzeugt.
 
@@ -166,63 +168,78 @@ Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten D
 
 ```XML  
 <Page
-	x:Class="ImageApp.MainPage"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:vm="using:ImageApp.ViewModels"
-	xmlns:local="using:ImageApp"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    x:Class="ImageApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImageApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="mainPage"
+    xmlns:vm="using:ImageApp.ViewModels">
 
-	<Page.DataContext>
-		<vm:MainViewModel />
-	</Page.DataContext>
+    <!-- TODO: add Page.DataContext here -->
+    <Page.DataContext>
+        <vm:MainViewModel />
+    </Page.DataContext>
+    
+    <!-- TODO: add Page.Resources here -->
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
+        <GridView IsItemClickEnabled="False" 
+                  SelectionMode="None"
+                  ItemsSource="{Binding Posts}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="12" Width="320" Height="320">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
 
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-			<TextBlock Text="Sortieren nach:" Style="{StaticResource BaseTextBlockStyle}" VerticalAlignment="Center" />
-			<Button Content="Bewertung" Margin="12,0,0,0"/>
-			<Button Content="Datum" Margin="12,0,0,0" />
-		</StackPanel>
+                        <!-- TODO: add grid template here -->
+                        <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
+                        <Image Source="{Binding ImageUri}" Grid.Row="1" />
 
-		<Pivot x:Name="PostPivot" Grid.Row="1" Margin="0,27,0,0" ItemsSource="{Binding Posts}">
-			<Pivot.HeaderTemplate>
-				<DataTemplate>
-					<TextBlock FontSize="42" Text="{Binding Title}"/>
-				</DataTemplate>
-			</Pivot.HeaderTemplate>
-			<Pivot.ItemTemplate>
-				<DataTemplate>
-					<Image Source="{Binding ImageUri}"/>
-				</DataTemplate>
-			</Pivot.ItemTemplate>
-		</Pivot>
-	</Grid>
+                        <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
+                            <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}" />
+                            <TextBlock FontSize="18" Margin="0,6,0,0">
+                                <Run Text="(" />
+                                <Run Text="0" />
+                                <Run Text=")" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
 
-	<Page.BottomAppBar>
-		<CommandBar x:Name="CommandBar">
-			<AppBarButton Icon="Like" Label="Like"/>
-			<AppBarButton Icon="Add" Label="Hinzufügen" />
-		</CommandBar>
-	</Page.BottomAppBar>
+        <!-- TODO: add info label here -->
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Camera" Label="Hinzufügen" Click="AppBarButton_Click" />
+            <AppBarButton Icon="Refresh" Label="Aktualisieren" />
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" />
+                <AppBarButton Icon="Sort" Label="Nach Datum sortieren" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
 ``` 
 
 <a name="Exercise3"></a>
 ### Übung 3: Verwenden eines IValueConverters
 
-In dieser Übung kommt der **CollectionToVisibilityConverter** aus dem Commons-Ordner auf der Hauptseite zum Einsatz. Er wandelt die Anzahl von Elementen in einer Auflistung (Collection) in einen Sichtbarkeitszustand um.
+In dieser Übung kommt der **CollectionToVisibilityConverter** auf der Hauptseite zum Einsatz. Er wandelt die Anzahl von Elementen in einer Auflistung (Collection) in einen Sichtbarkeitszustand um.
 
 **Konverterlogik**:
-- Elemente in einer Auflistung vorhanden -> sichtbar
-- Leere Auflistung -> unsichtbar
+- Elemente in einer Auflistung vorhanden -> XAML-Element ist sichtbar
+- Leere Auflistung -> XAML-Element ist unsichtbar
 
 Wird ein **ConverterParameter** angegeben, so wird der Sichtbarkeitszustand invertiert.
 
@@ -243,19 +260,19 @@ Sie haben mit diesen Schritten der Hauptseite den Konverter über den Alias **Col
 
 #### Aufgabe 2 - Infomeldung erstellen: "Es sind keine Elemente vorhanden"
 
-1. Fügen Sie unterhalb des **Pivot-Elements** den folgenden TextBlock ein:
+1. Fügen Sie unterhalb des **GridView-Elements** den folgenden TextBlock ein:
 	
     ```XML  
-	<TextBlock Grid.Row="1" Style="{StaticResource BaseTextBlockStyle}" Margin="24"
-                   Text="Es sind keine Elemente vorhanden."
-                   Visibility="{Binding Posts, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=1}"/>
+	<TextBlock Style="{StaticResource BaseTextBlockStyle}" Margin="24"
+               Text="Es sind keine Elemente vorhanden."
+               Visibility="{Binding Posts, Converter={StaticResource CollectionToVisibilityConverter}, ConverterParameter=1}"/>
     ``` 
 
-2. Starten Sie das Debugging. Der TextBlock sollte nicht angezeigt werden, da Daten vorhanden sind.
+2. Starten Sie das Debugging. Der TextBlock sollte nicht angezeigt werden, weil Posts vorhanden sind.
 3. Öffnen Sie die Datei **MainPageViewModel.cs** und entfernen die Testdaten.
-4. Starten Sie das Debugging. Der TextBlock sollte nun angezeigt werden. Das Pivot wird automatisch ausgeblendet, da keine Elemente vorhanden sind. Falls das nicht der Fall wäre, könnte genau dieser Konverter ebenfalls zu diesem Zweck verwendet werden.
+4. Starten Sie das Debugging. Der TextBlock sollte nun angezeigt werden. Das GridView wird automatisch ausgeblendet, da keine Elemente vorhanden sind.
 
-In dieser Übung haben Sie einen Konverter erstellt, der eine Anzahl von Elementen in einer Auflistung in einen Sichtbarkeitszustand umwandelt und den MVVM-Prinzipien entspricht.
+In dieser Übung haben Sie einen Konverter erstellt, der eine Anzahl von Elementen in einer Auflistung in einen Sichtbarkeitszustand umwandelt.
 	
 <a name="Exercise4"></a>
 ### Übung 4: Erstellen von Commands für den Like-Button, die Sortierung und Datenaktualisierung
@@ -268,25 +285,25 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 2. Fügen Sie der Klasse die Definition der einzelnen Commands hinzu:
 
     ```C#
-	/// <summary>
-	/// Gets or sets the command to sort after rating.
-	/// </summary>
-	public DelegateCommand SortRatingCommand { get; set; }
+    /// <summary>
+    /// Gets or sets the command to like a post.
+    /// </summary>
+    public DelegateCommand LikeCommand { get; set; }
 
-	/// <summary>
-	/// Gets or sets the command to sort after date.
-	/// </summary>
-	public DelegateCommand SortDateCommand { get; set; }
+    /// <summary>
+    /// Gets or sets the command to sort after rating.
+    /// </summary>
+    public DelegateCommand SortRatingCommand { get; set; }
 
-	/// <summary>
-	/// Gets or sets the command to like a post.
-	/// </summary>
-	public DelegateCommand LikeCommand { get; set; }
-	
-	/// <summary>
-	/// Gets or sets the command to refresh the posts.
-	/// </summary>
-	public DelegateCommand RefreshCommand { get; set; }
+    /// <summary>
+    /// Gets or sets the command to sort after date.
+    /// </summary>
+    public DelegateCommand SortDateCommand { get; set; }
+
+    /// <summary>
+    /// Gets or sets the command to refresh the posts.
+    /// </summary>
+    public DelegateCommand RefreshCommand { get; set; }
     ```
 
 3. Fügen Sie der Klasse die Implementierung der Command-Logik hinzu:
@@ -320,28 +337,31 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 4. Um die Commands mit den Methoden zu verbinden, fügen Sie dem Konstruktor die folgenden Zeilen hinzu:
 
     ```C#
-	this.SortDateCommand = new DelegateCommand(this.SortByDate);
-	this.SortRatingCommand = new DelegateCommand(this.SortByRating);
-	this.LikeCommand = new DelegateCommand(this.Like);
-	this.RefreshCommand = new DelegateCommand(this.RefreshData);
+    this.SortDateCommand = new DelegateCommand(this.SortByDate);
+    this.SortRatingCommand = new DelegateCommand(this.SortByRating);
+    this.LikeCommand = new DelegateCommand(this.Like);
+    this.RefreshCommand = new DelegateCommand(this.RefreshData);
     ```
 
-Sie haben in dieser Aufgabe Commands erstellt, die nun auf der Hauptseite verwendet werden können. Hierzu muss im nächsten Schritt die Datenbindung mit XAML aufgebaut werden.
+Sie haben in dieser Aufgabe Commands erstellt, die nun auf der Hauptseite verwendet werden können. Hierzu muss im nächsten Schritt noch die Datenbindung mit XAML hergestellt werden.
 
 #### Aufgabe 2 - Datenbindung für Commands festlegen
-In diesem Schritt werden die Commands mit der Hauptseite verbunden.
+In diesem Schritt werden die Commands mit der Hauptseite verbunden. D
 
 1. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
-2. Fügen Sie der Schaltfläche zum "Sortieren nach Bewertung" das folgende Attribut hinzu: **Command="{Binding SortRatingCommand}"**
-3. Fügen Sie der Schaltfläche zum "Sortieren nach dem Datum" das folgende Attribut hinzu: **Command="{Binding SortDateCommand}"**
-4. Fügen Sie der Schaltfläche zum Liken in der **BottomAppBar** das folgende Attribut hinzu: **Command="{Binding LikeCommand}"**
-5. Fügen Sie der Schaltfläche zum Aktualisieren in der **BottomAppBar** das folgende Attribut hinzu: **Command="{Binding RefreshCommand}"**
-6. Starten sie das Debugging und Testen Sie die Schaltflächen.
+2. Fügen Sie der Schaltfläche zum "Sortieren nach Bewertung" (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding SortRatingCommand}"**
+3. Fügen Sie der Schaltfläche zum "Sortieren nach dem Datum" (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding SortDateCommand}"**
+4. Fügen Sie der Like-Schaltfläche (im **DataTemplate** des **GridViews**) folgende Attribute hinzu: **Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}"**
+5. Fügen Sie der Schaltfläche zum Aktualisieren (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding RefreshCommand}"**
+6. Starten sie das Debugging und Testen Sie die Schaltflächen in der unteren App-Bar. Es sollten Testdialoge angezeigt werden.
 
 In dieser Übung haben Sie gelernt, wie man Commands verwendet.
 
 ## Zusammenfassung
 Mit Beendung dieser Session haben Sie gelernt:  
-- Ein ViewModel zu erstellen
-- Einen IValueConverter zu verwenden
-- Commands zu verwenden
+
+- Das Datenmodell der API einbinden
+- Das ViewModel mit der Business-Logik für die Hauptseite erstellen
+- Die Datenbindung einrichten
+- Einen IValueConverter verwenden, um die Sichtbarkeit eines Elements zu steuern
+- Commands verwenden, um Schaltflächen mit Aktionen im ViewModel zu verbinden

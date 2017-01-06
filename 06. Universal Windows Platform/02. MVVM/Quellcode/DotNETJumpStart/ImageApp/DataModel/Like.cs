@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ImageApp.DataModel
 {
-    public class User
+    public class Like
     {
-        public string Identifier { get; set; }
-        public string Name { get; set; }
+        public string UserIdentifier { get; set; }
+        public int PostId { get; set; }
     }
 }

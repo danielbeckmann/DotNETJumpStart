@@ -99,6 +99,10 @@
     <Compile Include="Common\CollectionToVisibilityConverter.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Common\NavigationService.cs" />
+    <Compile Include="DataModel\Image.cs" />
+    <Compile Include="DataModel\Like.cs" />
+    <Compile Include="DataModel\Post.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
