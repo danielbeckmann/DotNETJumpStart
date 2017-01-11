@@ -44,7 +44,7 @@ namespace ImageApp
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+          //      this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
@@ -105,8 +105,6 @@ namespace ImageApp
 
         void OnNavigated(object sender, NavigationEventArgs e)
         {
-            // TODO: ?what
-
             // Each time a navigation event occurs, update the Back button's visibility
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 ((Frame)sender).CanGoBack ?

@@ -35,9 +35,13 @@
                         <Image Source="{Binding ImageUri}" Grid.Row="1" />
 
                         <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
-                            <Button Content="Like!" Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}" />
-                            <TextBlock FontSize="18" Text="Likes:"/>
-                            <TextBlock FontSize="18" Text="{Binding Likes}" />
+                            <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}"
+                                    Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}" />
+                            <TextBlock FontSize="18" Margin="0,6,0,0">
+                                <Run Text="(" />
+                                <Run Text="{Binding Likes}" />
+                                <Run Text=")" />
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -52,7 +56,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Camera" Label="Hinzufügen" Click="CameraButton_Click" />
-            <AppBarButton Icon="Refresh" Label="Refresh" Command="{Binding RefreshCommand}" />
+            <AppBarButton Icon="Refresh" Label="Aktualisieren" Command="{Binding RefreshCommand}" />
 
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" Command="{Binding SortRatingCommand}" />

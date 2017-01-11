@@ -20,13 +20,6 @@ namespace DotNETJumpStart.ApiControllers
             return this.db.Posts.ToList().Select(p => PostDto.Map(p));
         }
 
-        // GET api/posts/latest
-        [Route("api/posts/latest")]
-        public IEnumerable<PostDto> GetLatest()
-        {
-            return this.db.Posts.OrderByDescending(o => o.Created).Take(10).ToList().Select(p => PostDto.Map(p));
-        }
-
         // POST: api/posts
         [ResponseType(typeof(AddPostDto))]
         public IHttpActionResult PostPost(AddPostDto postDto)

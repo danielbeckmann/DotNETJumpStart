@@ -5,8 +5,6 @@
 In diesem Modul lernen Sie die Grundlagen zum ASP.NET Web API-Framework kennen.
 Hierzu werden Sie eine Schnittstelle implementieren, über die eine App Posts abrufen und erstellen kann.
 
-TODO: Ankersprünge zu Übungen  
-
 ## Präsentation
 
 Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API) zu diesem Modul an.
@@ -14,7 +12,7 @@ Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET W
 ## Ziele
 
 In diesem Hands-On lernen Sie:
-- Wie man WebAPI Controller einsetzt, um Daten über eine Schnittstelle bereitzustellen
+- Wie man Web API Controller einsetzt, um Daten über eine Schnittstelle bereitzustellen
 - Wie Sie DTO-Klassen für den Datenaustausch verwenden
 - Wie Sie JSON als Datenformat konfigurieren
 - Wie man eine API dokumentieren kann
@@ -23,14 +21,16 @@ In diesem Hands-On lernen Sie:
 
 ## Übungen
 
-1. Erstellen und Vervollständigen der API Controller
-2. Dokumentieren der API
+1. <a href="#Exercise1">Erstellen und Vervollständigen der API Controller</a>
+2. <a href="#Exercise2">Dokumentieren der API</a>
+
+<a name="Exercise1"></a>
 
 ### Übung 1 - Erstellen und Vervollständigen der API Controller
 
 #### Aufgabe 1 - Dto-Klassen hinzufügen
 
-APIs verwenden üblicherweise ein einfacheres Datenmodell, als das was für den Datenbankzugriff verwendet wird. Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
+APIs verwenden üblicherweise ein einfacheres Datenmodell, als das, was für den Datenbankzugriff verwendet wird (sogenannte DTOs, Data-Transfer-Objekte). Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
 
 1.	Erzeugen Sie einen neuen Ordner mit dem Namen "**Dtos**" unterhalb des Ordners "**Models**". Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner "**Models/Dtos**" und wählen **Hinzufügen/Vorhandenes Element**.
@@ -39,7 +39,7 @@ APIs verwenden üblicherweise ein einfacheres Datenmodell, als das was für den 
 
  ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
-5. Vergleichen Sie den Inhalt der einzelnen **Dtos** (Data-Transfer-Objekte) mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
+5. Vergleichen Sie den Inhalt der einzelnen **Dtos** mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
 
 
 #### Aufgabe 2 - ApiController vorbereiten
@@ -63,7 +63,7 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
 
 #### Aufgabe 3 - JSON als Datenformat konfigurieren
 
-Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und nicht mehr XML. Dies lässt sich auch bei WebAPI schnell konfigurieren:
+Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und nicht mehr XML. Dies lässt sich auch für Web API schnell konfigurieren:
 
 1. Öffnen Sie die Datei **App_Start/WebApiConfig.cs**.
 2. Fügen Sie folgende Zeilen ans Ende der Methode **Register** hinzu:
@@ -130,7 +130,9 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
         }
         else
         {
-            // TODO: Create a new like for the current post and the current user here and add it to the Likes table
+            // TODO: Create a new like for the current post and the current user here 
+
+            // TODO: Add the like to the Likes table here
 
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = like.Id }, likeDto);
@@ -138,6 +140,7 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 
         // ...
     ```
+<a name="Exercise2"></a>
 
 ### Übung 2 - Dokumentieren der API
 
@@ -184,13 +187,10 @@ Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die
 
 5. Starten Sie wieder die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare auftauchen.
 
-  ![](_images/help-page.png?raw=true "Abbildung 3")
-
-
 ## Zusammenfassung
 
 In diesem Hands-On haben Sie gelernt:
-- Wie Sie Routen verwenden, um gezielt auf Apis zu verweisen  
-- Wie Sie ein Entityset sortieren  
-- Wie Sie einer Api-Methode über Attribute mitteilen, welchen Typ sie zurückgibt  
-- Wie man mit Hilfe von Postman eine Api schnell testen kann  
+- Wie man Web API Controller einsetzt, um Daten über eine Schnittstelle bereitzustellen
+- Wie Sie DTO-Klassen für den Datenaustausch verwenden
+- Wie Sie JSON als Datenformat konfigurieren
+- Wie man eine API dokumentieren kann

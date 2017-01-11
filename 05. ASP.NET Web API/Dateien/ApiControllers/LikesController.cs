@@ -12,9 +12,48 @@ namespace DotNETJumpStart.ApiControllers
         private bool disposed = false;
 
         // POST: api/likes
+        [ResponseType(typeof(Like))]
         public IHttpActionResult PostLike(LikeDto likeDto)
         {
-			return null;
+            // Get or create user
+            var user = db.Users.FirstOrDefault(u => u.Identifier == likeDto.UserIdentifier);
+            if (user == null)
+            {
+                user = new User
+                {
+                    Identifier = likeDto.UserIdentifier
+                };
+
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+
+            // Get post
+            var post = db.Posts.Find(likeDto.PostId);
+            if (post == null)
+            {
+                return BadRequest("Invalid post");
+            }
+
+            var like = db.Likes.FirstOrDefault(l => l.User.Identifier == likeDto.UserIdentifier && l.Post.Id == likeDto.PostId);
+
+            if (like != null)
+            {
+                // Remove the like and return
+                db.Likes.Remove(like);
+
+                db.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                // TODO: Create a new like for the current post and the current user here 
+
+                // TODO: Add the like to the Likes table here
+
+                db.SaveChanges();
+                return CreatedAtRoute("DefaultApi", new { id = like.Id }, likeDto);
+            }
         }
 
         protected override void Dispose(bool disposing)
