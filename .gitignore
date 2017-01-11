@@ -131,6 +131,12 @@ applicationhost.config
 
 # NuGet Packages Directory
 packages/*
+/02. Projektsetup/Quellcode/DotNETJumpStart/packages
+/03. Entity Framework/Quellcode/DotNETJumpStart/packages
+/04. ASP.NET MVC/Quellcode/DotNETJumpStart/packages
+/05. ASP.NET Web API/Quellcode/DotNETJumpStart/packages
+/06. Windows Universal Platform/Quellcode/DotNETJumpStart/packages
+/07. Fertige Projektmappe/DotNETJumpStart/packages
 .vs/*
 ## TODO: If the tool you use requires repositories.config
 ## uncomment the next line
@@ -189,4 +195,3 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-/07. Fertige Projektmappe/packages

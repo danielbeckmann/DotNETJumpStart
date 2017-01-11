@@ -4,13 +4,9 @@
 
 In diesem Modul lernen Sie die Grundlagen zum Entity Framework kennen.
 
-TODO: Ziele dieses Modus   
-TODO: Ankersprünge zu Übungen   
-TODO: Review
-
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Datenmodellierung und -abfrage mit dem Entity Framework) zu diesem Modul an.
+Sehen Sie sich die [Präsentation] (Datenmodellierung und -abfrage mit dem Entity Framework) zu diesem Modul an.
 
 ## Ziele
 
@@ -22,13 +18,16 @@ Sehen Sie sich die [Präsentation](Datenmodellierung und -abfrage mit dem Entity 
 
 ## Übungen
 
-1. Erstellen des Datenmodells
-2. Datenzugriff
-3. Datenanzeige mit der Razor-Syntax
+Dieses Hands-On besteht aus den folgenden Übungen:<br/>
+1. <a href="#Exercise1">Erstellen des Datenmodells</a><br/>
+2. <a href="#Exercise2">Datenzugriff</a><br />
+3. <a href="#Exercise3">Datenanzeige mit der Razor-Syntax</a>
 
+<a name="Exercise1"></a>
 ### Übung 1: Erstellen des Datenmodells
 
 In dieser Übung werden wir:
+- Das NuGet Paket **EntityFramework** installiert
 - Das Datenmodell mit Code First erstellen
 - Eigenschaften zu Entitäten hinzufügen
 - Testdaten erzeugen
@@ -37,69 +36,78 @@ In dieser Übung werden wir:
 ![](_images/dbmodel.png?raw=true "Abbildung 1")
 Abbildung 1: Das fertige Datenmodell
 
-#### Aufgabe 1 - Hinzufügen der Entitäten
+#### Aufgabe 1 - NuGet-Paket EntityFramework installieren
+In dieser Aufgabe wird das NuGet-Paket **EntityFramework** installiert.
+
+1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
+   ![](_images/manage-nuget-packages.png?raw=true "Abbildung 2")
+2. Im Paketmanager, unter dem Reiter "**Durchsuchen**", wählen Sie links das Paket **EntityFramework** und klicken anschließend rechts auf **Installieren**
+   ![](_images/NuGet-EntityFramework.png?raw=true "Abbildung 3")
+
+Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwicklung fort zu fahren.  
+
+#### Aufgabe 2 - Hinzufügen der Entitäten
 
 1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
-2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Models** und wählen **Hinzufügen/Vorhandenes** Element
+2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Models** und wählen **Hinzufügen/Vorhandenes Element**
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Models** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/start.png?raw=true "Abbildung 2")
+![](_images/start.png?raw=true "Abbildung 4")
 
-#### Aufgabe 2 - Hinzufügen weiterer Eigenschaften
+#### Aufgabe 3 - Hinzufügen weiterer Eigenschaften
 
 1. Öffnen Sie die Aufgabenliste über die Menüleiste **Ansicht/Aufgabenleiste** oder drücken Sie die Tasten **STRG+W, T**
 2. Das Aufgabenfenster sollte wie folgt aussehen:
 
-![](_images/todos.png?raw=true "Abbildung 3")
+![](_images/todos.png?raw=true "Abbildung 5")
 
 3. Doppelklicken Sie auf den ersten Eintrag oder öffnen Sie die Datei **Models/User.cs**
 
-![](_images/user-entity.png?raw=true "Abbildung 4")
+![](_images/user-entity.png?raw=true "Abbildung 6")
 
 4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required**, **MaxLength = 50** und **Unique** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
 
-    ```C#
+    <!--```C#
     /// <summary>
     /// Gets or sets the users name
     /// </summary>
     [Required]
     [MaxLength(50)]
-    [Index(IsUnique = true)]
     public string Name { get; set; }
-    ```
+    ```-->
 	
 5. Fügen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft stellt eine Eigenschaft aller vom Benutzer geposteten Einträge dar. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Likes“.	
 
-	```C#
+	<!-- ```C#
     /// <summary>
     /// Gets or sets the users posts.
     /// </summary>
     public virtual ICollection<Post> Posts { get; set; }
-	```
+	``` -->
 	
-6. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe** neu erstellen und stellen Sie sicher, dass keine Fehler auftreten.
+6. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 	
 
-#### Aufgabe 3 - DbContext bearbeiten 
+#### Aufgabe 4 - DbContext bearbeiten 
 
 1. Erzeugen Sie einen neuen Ordner **DataContext** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataContext** und wählen **Hinzufügen/Vorhandenes Element**.
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataContext** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/dbcontext.png?raw=true "Abbildung 5")
+![](_images/dbcontext.png?raw=true "Abbildung 7")
 
 5. Öffnen Sie in der Aufgabenliste die erste Aufgabe oder öffnen Sie die Datei **ImageAppDbContext.cs**
 6. Fügen Sie der **ImageAppDbContext** Klasse die Set-Eigenschaften für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft zur Entität **_images**
 
-	```C#
+	<!--```C#
     public DbSet<Post> Posts { get; set; }
 
     public DbSet<Like> Likes { get; set; }
 
     public DbSet<User> Users { get; set; }
-	```
+	```-->
 	
 7. Öffnen Sie die Datei **ImageAppDbInitializer.cs**
 8. Ersetzen Sie den Rumpf der Methode **Seed** mit folgendem Inhalt:
@@ -156,21 +164,21 @@ Abbildung 1: Das fertige Datenmodell
     }
 	```
 	
-9. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe** neu erstellen und stellen Sie sicher, dass keine Fehler auftreten.
+9. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 
-#### Aufgabe 4 - Testbilder bereitstellen
+#### Aufgabe 5 - Testbilder bereitstellen
 1. Erzeugen Sie einen neuen Ordner **Uploads** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Uploads** und wählen **Hinzufügen/Vorhandenes Element**.
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Uploads** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/uploads.png?raw=true "Abbildung 6")
+![](_images/uploads.png?raw=true "Abbildung 8")
 
-#### Aufgabe 5 - DbContext und DbInitializer bekannt machen 
+#### Aufgabe 6 - DbContext und DbInitializer bekannt machen 
 1. Öffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
-2. Ersetzen Sie die Konfigurationssektion **connectionStrings** durch folgenden Inhalt
+2. Fügen Sie den folgenden am Ende der Datei direkt vor dem schleißenden **</configuration>**-Tag ein.
 
-    ``XML
+    ```XML
       <connectionStrings>
         <add name="DefaultConnection" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\app-db.mdf;Integrated Security=True;" providerName="System.Data.SqlClient" />
       </connectionStrings>
@@ -180,32 +188,33 @@ Abbildung 1: Das fertige Datenmodell
 
 	```XML
     <entityFramework>
-    <contexts>
-      <context type="DotNETJumpStart.Models.ImageAppDbContext, DotNETJumpStart">
-        <databaseInitializer type="DotNETJumpStart.Models.ImageAppDbInitializer, DotNETJumpStart" />
-      </context>
-    </contexts>
-    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
-    <providers>
-      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
-    </providers>
-  </entityFramework>
+        <contexts>
+          <context type="DotNETJumpStart.Models.ImageAppDbContext, DotNETJumpStart">
+            <databaseInitializer type="DotNETJumpStart.Models.ImageAppDbInitializer, DotNETJumpStart" />
+          </context>
+        </contexts>
+        <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+        <providers>
+          <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+        </providers>
+    </entityFramework>
 	```
 	
 4. Speichern Sie Ihre Änderungen und erstellen die Projektmappe neu.
 
 Durch diese Änderung haben Sie sichergestellt, das die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
 
+<a name="Exercise2"></a>
 ### Übung 2: Datenzugriff
 
 In dieser Übung werden wir:
 - Ein Bild aus einem HttpRequest speichern
 - Einem Bild ein Wasserzeichen geben
-- Daten festlegen, die ein View anzeigen sollte
+- Daten festlegen, die eine View anzeigen sollte
 
 #### Aufgabe 1 - Hinzufügen der ImageUtils und Bearbeiten der Controller
 
-1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter.
 2. Erzeugen Sie einen neuen Ordner **Utils** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 3. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Utils** und wählen **Hinzufügen/Vorhandenes Element**.
 4. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Utils** aus dem aktuellen Hands-On und wählen alle Dateien aus.
@@ -251,7 +260,7 @@ In dieser Übung werden wir:
 3. Beenden Sie das Debugging durch das Schließen des Browsers oder über die Menüleiste **Debugging/Debugging beenden** innerhalb von Visual Studio
 
 #### Aufgabe 4 - Tabelldaten anzeigen
-1. Öffnen Sie den **Server-Explorer**. Am einfachsten geben Sie **Server-Explorer** oben rechts in die Suche ein oder drücken Strg+Q auf der Tastatur.
+1. Öffnen Sie den **Server-Explorer**. Am einfachsten geben Sie **Server-Explorer** oben rechts in die Suche ein oder drücken Strg+W+L auf der Tastatur.
 2. Suchen Sie die zuvor hinzugefügte Verbindung zur lokalen Datenbank und klappen Sie sie auf (unter Datenverbindungen / DefaultConnection / Tabellen)
 3. Ihr Server-Explorer sollte nun die Tabellen der einzelnen Entitäten (Image, Like, Post und User enthalten):
 
@@ -262,17 +271,18 @@ In dieser Übung werden wir:
 
 ![](_images/data-view.png?raw=true "Abbildung 10")
 
+<a name="Exercise3"></a>
 ### Übung 3: Datenanzeige mit der Razor-Syntax
 
 In dieser Übung werden wir:
-- Die Razor-Syntax im HTML zu verwenden, um auf Daten des Models zuzugreifen und diese auf der View anzuzeigen
+- Die Razor-Syntax im HTML verwenden, um auf Daten des Models zuzugreifen und diese auf der View anzuzeigen.
 
 #### Aufgabe 1 - Posts auf der Startseite anzeigen
-1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter.
 2. Öffnen Sie die Datei **Views/Home/Index.cshtml**
-3. Ersetzen Sie den Inhalt der Datei mit folgendem, um die Daten aus der zuvor angepassten **Index**-Methode des **HomeController**s anzuzeigen:
+3. Um die Daten aus der zuvor angepassten **Index**-Methode des **HomeController**s anzuzeigen, ersetzen Sie den Inhalt der Datei mit folgendem Code:
 
-	```XML
+	```HTML
 	@model IEnumerable<DotNETJumpStart.Models.Post>
 	@{
 		ViewBag.Title = "Übersicht";
@@ -301,7 +311,8 @@ In dieser Übung werden wir:
 3. Öffnen Sie die Datei **Views/Home/Index.cshtml**
 4. Umhüllen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im Großformat anzeigt
 
-	```XML
+    TODO: Den Quellcode eventuell raus??
+	```HTML
     <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
 	```
 	
@@ -320,11 +331,12 @@ Mit Beendung dieser Session haben Sie gelernt:
 - Wie man einen DbInitializer verwendet, um die Datenbank zu Beginn mit Daten zu füllen
 - Was der DbContext tut
 - Wie Eigenschaften einer Entität deklariert werden müssen
-- Wie Sie die Aufgabenliste von Visual Studio verwenden
-- Wie eine Datei aus einem HttpRequest gespeichert werden kann
+- Wie Sie die Aufgabenliste von Visual Studio verwenden  
+------------------------------ Ist dem so? ------------------------------
+- Wie eine Datei aus einem HttpRequest gespeichert werden kann  
+------------------------------ Ist dem so? ------------------------------
 - Wie man einem Bild ein Overlay hinzugefügt
 - Wie man LINQ verwendet
 - Wie Sie Razor-Syntax verwenden, um auf Eigenschaften eines ViewModels zuzugreifen
 - Wie Sie Html-Syntax verwenden, um Daten aus einem ViewModel anzuzeigen
 - Dass Sie Änderungen am Code auch vornehmen können, während sich die Anwendung im Debugging befindet
-

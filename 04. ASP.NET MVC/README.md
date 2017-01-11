@@ -6,9 +6,7 @@ In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen. Hierzu werden
 Sie die Businesslogik und Views zum Verwalten der Posts-Entität erstellen.
 
 TODO: Ziele dieses Modus  
-TODO: Ankersprünge zu Übungen  
-TODO: Review  
-TODO: Aufzählungspunkte fangen nach einem Bild wieder bei 1 an -> korrigieren
+TODO: Ankersprünge zu Übungen
 
 ## Präsentation
 
@@ -28,11 +26,16 @@ In diesem Hands-On lernen Sie
 
 ## Übungen
 
-1. Businesslogik und Scaffolding
-2. Erweiterung der Views
+Dieses Hands-On besteht aus den folgenden Übungen:<br/>
+1. <a href="#Exercise1">Businesslogik und Scaffolding</a><br/>
+2. <a href="#Exercise2">Erweiterung der Views</a><br />
 
+<a name="Exercise1"></a>
 ### Übung 1 - Bereitstellen der Businesslogik
-In dieser Übung werden wir: ...
+In dieser Übung werden wir:
+- Den PostsController erweitern
+- Ansichten zum Erstellen, Details, Editieren und Löschen von Posts hinzufügen
+- Die seitenübergreifende Navigationsleiste bearbeiten
 
 #### Aufgabe 1 - Erweitern des PostsController
 
@@ -47,66 +50,56 @@ In dieser Übung werden wir: ...
 6. Wir fügen nun den Code hinzu, der einen neuen Post erstellt. Ersetzen Sie hierzu den Code der Methode **public ActionResult Create(Post post)** durch:
 
     ```C#
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Post post)
+        // Validate that a image was selected
+        if (Request.Files.Count == 0 || Request.Files[0].ContentLength == 0)
         {
-            // Validate that a image was selected
-            if (Request.Files.Count == 0 || Request.Files[0].ContentLength == 0)
-            {
-                ModelState.AddModelError("ImageUpload", "Ein Bild ist erforderlich");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Get image from request and save
-                var image = ImageUtility.SaveImageFromRequest();
-
-                // Save image to db
-                image = db.Images.Add(image);
-                db.SaveChanges();
-
-                // Assign the image to the post
-                post.Image = image;
-
-                // Only the admin can post _images here, so select admin
-                post.User = db.Users.FirstOrDefault(x => x.Name == "Admin");
-
-                // Save post to db
-                db.Posts.Add(post);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-
-            return View(post);
+            ModelState.AddModelError("ImageUpload", "Ein Bild ist erforderlich");
         }
+
+        if (ModelState.IsValid)
+        {
+            // Get image from request and save
+            var image = ImageUtility.SaveImageFromRequest();
+
+            // Save image to db
+            image = db.Images.Add(image);
+            db.SaveChanges();
+
+            // Assign the image to the post
+            post.Image = image;
+
+            // Only the admin can post _images here, so select admin
+            post.User = db.Users.FirstOrDefault(x => x.Name == "Admin");
+
+            // Save post to db
+            db.Posts.Add(post);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        return View(post);
     ```
 
 7. Wir fügen nun den Code hinzu, der einen Post löscht. Ersetzen Sie hierzu den Code der Methode **ActionResult DeleteConfirmed(int id)** durch:
 
     ```C#
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        Post post = db.Posts.Find(id);
+        if (post == null)
         {
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-
-            // Delete image from file system
-            ImageUtility.DeleteImageFromDisk(post.Image);
-
-            // Delete all referenced posts
-            db.Likes.RemoveRange(post.Likes);
-
-            db.Posts.Remove(post);
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            return HttpNotFound();
         }
+
+        // Delete image from file system
+        ImageUtility.DeleteImageFromDisk(post.Image);
+
+        // Delete all referenced posts
+        db.Likes.RemoveRange(post.Likes);
+
+        db.Posts.Remove(post);
+        db.SaveChanges();
+
+        return RedirectToAction("Index");
     ```
 
 #### Aufgabe 2 - Vorbereiten der Projektmappe für neue Ansichten
@@ -116,7 +109,7 @@ In dieser Übung werden wir: ...
 	
 ![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
 
-#### Aufgabe 3 - Hinzufügen von Ansichten für das Bearbeiten, Editieren und Löschen von Posts
+#### Aufgabe 3 - Hinzufügen von Ansichten für das Erstellen, Details, Editieren und Löschen von Posts
 
 1. Wählen Sie den Ordner **Views/Posts** an und fügen ihm über einen Rechtsklick durch einen Klick auf die Schaltfläche **Hinzufügen/Neues Gerüstelement** eine neue Ansicht hinzu
 2. Wählen Sie im aufgehenden Dialog die Vorlage **MVC5-Ansicht**
@@ -145,11 +138,11 @@ In dieser Übung werden wir: ...
 	<ul class="nav navbar-nav"> 
     ```
 	
-3. Fügen Sie dieser Auflistung einen weiteren **ActionLink** hinzu mit dem Titel **Posts** hinzu, der die Action **Index** innerhalb des *PostsController* aufruft
+3. Fügen Sie dieser Auflistung einen weiteren **ActionLink** mit dem Titel **Posts** hinzu, der die Action **Index** innerhalb des *PostsController* aufruft
 
-    ```XML
+    <!--```XML
 	<li>@Html.ActionLink("Posts", "Index", "Posts", new { area = "" }, null)</li>
-	```
+	```-->
 	
 4. Öffnen Sie die Datei **Views/Home/Index.cshtml**
 5. Finden Sie das Element, dass das Bild eines Posts anzeigt
@@ -160,9 +153,9 @@ In dieser Übung werden wir: ...
 	
 6. Fügen Sie **unterhalb** dieses Elements einen **ActionLink** mit dem Titel **Details** ein, der die Action **Details** innerhalb des **PostsController** aufruft
 
-    ```XML
+    <!--```XML
 	<span>@Html.ActionLink("Details", "Details", "Posts", new { id = item.Id }, null)</span>
-    ```
+    ```-->
 	
 7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
 8. Die Anwendung sollte nun wie folgt aussehen:
@@ -174,16 +167,22 @@ In dieser Übung werden wir: ...
 
 ![](_images/posts-list.png?raw=true "Abbildung 8")
 
+<a name="Exercise2"></a>
 ### Übung 2 - Ansichten anpassen
-TODO: In dieser Übung...
+In dieser Übung werden wir:
+- Mehr Felder zur Liste aller Posts hinzufügen
+- Die Details-Seite erweitern
+- Die Seite um einfaches CSS erweitern
+- Der Create- und Edit-Seite jeweils ein weiteres Upload-Feld hinzufügen
 
 #### Aufgabe 1 - Mehr Felder in der Übersicht aller Posts
 
 1. Öffnen sie die Datei **Views/Posts/Index.cshtml**
-2. Ersetzen Sie den Inhalt der Datei mit folgendem:
+2. Ersetzen Sie den Inhalt der Datei mit folgendem:  
+TODO: Wirklich den ganzen Code vorgeben?
 
     ```XML
-	@model IEnumerable<DotNETJumpStart.Models.Post>
+    @model IEnumerable<DotNETJumpStart.Models.Post>
 
     @{
         ViewBag.Title = "Index";
@@ -246,18 +245,17 @@ TODO: In dieser Übung...
         }
     </table>
     ```
-	
 
 #### Aufgabe 2 - Detailansicht eines Posts erweitern
 	
-3. Öffnen Sie die Datei **Views/Posts/Details.cshtml**
-4. Suchen Sie **Description List** Element
+1. Öffnen Sie die Datei **Views/Posts/Details.cshtml**
+2. Suchen Sie **Description List** Element
 
     ```XML
 	<dl class="dl-horizontal">
     ```
 
-5. Fügen Sie der **Description List** ein Anzeigepaar hinzu, dass die **Anzahl** der **Likes** für den **aktuellen Post** darstellt
+3. Fügen Sie der **Description List** ein Anzeigepaar hinzu, dass die **Anzahl** der **Likes** für den **aktuellen Post** darstellt
 
     ```XML
 	<dt>
@@ -268,7 +266,7 @@ TODO: In dieser Übung...
 	</dd>
     ```
 	
-6. Fügen Sie am Anfang der **Description List** ein Anzeigepaar hinzu, dass den **Namen des Erstellers** für den **aktuellen Post** ausgbibt
+4. Fügen Sie am Anfang der **Description List** ein Anzeigepaar hinzu, dass den **Namen des Erstellers** für den **aktuellen Post** ausgbibt
 
     ```XML
         <dt>
@@ -279,7 +277,7 @@ TODO: In dieser Übung...
         </dd>
     ```
 		
-7. Fügen Sie unterhalb der **Description List** eine **Tabelle** ein, die die **letzten 10 Likes** jeweils mit **Datum und Benutzername** für den aktuellen Post ausgibt
+5. Fügen Sie unterhalb der **Description List** eine **Tabelle** ein, die die **letzten 10 Likes** jeweils mit **Datum und Benutzername** für den aktuellen Post ausgibt
 
     ```XML
     <div>
@@ -306,7 +304,7 @@ TODO: In dieser Übung...
     </div>
     ```
 
-8. Fügen Sie als erstes Element der **Description List** ein **Link-Element** ein, das das Bild des aktuellen Posts ausgibt
+6. Fügen Sie als erstes Element der **Description List** ein **Link-Element** ein, das das Bild des aktuellen Posts ausgibt
 
     ```XML
         <dd>
@@ -314,9 +312,9 @@ TODO: In dieser Übung...
         </dd>
     ```
 
-9. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
-10. Rufen Sie die Detailansicht eines Posts auf
-11. Ihre Anwendung sollte nun wie folgt aussehen:
+7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
+8. Rufen Sie die Detailansicht eines Posts auf
+9. Ihre Anwendung sollte nun wie folgt aussehen:
 
 ![](_images/posts-details.png?raw=true "Abbildung 9")
 
@@ -393,8 +391,9 @@ TODO: In dieser Übung...
 	<div class="form-group">
 		<span class="control-label col-md-2">Bild</span>
 		<div class="col-md-10">
+                    <img src="~/Uploads/@Model.Image.FileName" width="100" alt="Bild" />
 			<span class="btn btn-default btn-file">
-				Durchsuchen
+				<label for="file">Durchsuchen</label>
 				<input type="file" name="file" id="file" />
 			</span>
 			@Html.ValidationMessage("ImageUpload")
@@ -442,7 +441,7 @@ TODO: In dieser Übung...
 		<span class="control-label col-md-2">Bild</span>
 		<div class="col-md-10">
 			<span class="btn btn-default btn-file">
-				Durchsuchen
+				<label for="file">Durchsuchen</label>
 				<input type="file" name="file" id="file" />
 			</span>
 			@Html.ValidationMessage("ImageUpload")
@@ -470,7 +469,7 @@ TODO: In dieser Übung...
 In diesem Hands-On haben Sie gelernt:
 - Was Scaffolding ist und wie man es verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
 - Wie man Entitysets gezielt nach Einträgen filtert  
-- Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+- Wie man die Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
 - Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann  
 - Wie man die seitenübergreifende Navigationsleiste bearbeiten kann  
 - Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet  

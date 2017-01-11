@@ -25,7 +25,6 @@ Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 2. <a href="#Exercise2">Erstellen einer ASP.NET Webanwendung</a>
 
 <a name="Exercise1"></a>
-
 ### Übung 1: Microsoft-Konto anlegen
 Für das Modul 6 (Windows Universal Platform) wird eine Entwicklerlizenz von Microsoft benötigt. Diese ist kostenlos. Hierfür benötigen Sie ein Konto bei Microsoft. Falls Sie bereits ein Konto besitzen, können Sie diese Übung überspringen.
 
@@ -59,7 +58,7 @@ In dieser Aufgabe wird das Projekt in Visual Studio angelegt.
    1. Wählen Sie **Web API** aus.<br/><br/>
    ![](_images/web-project-types.png?raw=true "Abbildung 2")
    2. Klicken Sie auf **Authentifizierung ändern**.
-   3. Wählen Sie **Einzelne Benutzerkonten**.<br/><br/>
+   3. Wählen Sie **Keine Authentifizierung**.<br/><br/>
    ![](_images/web-project-auth.png?raw=true "Abbildung 3")
    4. Deselektieren Sie den Haken **In der Cloud hosten**, denn das Projekt soll lokal gehostet werden.
    5. Wählen Sie **OK**.
@@ -71,10 +70,11 @@ In dieser Aufgabe werden Sie die NuGet-Pakete für das eben erstellte Projekt akt
 
 1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 4")
-2. Im Paketmanager wählen Sie links oben **Alle Pakete auswählen** und daraufhin **Aktualisieren**.<br/><br/>
+2. Im Paketmanager, unter dem Reiter "**Aktualisierungen**", wählen Sie links oben **Alle Pakete auswählen** und daraufhin **Aktualisieren**.<br/><br/>
    ![](_images/update-nuget-packages.png?raw=true "Abbildung 5")
 
-Nach einem Moment sind alle Pakete auf dem neusten Stand und Sie sind bereit mit der Entwicklung zu starten.
+Nach einem Moment sind alle Pakete auf dem neusten Stand und Sie sind bereit mit der Entwicklung zu starten.  
+Hinweis: Eventuell ist ein Neustart der Solution notwendig.
 
 #### Aufgabe 3 - Webanwendung im IIS-Express starten
 In dieser Aufgabe werden Sie die Webanwendung starten.

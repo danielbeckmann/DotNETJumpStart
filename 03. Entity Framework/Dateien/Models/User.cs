@@ -19,7 +19,6 @@ namespace DotNETJumpStart.Models
         /// <summary>
         /// Gets or sets the user identifier which maps to a device-id.
         /// </summary>
-        [Index(IsUnique = true)]
         [Required]
         [MaxLength(100)]
         public string Identifier { get; set; }
