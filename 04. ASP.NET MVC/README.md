@@ -5,9 +5,6 @@
 In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen. Hierzu werden
 Sie die Businesslogik und Views zum Verwalten der Posts-Entität erstellen.
 
-TODO: Ziele dieses Modus  
-TODO: Ankersprünge zu Übungen
-
 ## Präsentation
 
 Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.pptx) zu diesem Modul an.
