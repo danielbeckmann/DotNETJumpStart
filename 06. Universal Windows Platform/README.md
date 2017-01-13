@@ -13,4 +13,4 @@ Sehen Sie sich die zu dem Modul gehörende [Präsentation](Entwicklung einer App f
 1. [Projekteinrichtung und Views](01. Projektsetup/README.md)
 2. [MVVM Grundlagen (MVVM)](02. MVVM/README.md)
 3. [Integration von APIs](03. API Integration/README.md)
-4. [Windows APIs - Der FileOpenPicker](04. FileOpenPicker/README.MD)
+4. [Windows APIs - Der FileOpenPicker](04. FileOpenPicker/README.md)
