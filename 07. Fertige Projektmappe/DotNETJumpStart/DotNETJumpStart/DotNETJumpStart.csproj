@@ -215,6 +215,7 @@
     <Compile Include="Utils\ImageUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\XmlDocument.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -250,6 +251,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\acando-workshop - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -272,7 +274,9 @@
     <Content Include="Uploads\city-q-c-1024-768-9.jpg" />
     <Content Include="Uploads\sports-q-c-1024-768-4.jpg" />
     <Content Include="Uploads\technics-q-c-1024-768-4.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -294,7 +298,6 @@
     <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>

@@ -13,11 +13,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ImageApp.ViewModels;
-using Windows.UI.Popups;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
-namespace ImageApp.Views
+namespace ImageApp
 {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
@@ -37,7 +36,7 @@ namespace ImageApp.Views
             await this.viewModel.GetPostsAsync();
         }
 
-        private void CameraButton_Click(object sender, RoutedEventArgs e)
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AddPostPage));
         }

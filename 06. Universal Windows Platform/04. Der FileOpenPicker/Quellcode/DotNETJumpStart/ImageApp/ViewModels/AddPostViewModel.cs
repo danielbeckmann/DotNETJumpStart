@@ -78,6 +78,27 @@ namespace ImageApp.ViewModels
         }
 
         /// <summary>
+        /// Loads the byte data from a StorageFile
+        /// </summary>
+        /// <param name="file">The file to read</param>
+        private async Task<byte[]> ReadFileAsync(StorageFile file)
+        {
+            byte[] fileBytes = null;
+            using (IRandomAccessStreamWithContentType stream = await file.OpenReadAsync())
+            {
+                fileBytes = new byte[stream.Size];
+                using (DataReader reader = new DataReader(stream))
+                {
+                    await reader.LoadAsync((uint)stream.Size);
+                    reader.ReadBytes(fileBytes);
+                }
+            }
+
+            return fileBytes;
+
+        }
+
+        /// <summary>
         /// Uses the filepicker to open an image.
         /// </summary>
         private async void PickImage(object obj)
@@ -105,27 +126,6 @@ namespace ImageApp.ViewModels
         }
 
         /// <summary>
-        /// Loads the byte data from a StorageFile
-        /// </summary>
-        /// <param name="file">The file to read</param>
-        private async Task<byte[]> ReadFileAsync(StorageFile file)
-        {
-            byte[] fileBytes = null;
-            using (IRandomAccessStreamWithContentType stream = await file.OpenReadAsync())
-            {
-                fileBytes = new byte[stream.Size];
-                using (DataReader reader = new DataReader(stream))
-                {
-                    await reader.LoadAsync((uint)stream.Size);
-                    reader.ReadBytes(fileBytes);
-                }
-            }
-
-            return fileBytes;
-
-        }
-
-        /// <summary>
         /// Adds an image and then the post to the api.
         /// </summary>
         /// <param name="obj"></param>
@@ -147,7 +147,7 @@ namespace ImageApp.ViewModels
         /// <returns></returns>
         private async Task<int?> AddImageAsync()
         {
-            using (var client = new RestClient("http://localhost:55298/api/"))
+            using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
             {
                 var request = new RestRequest("images", Method.POST);
                 var data = await ReadFileAsync(this.imageFile);
@@ -172,7 +172,7 @@ namespace ImageApp.ViewModels
         /// <returns></returns>
         private async Task<bool> AddPostAsync(int imageId)
         {
-            using (var client = new RestClient("http://localhost:55298/api/"))
+            using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
             {
                 var request = new RestRequest("posts", Method.POST);
 

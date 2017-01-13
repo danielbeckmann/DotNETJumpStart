@@ -1,17 +1,14 @@
-# Modul 6/03 - Entwicklung einer Windows Universal App: Anbindung der API über Services
+# Modul 6/03 - Entwicklung einer App für die universelle Windows Plattform: Anbindung der API über Services
 
 ## Übersicht
 
-In diesem Hands-On werden Sie mit der App auf die API zugreifen und die Testausgaben durch Live-Daten ersetzen. Dazu wird der Abruf der Posts mit den verschiedenen Sortierungen angebunden.
-
-TODO: Ankersprünge zu Übungen
+In diesem Hands-On werden Sie mit der App auf die API zugreifen und die bisherigen Testdaten durch Livedaten ersetzen. Hierzu wird der Abruf der Posts mit den verschiedenen Sortierungen angebunden.
 
 ## Ziele
 
 - RestSharp kennenlernen
-- Die API anbinden um Posts abzurufen
-- Registrierung und Login der API verwenden
-- Die Like-Funktion verwenden
+- Posts von der API abzurufen
+- Die Like-Funktion über die API zu verwenden
 
 ---
 
@@ -31,18 +28,17 @@ RestSharp kann am einfachsten über NuGet installiert werden.
 
 1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **ImageApp** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 1")
-2. Im Dialogfeld wählen Sie links **Online** aus und geben im Suchfeld **RestSharp.Portable** ein.<br/><br/>
+2. Im Dialogfeld wählen Sie links **Online** aus und geben im Suchfeld **FubarCoder.RestSharp.Portable** ein.<br/><br/>
    ![](_images/restsharp-nuget.png?raw=true "Abbildung 2")
-3. Installieren Sie das Paket **RestSharp.Portable**. Stimmen Sie den Nutzungsbedingungen zu.
+3. Installieren Sie das Paket **FubarCoder.RestSharp.Portable**. Stimmen Sie den Nutzungsbedingungen zu.
 
 Sie können nun RestSharp verwenden, um auf REST APIs zuzugreifen.
 
 #### Aufgabe 2 - RestSharp Funktionsweise kennenlernen
 Machen Sie sich mit den Funktionen von RestSharp vertraut.
 
-1. Hierzu navigieren Sie in einem Webbrowser auf **http://restsharp.org/**.
-2. Sehen Sie sich die Beispiele an und machen sich mit der Funktionsweise von RestSharp vertraut.
-3. Fügen Sie der Hauptseite der App testweise einen Button mit einem Click-Handler hinzu. Versuchen Sie mittels RestSharp auf den Post-Endpunkt der API zuzugreifen, um die Liste der Posts abzurufen.
+1. Hierzu navigieren Sie in einem Webbrowser auf **https://github.com/FubarDevelopment/restsharp.portable**.
+2. Sehen Sie sich das Beispiel an und machen sich mit der Funktionsweise von RestSharp vertraut.
 
 <a name="Exercise2"></a>
 ### Übung 2: RestSharp verwenden um Posts abzurufen
@@ -55,30 +51,30 @@ Mit RestSharp können die Posts sehr einfach über einen GET-Aufruf abgerufen we
 2. Fügen Sie der Datei die folgenden using-Direktiven hinzu: 
 
     ```C#
-	using RestSharp.Portable;
-	using System.Net.Http;
+    using RestSharp.Portable.HttpClient;
+    using RestSharp.Portable;
     ```
 
-3. Fügen Sie dem MainViewModel den folgenden Codeblock hinzu und ersetzen Sie den Platzhalter für die API-Adresse:
+3. Fügen Sie dem MainViewModel den folgenden Codeblock hinzu und ersetzen Sie ggf. die API-Adresse:
 
     ```C#
 	/// <summary>
-	/// Gets the posts from the api.
-	/// </summary>
-	public async Task GetPostsAsync()
-	{
-		using (var client = new RestClient("http://{API-Adresse}/api/"))
-		{
-			var request = new RestRequest("posts", HttpMethod.Get);
-			var result = await client.Execute<List<Post>>(request);
-			
-			this.Posts = result.Data;
-		}
-	}
+    /// Gets the posts from the api.
+    /// </summary>
+    public async Task GetPostsAsync()
+    {
+        using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
+        {
+            var request = new RestRequest("posts", Method.GET);
+            var result = await client.Execute<List<Post>>(request);
+
+            this.Posts = result.Data;
+        }
+    }
     ```
 	
 4. Machen Sie sich mit dem eingefügtem Code vertraut und versuchen diesen nachzuvollziehen.
-Das MainViewModel verfügt nun über eine Methode, um die Posts von der API abzurufen und in seiner Auflistung zu speichern.
+Das MainViewModel verfügt nun über eine Methode, um die Posts von der API abzurufen und in seiner Auflistung zu speichern, die über Da
 
 #### Aufgabe 2 - GetPostsAsync aufrufen
 Die Methode **GetPostsAsync** muss im nächsten Schritt noch aufgerufen werden. Hierzu binden wir den Methodenaufruf in die Hauptseite ein.
@@ -90,30 +86,29 @@ Die Methode **GetPostsAsync** muss im nächsten Schritt noch aufgerufen werden. 
 	using ImageApp.ViewModels;
 	```
 
-3. Überschreiben Sie den Konstruktor der Klasse und die ggf. bereits bestehende Methode **OnNavigatedTo** mit dem folgenden Code:
+3. Entfernen Sie den bereits bestehenden Konstruktor der Klasse und ersetzen ihn durch folgenden Code:
 
     ```C#
 	private MainViewModel viewModel;
 
-	public MainPage()
-	{
-		this.InitializeComponent();
-		this.NavigationCacheMode = NavigationCacheMode.Required;
-		this.viewModel = this.DataContext as MainViewModel;
-	}
+    public MainPage()
+    {
+        this.InitializeComponent();
+        this.viewModel = this.DataContext as MainViewModel;
+    }
 
-	protected override async void OnNavigatedTo(NavigationEventArgs e)
-	{
-		await this.viewModel.GetPostsAsync();
-	}
+    protected override async void OnNavigatedTo(NavigationEventArgs e)
+    {
+        await this.viewModel.GetPostsAsync();
+    }
 	```
 
-4. Starten Sie das Debugging. Die Live-Daten sollten beim Öffnen der Hauptseite angezeigt werden.
+4. Starten Sie das Debugging. Die Livedaten sollten beim Öffnen der Hauptseite geladen und angezeigt werden.
 
 Sie haben damit den Post-Endpunkt in der App angebunden.
 
 #### Aufgabe 3 - Sortierung verwenden
-Um die Sortierungsfunktion für die Posts zu verwenden, muss ein Parameter an die URL angehängt werden. Auch das kann mit RestSharp elegant gelöst werden.
+Um die Sortierungsfunktion der API für die Post-Einträge zu verwenden, muss ein Parameter an die URL angehängt werden. Auch das kann mit RestSharp elegant gelöst werden.
 
 1. Öffnen Sie die Datei **MainViewModel.cs**.
 2. Fügen Sie der Klasse eine Enumeration hinzu, welche die Sortierungsarten angibt. Fügen Sie ebenfalls eine Variable für die aktuelle Sortierung hinzu:
@@ -123,7 +118,7 @@ Um die Sortierungsfunktion für die Posts zu verwenden, muss ein Parameter an di
 	private Sorting currentSorting = Sorting.Latest;
     ```
 	
-3. Ersetzen Sie die Methode **GetPostsAsync** durch den folgenden Codeblock und ersetzen Sie den Platzhalter für die API-Adresse. Vergleichen Sie die alte und neue Implementierung der Methode. Die Methode enthält beispielsweise nun einen optionalen Parameter zur Sortierung.
+3. Ersetzen Sie die Methode **GetPostsAsync** durch den folgenden Codeblock und ersetzen ggf. den Platzhalter für die API-Adresse. Vergleichen Sie die alte und neue Implementierung der Methode. Die Methode enthält nun einen optionalen Parameter zur Sortierung.
 
     ```C#
 	/// <summary>
@@ -132,210 +127,103 @@ Um die Sortierungsfunktion für die Posts zu verwenden, muss ein Parameter an di
 	/// <param name="sorting">Current sorting</param>
 	public async Task GetPostsAsync(Sorting sorting = Sorting.Latest)
 	{
-		this.currentSorting = sorting;
+	    this.currentSorting = sorting;
 
-		using (var client = new RestClient("http://{API-Adresse}/api/"))
-		{
-			var request = new RestRequest("posts/{sorting}", HttpMethod.Get);
-			request.AddUrlSegment("sorting", sorting.ToString());
-			var result = await client.Execute<List<Post>>(request);
+	    using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
+	    {
+		    var request = new RestRequest("posts/{sorting}", HttpMethod.Get);
+		    request.AddUrlSegment("sorting", sorting.ToString());
+		    var result = await client.Execute<List<Post>>(request);
 
-			this.Posts = result.Data;
-		}
+		    this.Posts = result.Data;
+	    }
 	}
     ```
 
-4. Implementieren Sie die beiden Methoden **SortByRating** und **SortByDate** für die beiden Commands auf der Hauptseite, indem Sie von dort aus die Methode **GetPostsAsync** mit der jeweiligen Sortierung aufrufen.
+4. Implementieren Sie den fehlenden Code der beiden Methoden **SortByRating** und **SortByDate** für die beiden Schaltflächen auf der Hauptseite, indem Sie von dort aus die Methode **GetPostsAsync** mit der jeweiligen Sortierung aufrufen.
 5. Starten Sie das Debugging und Testen Sie die Sortierung.
 
 Mit Abschluss dieser Übung haben Sie die Sortierungsfunktion für die Posts implementiert.
 	
 <a name="Exercise3"></a>
-### Übung 3: Die Registrierung, Login und Like-Funktion anbinden
-In dieser Übung werden Sie die Registrierung und den Login-Vorgang aktivieren, um darauffolgend die Like-Funktion verwenden zu können, welche einen bereits angemeldeten Nutzer voraussetzt.
+### Übung 3: Die Like-Funktion anbinden
+In dieser Übung werden Sie die Like-Funktion der API anbinden. Zur Identifikation eines Benutzers wird eine sogenannte Device-Id verwendet.
 
-#### Aufgabe 1 - Loginfunktion aktivieren
-Der Loginvorgang findet beim Starten der App auf dem SplashScreen statt. Dafür muss die bereits bestehende **SplashPage** als Startseite für die App gesetzt werden.
+#### Aufgabe 1 - Die Device-Id kennenlernen
+Damit ein Benutzer nicht beliebig viele Likes abgeben kann, muss er eindeutig identifiziert werden. Hierzu werden üblicherweise Registrierung und Login der App-Benutzer vorausgesetzt. Der Einfachheit halber verwenden wir eine **Device-Id**, die ein Gerät eindeutig identifizieren kann.
 
-1. Machen Sie einen Rechtsklick auf die Datei **App.xaml** im **Projektmappen-Explorer** und wählen **Code anzeigen**.
-2. Rufen Sie den Suchdialog mit **Strg+F** auf und suchen Sie nach **MainPage**.
-3. Ersetzen Sie MainPage durch **SplashPage**.
-4. Öffnen Sie die Datei **SplashPage.xaml**, sowohl im XAML-Designer, als auch in der Code-Ansicht und machen Sie sich mit dem Code vertraut.
-5. Navigieren Sie in das **LoginViewModel** und inspizieren Sie die LoginAsync-Methode, welche auf den **SessionService** zugreift.
-6. Navigieren Sie in den **SessionService** und ersetzen die Methode **LoginAsync** durch den folgenden Codeblock (denken Sie daran, den Platzhalter für die API-Adresse zu ersetzen):
+1. Öffnen Sie die Datei **Utils/DeviceUtils.cs** und verschaffen sich einen Überblick über den Code. Diese Datei haben Sie in einem vorherigen Modul hinzugefügt.
 
-    ```C#
-	/// <summary>
-	/// Performs a login on the api.
-	/// </summary>
-	/// <returns>True on success</returns>
-	public async Task<bool> LoginAsync()
-	{
-		var deviceId = SessionService.DeviceId;
-		using (var client = new RestClient("http://{API-Adresse}/api/"))
-		{
-			var request = new RestRequest("users/{id}", HttpMethod.Get);
-			request.AddUrlSegment("id", deviceId);
+Dieser Code verwendet die im Modul 6/01 hinzugefügten **Windows Mobile Extensions for the UWP**, um eine eindeutige Geräteidentifikation zu erzeugen.
 
-			try
-			{
-				var result = await client.Execute<User>(request);
-				SessionService.UserName = result.Data.Name;
-
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-	}
-    ```
-
-7. Fügen Sie dem using-Block die folgenden Namespace-Verweise hinzu:
-
-    ```C#
-	using ImageApp.DataModel;
-	using RestSharp.Portable;
-    ```
-8. Inspizieren Sie den Code für das Login. 
-
-Um den Login zu ermöglichen, muss ebenfalls eine Registierung bei der API möglich sein.
-	
-
-#### Aufgabe 2 - Registrierung aktivieren
-Die App navigiert automatisch zur View **RegisterPage.xaml**, falls der Login auf dem SplashScreen fehlschlägt. Die dafür benötigte Logik wird in dieser Aufgabe eingefügt.
-
-1. Öffnen Sie die Datei **RegisterPage.xaml**, sowohl im XAML-Designer, als auch in der Code-Ansicht und machen Sie sich mit dem Code vertraut.
-2. Öffnen Sie die Datei **SessionService.cs** und ersetzen die Methode **RegisterAsync** durch den folgenden Codeblock (denken Sie daran, den Platzhalter für die API-Adresse anzupassen):
-
-    ```C#
-	/// <summary>
-	/// Registers the user on the api.
-	/// </summary>
-	/// <returns>True on success</returns>
-	public async Task<bool> RegisterAsync(string userName)
-	{
-		var user = new User { Identifier = SessionService.DeviceId, Name = userName };
-		using (var client = new RestClient("http://localhost:50983/api/"))
-		{
-			var request = new RestRequest("users", HttpMethod.Post);
-			request.AddBody(user);
-
-			try
-			{
-				var result = await client.Execute(request);
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
-		}
-	}
-    ```
-	
-3. Starten Sie das Debugging und Testen die Registrierung.
-4. Beenden Sie das Debugging und Starten es erneut. Sie sollten nun über den SplashScreen automatisch angemeldet werden und auf die Hauptseite der App weitergeleitet werden.
-
-Mit dieser Aufgabe haben Sie den Login und die Registrierung der App aktiviert. Sie können nun auf Funktionen der API zugreifen, die einen angemeldeten Benutzer erfordern.
-
-#### Aufgabe 3 - Den Like-Endpunkt aufrufen und die Anzahl Likes auf der Oberfläche anzeigen
-In dieser Aufgabe werden Sie den Like-Endpunkt der API anbinden und die Anzeige der Posts auf der Hauptseite dahingehend erweitern, so dass die Anzahl der Likes angezeigt werden kann.
+#### Aufgabe 2 - Den Like-Endpunkt aufrufen und die Anzahl Likes auf der Oberfläche anzeigen
+In dieser Aufgabe werden Sie den Like-Endpunkt der API anbinden und die Anzeige der Posts auf der Hauptseite erweitern, so dass die Anzahl der Likes angezeigt werden kann.
 
 1. Öffnen Sie die Datei **MainViewModel.cs**.
-2. Fügen Sie der Klasse ein neues Attribut zu, welches den aktuell angezeigten Post speichert:
+2. Binden Sie die folgende using-Direktive ein:
 
     ```C#
-	private Post currentPost;
-
-	/// <summary>
-	/// Gets or sets the current post.
-	/// </summary>
-	public Post CurrentPost
-	{
-		get { return currentPost; }
-		set { this.SetProperty(ref this.currentPost, value); }
-	}
-    ```
-	
-3. Ersetzen Sie den Code der Methode **Like** durch den folgenden und ersetzen Sie den Platzhalter für die API-Adresse:
+	using ImageApp.Utils;
+	```
+3. Ersetzen Sie den Code der Methode **Like** durch den nachfolgenden Codeblock und ersetzen Sie ggf. die API-Adresse:
 
     ```C#
-	private async void Like(object obj)
-	{
-		await this.LikePostAsync();
-	}
-	
-	/// <summary>
-	/// Toggles the like of the current post on the api.
-	/// </summary>
-	public async Task LikePostAsync()
-	{
-		var like = new Like 
-		{
-			PostId = this.CurrentPost.Id,
-			UserIdentifier = ImageApp.Services.SessionService.DeviceId
-		};
+    private async void Like(object obj)
+    {
+        var post = obj as Post;
+        if (post != null)
+        {
+            await this.LikePostAsync(post);
+        }
+    }
 
-		using (var client = new RestClient("http://{API-Adresse}/api/"))
-		{
-			var request = new RestRequest("likes", HttpMethod.Post);
-			request.AddBody(like);
-			var result = await client.Execute(request);
-			
-			if (result.StatusCode == System.Net.HttpStatusCode.Created)
-			{
-				this.CurrentPost.Likes++;
-			}
-			else
-			{
-				this.CurrentPost.Likes--;
-			}
-		}
-	}
+    /// <summary>
+    /// Toggles the like of the current post on the api.
+    /// </summary>
+    public async Task LikePostAsync(Post post)
+    {
+        var like = new Like
+        {
+            PostId = post.Id,
+            UserIdentifier = DeviceUtils.DeviceId
+        };
+
+        using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
+        {
+            var request = new RestRequest("likes", Method.POST);
+            request.AddBody(like);
+
+            var result = await client.Execute(request);
+
+            if (result.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                post.Likes++;
+            }
+            else
+            {
+                post.Likes--;
+            }
+        }
+    }
     ```
 
 4. Machen Sie sich mit dem Code zum Liken eines Posts vertraut.
 5. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
-6. Ersetzen Sie den Code des Pivots, in dem die Posts angezeigt werden durch den Folgenden:
+6. Ersetzen Sie den **Textblock** der bisher statisch "**0**" Likes anzeigt, durch folgenden:
 	
     ```XML  
-	<Pivot x:Name="PostPivot" Grid.Row="1" Margin="0,27,0,0" ItemsSource="{Binding Posts}" SelectedItem="{Binding CurrentPost, Mode=TwoWay}">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Title}" FontSize="42" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <Pivot.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Style="{StaticResource BaseTextBlockStyle}"
-                                   Text="Likes: "/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BaseTextBlockStyle}"
-                                   Text="{Binding Likes}" />
-                        <Image Grid.Row="1" Grid.ColumnSpan="2"
-                               Source="{Binding ImageUri}"/>
-                    </Grid>
-                </DataTemplate>
-            </Pivot.ItemTemplate>
-        </Pivot>
+	<TextBlock FontSize="18" Margin="0,6,0,0">
+        <Run Text="(" />
+        <Run Text="{Binding Likes}" />
+        <Run Text=")" />
+    </TextBlock>
     ```
 
-7. Inspizieren Sie den neuen XAML-Code und machen Sie sich mit den Änderungen vertraut.
-8. Starten Sie das Debugging und testen Sie die Like-Funktion
+7. Starten Sie das Debugging und testen Sie die Like-Funktion
 	
 
 ### Zusammenfassung
+
 Mit Beendung dieser Session haben Sie gelernt:  
 - Die RestSharp-Bibliothek zu verwenden  
-- Auf eine API zuzugreifen
+- Wie man auf eine API zugreift und die Daten in einer App anzeigt
