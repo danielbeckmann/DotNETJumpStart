@@ -1,4 +1,4 @@
-# Modul 6/03 - Entwicklung einer App für die universelle Windows Plattform: Anbindung der API über Services
+# Modul 6/03 - Entwicklung einer App für die universelle Windows Plattform: Integration von APIs
 
 ## Übersicht
 

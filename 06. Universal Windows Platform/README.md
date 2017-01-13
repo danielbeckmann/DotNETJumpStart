@@ -10,7 +10,7 @@ Sehen Sie sich die zu dem Modul gehörende [Präsentation](Entwicklung einer App f
 
 ## Hands-Ons
 
-1. [Einrichtung und Projektsetup](01. Projektsetup/README.md) zu diesem Modul.
-2. [Model-View-ViewModel (MVVM)](02. MVVM/README.md)
+1. [Projekteinrichtung und Views](01. Projektsetup/README.md)
+2. [MVVM Grundlagen (MVVM)](02. MVVM/README.md)
 3. [Integration von APIs](03. API Integration/README.md)
-4. [Windows API: Der FileOpenPicker](04. Der FileOpenPicker/README.MD)
+4. [Windows APIs - Der FileOpenPicker](04. FileOpenPicker/README.MD)
