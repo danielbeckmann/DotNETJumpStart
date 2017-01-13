@@ -28,7 +28,7 @@ In dieser Übung werden Sie die Datenklassen der vorhin entwickelten API in das A
 
 #### Aufgabe 1 - Datenklassen hinzufügen
 Die Klassen des Datenmodells der API enthalten unnötige Annotationen, die in einem App-Projekt nicht
-benötigt werden (z.B. [Required]). Die Datenklassen wurden im Vorfeld bereinigt und im Ordner **Dateien/DataModel** des aktuellen Hands-Ons bereitgestellt.
+benötigt werden (z.B. [Required]). Die Datenklassen wurden im Vorfeld bereinigt und im Ordner **Dateien/DataModel** des aktuellen Hands-Ons abgelegt.
 
 1. Erzeugen Sie einen neuen Ordner **DataModel** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im **Projektmappen-Explorer** tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataModel** und wählen **Hinzufügen/Vorhandenes Element**. 
@@ -144,20 +144,11 @@ In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite e
     ``` 
   
 3. Fügen Sie dem **GridView**-Element das folgende Attribut hinzu: **ItemsSource="{Binding Posts}"**. Dadurch wird eine Datenbindung zwischen dem GridView und der Eigenschaft **Posts** im ViewModel erzeugt.
-4. Fügen Sie innerhalb des **DataTemplate** des **GridViews** (bei der TODO-Annotation) folgenden XAML-Codeblock hinzu und machen Sie sich mit dem Code vertraut.
+4. Fügen Sie innerhalb des **DataTemplate** des **GridViews** (bei der TODO-Annotation) folgenden XAML-Codeblock hinzu.
 
     ```XML  
     <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
     <Image Source="{Binding ImageUri}" Grid.Row="1" />
-
-    <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
-        <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}" />
-        <TextBlock FontSize="18" Margin="0,6,0,0">
-            <Run Text="(" />
-            <Run Text="0" />
-            <Run Text=")" />
-        </TextBlock>
-    </StackPanel>
     ``` 
   
 5. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das GridView gebunden und es werden die Bilder mit ihren Titel in einer Listendarstellung angezeigt.
@@ -201,15 +192,6 @@ Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten D
                         <!-- TODO: add grid template here -->
                         <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
                         <Image Source="{Binding ImageUri}" Grid.Row="1" />
-
-                        <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
-                            <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}" />
-                            <TextBlock FontSize="18" Margin="0,6,0,0">
-                                <Run Text="(" />
-                                <Run Text="0" />
-                                <Run Text=")" />
-                            </TextBlock>
-                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -235,7 +217,7 @@ Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten D
 <a name="Exercise3"></a>
 ### Übung 3: Verwenden eines IValueConverters
 
-In dieser Übung kommt der **CollectionToVisibilityConverter** auf der Hauptseite zum Einsatz. Er wandelt die Anzahl von Elementen in einer Auflistung (Collection) in einen Sichtbarkeitszustand um.
+In dieser Übung kommt der **CollectionToVisibilityConverter** auf der Hauptseite zum Einsatz. Er konvertiert die Anzahl der Elemente in einer Auflistung (Collection) in einen Sichtbarkeitszustand.
 
 **Konverterlogik**:
 - Elemente in einer Auflistung vorhanden -> XAML-Element ist sichtbar
@@ -346,14 +328,13 @@ In diesem Schritt werden die Commands im ViewModel angelegt.
 Sie haben in dieser Aufgabe Commands erstellt, die nun auf der Hauptseite verwendet werden können. Hierzu muss im nächsten Schritt noch die Datenbindung mit XAML hergestellt werden.
 
 #### Aufgabe 2 - Datenbindung für Commands festlegen
-In diesem Schritt werden die Commands mit der Hauptseite verbunden. D
+In diesem Schritt werden die Commands mit der Hauptseite verbunden.
 
 1. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
 2. Fügen Sie der Schaltfläche zum "Sortieren nach Bewertung" (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding SortRatingCommand}"**
 3. Fügen Sie der Schaltfläche zum "Sortieren nach dem Datum" (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding SortDateCommand}"**
-4. Fügen Sie der Like-Schaltfläche (im **DataTemplate** des **GridViews**) folgende Attribute hinzu: **Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}"**
-5. Fügen Sie der Schaltfläche zum Aktualisieren (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding RefreshCommand}"**
-6. Starten sie das Debugging und Testen Sie die Schaltflächen in der unteren App-Bar. Es sollten Testdialoge angezeigt werden.
+4. Fügen Sie der Schaltfläche zum Aktualisieren (in der **BottomAppBar**) das folgende Attribut hinzu: **Command="{Binding RefreshCommand}"**
+5. Starten sie das Debugging und Testen Sie die Schaltflächen in der unteren App-Bar. Es sollten Dialoge angezeigt werden.
 
 In dieser Übung haben Sie gelernt, wie man Commands verwendet.
 

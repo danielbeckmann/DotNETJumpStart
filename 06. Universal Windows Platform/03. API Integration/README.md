@@ -74,7 +74,8 @@ Mit RestSharp können die Posts sehr einfach über einen GET-Aufruf abgerufen we
     ```
 	
 4. Machen Sie sich mit dem eingefügtem Code vertraut und versuchen diesen nachzuvollziehen.
-Das MainViewModel verfügt nun über eine Methode, um die Posts von der API abzurufen und in seiner Auflistung zu speichern, die über Da
+
+Das MainViewModel verfügt nun über eine Methode, um die Posts von der API abzurufen und in seiner Auflistung zu speichern.
 
 #### Aufgabe 2 - GetPostsAsync aufrufen
 Die Methode **GetPostsAsync** muss im nächsten Schritt noch aufgerufen werden. Hierzu binden wir den Methodenaufruf in die Hauptseite ein.
@@ -207,19 +208,23 @@ In dieser Aufgabe werden Sie den Like-Endpunkt der API anbinden und die Anzeige 
     }
     ```
 
-4. Machen Sie sich mit dem Code zum Liken eines Posts vertraut.
+4. Machen Sie sich mit dem Code zum Liken eines Posts vertraut. Mit dem Befehl **DeviceUtils.DeviceId** wird die oben erwähnte Device-Id abgerufen.
 5. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
-6. Ersetzen Sie den **Textblock** der bisher statisch "**0**" Likes anzeigt, durch folgenden:
+6. Fügen Sie dem **DataTemplate** des **GridView** unterhalb des **Image** den folgenden Codeblock hinzu:
 	
     ```XML  
-	<TextBlock FontSize="18" Margin="0,6,0,0">
-        <Run Text="(" />
-        <Run Text="{Binding Likes}" />
-        <Run Text=")" />
-    </TextBlock>
+	<StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
+        <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}"
+                Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}"/>
+        <TextBlock FontSize="18" Margin="0,6,0,0">
+            <Run Text="(" />
+            <Run Text="{Binding Likes}" />
+            <Run Text=")" />
+        </TextBlock>
+    </StackPanel>
     ```
 
-7. Starten Sie das Debugging und testen Sie die Like-Funktion
+7. Starten Sie das Debugging und Testen Sie die Like-Funktion
 	
 
 ### Zusammenfassung

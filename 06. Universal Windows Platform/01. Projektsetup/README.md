@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-In diesem Hands-On werden Sie das Projekt aufsetzen und die Hauptseite der App mit XAML erstellen.
+In diesem Hands-On werden Sie das Projekt erstellen und die Hauptseite der App mit XAML aufbauen.
 
 _Hinweis: Wir verwenden einige Logos von externen Quellen, mit der freundlichen Unterstützung von_ http://www.alienvalley.com
 
@@ -39,7 +39,7 @@ In diesem Schritt wird das Projekt in Visual Studio angelegt und der aktuellen P
    2. Wählen Sie **Leere App (Universelle Windows-App)**.
    3. Nennen Sie das Projekt **ImageApp** und bestätigen mit **OK**.<br/><br/>
    ![](_images/create-project.png?raw=true "Abbildung 2")<br/>
-4. Wählen Sie folgende Einstellungen für die Zielversion in dem sich öffnenden Dialog:<br/><br/>
+4. Wählen Sie folgende Einstellungen für die Zielversion, in dem sich öffnenden Dialog:<br/><br/>
    ![](_images/version-select.png?raw=true "Abbildung 3")<br/>
    
 Falls auf dem System keine Entwicklerlizenz installiert ist, werden Sie nun mit einem Dialog aufgefordert, eine solche zu beantragen. Sollte das nicht der Fall sein, können Sie die nächste Aufgabe überspringen.
@@ -56,27 +56,26 @@ Wenn Sie zum ersten Mal eine App auf einem Gerät ausführen oder debuggen wolle
 4. Nachdem Sie die Lizenz auf dem lokalen Computer installiert haben, wird auf diesem Computer erst dann wieder eine entsprechende Benutzeraufforderung eingeblendet, wenn die Lizenz abläuft.<br/><br/>
  ![](_images/license-3.png?raw=true "Abbildung 6")<br/>
 
-#### Aufgabe 3: Startprojekt setzen
+#### Aufgabe 3: Startprojekt festlegen
 
 Vor den nächsten Schritten muss das neue Projekt noch als **Startprojekt** festgelegt werden.
 
-1. Machen Sie einen Rechtsklick auf das neue Projekt **ImageApp** und wählen **Als Startprojekt festlegen**.
+1. Machen Sie einen Rechtsklick auf das neue Projekt **ImageApp** im **Projektmappen-Explorer** und wählen **Als Startprojekt festlegen**.
 2. Machen Sie einen Rechtsklick auf die Projektmappe **DotNETJumpStart** und öffnen den **Konfigurations-Manager**.
-3. Dort wählen Sie bei der **ImageApp** die Optionen "**Erstellen**" und "**Bereitstellen**" an.<br><br>
+3. Dort wählen Sie bei der **ImageApp** die Optionen "**Erstellen**" und "**Bereitstellen**" aus.<br><br>
   ![](_images/config-manager.png?raw=true "Abbildung 7")<br/>
 4. Wenn Sie nun das Debugging mit **F5** starten, so wird die App automatisch erstellt und gestartet.
-
-Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordner sind im Projekt enthalten:
+5. Machen Sie sich nun mit der Projektstruktur vertraut. Folgende Dateien und Ordner sind im Projekt enthalten:
 - **Assets/**: Enthält App-Logos.
 - **App.xaml**: Die Hauptdatei der App, die für den Startvorgang verantwortlich ist.
 - **MainPage.xaml**: Die erste Seite der App, die automatisch bei App-Start aufgerufen wird.
-- **.TemporaryKey.pfx**: Temporäres Entwicklerzertifikat
+- **TemporaryKey.pfx**: Temporäres Entwicklerzertifikat
 - **Package.appxmanifest**: Die Manifestdatei, in der App-Einstellungen getroffen werden.
 - **project.json**: Projektdatei von Visual Studio
 
 #### Aufgabe 4: Mobile Extension hinzufügen
 
-Um gerätespezifische Funktionen auf Desktop-PCs und Smartphones verwenden zu können, müssen noch sogenannte "**Extension SDKs**" hinzugefügt werden. Dieses benötigen wir in einem der späteren Hands-Ons.
+Um auch gerätespezifische Funktionen von Smartphones verwenden zu können, muss noch ein sogenanntes "**Extension SDK**" hinzugefügt werden. Dieses benötigen wir in einem der späteren Hands-Ons.
 
 1. Hierzu machen Sie einen Rechtsklick auf **Verweise** in der Projektmappe und wählen **Verweis hinzufügen** aus.<br><br>
   ![](_images/verweise.png?raw=true "Abbildung 8")<br/>
@@ -108,8 +107,8 @@ Diese Einstellungen können im sogenannten **App-Manifest** getroffen werden.
 13. Dort finden Sie bereits Ihre App mit dem eingestellten Namen.<br/><br/>
    ![](_images/windows-start-menu.png?raw=true "Abbildung 13")<br/>
 
-#### Aufgabe 4: Benötigte Dateien referenzieren
-Es wurden für Sie bereits einige Dateien vorbereitet, die häufig in App-Projekten benötigt werden. Auch werden einige Views vorgegeben, um im zeitlichen Rahmen der Veranstaltung zu bleiben. Die Dateien sollen in diesem Schritt in das Projekt eingebunden werden.
+#### Aufgabe 6: Benötigte Dateien referenzieren
+Es wurden bereits einige Dateien für Sie vorbereitet, die häufig in App-Projekten benötigt werden. Auch werden einige Views vorgegeben, um im zeitlichen Rahmen der Veranstaltung zu bleiben. Die Dateien sollen in diesem Schritt in das Projekt eingebunden werden.
 
 1. Erzeugen Sie einen neuen Ordner **Common** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im **Projektmappen-Explorer** tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Fügen Sie daraufhin diesem Ordner die Dateien aus dem aktuellen Hands-On Unterordner **Dateien/Common** hinzu. Hierzu machen Sie einen Rechtsklick auf den neu erstellten Ordner Common und wählen **Hinzufügen/Vorhandenes Element**. 
@@ -147,8 +146,7 @@ Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) ang
         <!-- TODO: add Page.Resources here -->
 
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
-            <GridView ItemsSource="{Binding Posts}" 
-                      IsItemClickEnabled="False" 
+            <GridView IsItemClickEnabled="False" 
                       SelectionMode="None">
                 <GridView.ItemTemplate>
                     <DataTemplate>
@@ -183,7 +181,7 @@ Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) ang
     ``` 
   
 4. Inspizieren Sie den XAML-Code und die daraus resultierenden Steuerelemente im Designer.
-5. Starten Sie das Debugging und sehen sich das Ergebnis an.<br/><br/>
+5. Starten Sie das Debugging und sehen sich das Ergebnis an. Das **Grid** wird nicht angezeigt, da es bisher keine Einträge enthält.<br/><br/>
  ![](_images/main-page.png?raw=true "Abbildung 15")<br/>
 
 #### Aufgabe 2 - In-App-Navigation hinzufügen
@@ -285,7 +283,7 @@ Die Schaltfläche zum Zurücknavigieren muss manuell aktiviert werden. Sie werde
 5. Starten Sie die App und versuchen von der **Hinzufügen-Seite** zurück zu navigieren. Es sollte eine neue Schaltfläche angezeigt werden.<br/><br/>
  ![](_images/back-button-app.png?raw=true "Abbildung 16")<br/>
 
-Auf Smartphones wird im Vergleich keine Zurück-Schaltfläche angezeigt. Durch den hinzugefügten Code wird jedoch die Zurück-Taste auf dem Gerät aktiviert.
+Auf Smartphones wird vergleichsweise keine Zurück-Schaltfläche angezeigt, sondern die Hardware-Zurück-Taste auf dem Gerät aktiviert.
 
 ## Zusammenfassung
 
