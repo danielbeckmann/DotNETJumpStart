@@ -67,7 +67,7 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
   ![](_images/user-entity.png?raw=true "Abbildung 6")
 
 4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required** und **MaxLength = 50** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
-	<!--```C#
+	<!-- ```C#
 	/// <summary>
 	/// Gets or sets the users name
 	/// </summary>
