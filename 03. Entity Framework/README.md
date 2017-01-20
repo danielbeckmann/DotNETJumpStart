@@ -6,13 +6,13 @@ In diesem Modul lernen Sie die Grundlagen zum Entity Framework kennen.
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation] (Datenmodellierung und -abfrage mit dem Entity Framework) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Entity Framework.pptx) zu diesem Modul an.
 
 ## Ziele
 
 - Das Entity Framework kennenlernen
-- Grundlagen: Datenzugriffsmethoden
-- Grundlagen: Die Razor Syntax und View Rendering
+- Datenzugriffsmethoden kennenlernen
+- Die Razor Syntax und View Rendering kennenlernen
 
 ---
 
@@ -27,7 +27,7 @@ Dieses Hands-On besteht aus den folgenden Übungen:<br/>
 ### Übung 1: Erstellen des Datenmodells
 
 In dieser Übung werden wir:
-- Das NuGet Paket **EntityFramework** installiert
+- Das NuGet Paket **EntityFramework** installieren
 - Das Datenmodell mit Code First erstellen
 - Eigenschaften zu Entitäten hinzufügen
 - Testdaten erzeugen
@@ -39,19 +39,19 @@ Abbildung 1: Das fertige Datenmodell
 #### Aufgabe 1 - NuGet-Paket EntityFramework installieren
 In dieser Aufgabe wird das NuGet-Paket **EntityFramework** installiert.
 
-1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+2. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 2")
-2. Im Paketmanager, unter dem Reiter "**Durchsuchen**", wählen Sie links das Paket **EntityFramework** und klicken anschließend rechts auf **Installieren**
+3. Im Paketmanager, unter dem Reiter "**Durchsuchen**", wählen Sie links das Paket **EntityFramework** und klicken anschließend rechts auf **Installieren**<br/><br/>
    ![](_images/NuGet-EntityFramework.png?raw=true "Abbildung 3")
 
-Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwicklung fort zu fahren.  
+Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwicklung zu beginnen.  
 
 #### Aufgabe 2 - Hinzufügen der Entitäten
 
-1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
-2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Models** und wählen **Hinzufügen/Vorhandenes Element**
-3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Models** aus dem aktuellen Hands-On und wählen alle Dateien aus.
-4. Die Projektmappe sollte nun wie folgt aussehen:
+1. Machen Sie einen Rechtsklick im **Projektmappen-Explorer** auf den Ordner **Models** und wählen **Hinzufügen/Vorhandenes Element**
+2. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Models** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+3. Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](_images/start.png?raw=true "Abbildung 4")
 
@@ -60,32 +60,28 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 1. Öffnen Sie die Aufgabenliste über die Menüleiste **Ansicht/Aufgabenleiste** oder drücken Sie die Tasten **STRG+W, T**
 2. Das Aufgabenfenster sollte wie folgt aussehen:
 
-![](_images/todos.png?raw=true "Abbildung 5")
+  ![](_images/todos.png?raw=true "Abbildung 5")
 
 3. Doppelklicken Sie auf den ersten Eintrag oder öffnen Sie die Datei **Models/User.cs**
 
-![](_images/user-entity.png?raw=true "Abbildung 6")
+  ![](_images/user-entity.png?raw=true "Abbildung 6")
 
-4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required**, **MaxLength = 50** und **Unique** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
-
-    <!--```C#
-    /// <summary>
-    /// Gets or sets the users name
-    /// </summary>
-    [Required]
-    [MaxLength(50)]
-    public string Name { get; set; }
-    ```-->
-	
-5. Fügen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft stellt eine Eigenschaft aller vom Benutzer geposteten Einträge dar. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Likes“.	
-
+4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required** und **MaxLength = 50** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
+	<!--```C#
+	/// <summary>
+	/// Gets or sets the users name
+	/// </summary>
+	[Required]
+	[MaxLength(50)]
+	public string Name { get; set; }
+	```-->
+5. Fügen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft soll alle vom Benutzer geposteten Einträge enthalten. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Likes“.	
 	<!-- ```C#
-    /// <summary>
-    /// Gets or sets the users posts.
-    /// </summary>
-    public virtual ICollection<Post> Posts { get; set; }
+	/// <summary>
+	/// Gets or sets the users posts.
+	/// </summary>
+	public virtual ICollection<Post> Posts { get; set; }
 	``` -->
-	
 6. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 	
 
@@ -95,12 +91,10 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataContext** und wählen **Hinzufügen/Vorhandenes Element**.
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataContext** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
-
-![](_images/dbcontext.png?raw=true "Abbildung 7")
+  ![](_images/dbcontext.png?raw=true "Abbildung 7")
 
 5. Öffnen Sie in der Aufgabenliste die erste Aufgabe oder öffnen Sie die Datei **ImageAppDbContext.cs**
-6. Fügen Sie der **ImageAppDbContext** Klasse die Set-Eigenschaften für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft zur Entität **_images**
-
+6. Fügen Sie der **ImageAppDbContext** Klasse die DbSets für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft **Images**. Über ein DbSet können Sie auf die Datenbankeinträge einer bestimmten Entität zugreifen (wie z.B. Posts).
 	<!--```C#
     public DbSet<Post> Posts { get; set; }
 
@@ -108,9 +102,8 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 
     public DbSet<User> Users { get; set; }
 	```-->
-	
 7. Öffnen Sie die Datei **ImageAppDbInitializer.cs**
-8. Ersetzen Sie den Rumpf der Methode **Seed** mit folgendem Inhalt:
+8. In dieser Datei können Sie die Datenbank mit Beispieldaten initialisieren. Ersetzen Sie den Rumpf der Methode **Seed** dazu mit folgendem Inhalt:
 
 	```C#
     protected override void Seed(ImageAppDbContext context)
@@ -176,7 +169,7 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 
 #### Aufgabe 6 - DbContext und DbInitializer bekannt machen 
 1. Öffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
-2. Fügen Sie den folgenden am Ende der Datei direkt vor dem schleißenden **</configuration>**-Tag ein.
+2. Fügen Sie den folgenden am Ende der Datei direkt vor dem schließenden **</configuration>**-Tag ein.
 
     ```XML
       <connectionStrings>
@@ -202,15 +195,15 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 	
 4. Speichern Sie Ihre Änderungen und erstellen die Projektmappe neu.
 
-Durch diese Änderung haben Sie sichergestellt, das die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
+Durch diese Änderung haben Sie sichergestellt, das 1.) Die Datenbank in einer lokalen Datei (app-db.mdf) erzeugt wird, falls sie noch nicht vorhanden ist und B) Die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
 
 <a name="Exercise2"></a>
 ### Übung 2: Datenzugriff
 
 In dieser Übung werden wir:
 - Ein Bild aus einem HttpRequest speichern
-- Einem Bild ein Wasserzeichen geben
-- Daten festlegen, die eine View anzeigen sollte
+- Einem Bild ein Wasserzeichen hinzufügen
+- Daten festlegen, die in einer View angezeigt werden sollen
 
 #### Aufgabe 1 - Hinzufügen der ImageUtils und Bearbeiten der Controller
 
@@ -220,7 +213,7 @@ In dieser Übung werden wir:
 4. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Utils** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 5. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/solution-explorer.png?raw=true "Abbildung 1")
+ ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
 6. Öffnen Sie die Datei **Utils/ImageUtility.cs** oder öffnen Sie in der Aufgabenliste die erste Aufgabe 
 7. Navigieren Sie zu der Funktion **ResizeImageAndSaveToDisk**
