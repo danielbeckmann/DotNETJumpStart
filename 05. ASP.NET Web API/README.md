@@ -7,7 +7,7 @@ Hierzu werden Sie eine Schnittstelle implementieren, über die eine App Posts ab
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API.pptx) zu diesem Modul an.
 
 ## Ziele
 
@@ -30,16 +30,17 @@ In diesem Hands-On lernen Sie:
 
 #### Aufgabe 1 - Dto-Klassen hinzufügen
 
-APIs verwenden üblicherweise ein einfacheres Datenmodell, als das, was für den Datenbankzugriff verwendet wird (sogenannte DTOs, Data-Transfer-Objekte). Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
+APIs verwenden üblicherweise ein einfacheres Datenmodell, als das was für den Datenbankzugriff verwendet wird. Diese Datenklassen werden als DTOs (Data-Transfer-Objekte) bezeichnet. Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
 
-1.	Erzeugen Sie einen neuen Ordner mit dem Namen "**Dtos**" unterhalb des Ordners "**Models**". Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner "**Models/Dtos**" und wählen **Hinzufügen/Vorhandenes Element**.
-3.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wählen alle Dateien aus.
-4.	Die Projektmappe sollte nun wie folgt aussehen:
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+2.	Erzeugen Sie einen neuen Ordner mit dem Namen "**Dtos**" unterhalb des Ordners "**Models**". Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
+3.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner "**Models/Dtos**" und wählen **Hinzufügen/Vorhandenes Element**.
+4.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+5.	Die Projektmappe sollte nun wie folgt aussehen:
 
  ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
-5. Vergleichen Sie den Inhalt der einzelnen **Dtos** mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
+6. Vergleichen Sie den Inhalt der einzelnen **Dtos** mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
 
 
 #### Aufgabe 2 - ApiController vorbereiten
@@ -54,10 +55,10 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
  ![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
 
 5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code vertraut.
-5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten Controller wird die API automatisch mit gestartet.
+5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten ApiController wird die API automatisch gestartet.
 6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die Adresse an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browser in XML-Darstellung:
 
- ![](_images/xml-output.png?raw=true "Abbildung 2")
+ ![](_images/xml-output-browser.png?raw=true "Abbildung 2")
 
 7. Schließen Sie das Browserfenster und beenden Sie das aktive Debugging mit Umschalt+F5.
 
@@ -78,7 +79,7 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 
 3. Starten Sie die Webanwendung und rufen "**/api/posts**" erneut im Browser auf. Die Ausgabe sollte nun in JSON erfolgen:
 
-  ![](_images/json-output.png?raw=true "Abbildung 2")
+  ![](_images/json-output-browser.png?raw=true "Abbildung 2")
 
 4. Beenden Sie das Debugging.
 

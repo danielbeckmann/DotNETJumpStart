@@ -228,7 +228,7 @@ In dieser Übung werden wir:
 
 #### Aufgabe 3 - Anwendung starten
 1. Starten Sie Ihre Anwendung über die Menüleiste **Debuggen/Debugging starten** oder das Tastenkürzel **F5**
-2. Durch den Zugriff auf den **ImageAppDbContext** im HomeController wird die Datenbank automatisch generiert und Testdaten werden eingefügt
+2. Durch den Zugriff auf den **ImageAppDbContext** im **HomeController** wird die Datenbank automatisch generiert und Testdaten werden eingefügt
 3. Beenden Sie das Debugging durch das Schließen des Browsers oder über die Menüleiste **Debugging/Debugging beenden** innerhalb von Visual Studio
 
 #### Aufgabe 4 - Tabelldaten anzeigen
@@ -271,7 +271,7 @@ In dieser Übung werden wir:
 	</ul>
 	```
 	
-4. Speichern Sie die Datei.
+4. Speichern Sie die Datei und machen Sie sich mit der Struktur vertraut. Betrachten Sie, wie die vom HomeController zurückgegebene Liste mit Post-Einträgen in der View verwendet wird.
 5. Starten Sie Ihre Anwendung über das Tastenkürzel **F5** oder über die Menüleiste **Debuggen/Debuggen starten**
 6. Ihre Website sollte nun wie folgt aussehen:
 
@@ -283,7 +283,6 @@ In dieser Übung werden wir:
 3. Öffnen Sie die Datei **Views/Home/Index.cshtml**
 4. Umhüllen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im Großformat anzeigt
 
-    TODO: Den Quellcode eventuell raus??
 	```HTML
     <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
 	```
@@ -293,7 +292,7 @@ In dieser Übung werden wir:
 7. **Aktualisieren** Sie die Seite
 8. Klicken Sie auf eines der Bilder:
 
-![](_images/image.png?raw=true "Abbildung 2")  
+  ![](_images/image.png?raw=true "Abbildung 2")  
 
 
 9. Beenden Sie das Debugging
@@ -304,11 +303,8 @@ Mit Beendung dieser Session haben Sie gelernt:
 - Was der DbContext tut
 - Wie Eigenschaften einer Entität deklariert werden müssen
 - Wie Sie die Aufgabenliste von Visual Studio verwenden  
------------------------------- Ist dem so? ------------------------------
-- Wie eine Datei aus einem HttpRequest gespeichert werden kann  
------------------------------- Ist dem so? ------------------------------
-- Wie man einem Bild ein Overlay hinzugefügt
+- Wie man einem Bild ein Wasserzeichen hinzufügt
 - Wie man LINQ verwendet
 - Wie Sie Razor-Syntax verwenden, um auf Eigenschaften eines ViewModels zuzugreifen
-- Wie Sie Html-Syntax verwenden, um Daten aus einem ViewModel anzuzeigen
+- Wie Sie HTML-Syntax verwenden, um Daten aus einem ViewModel anzuzeigen
 - Dass Sie Änderungen am Code auch vornehmen können, während sich die Anwendung im Debugging befindet
