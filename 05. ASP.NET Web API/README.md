@@ -54,7 +54,7 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
 
  ![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
 
-5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code vertraut.
+5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code der Methode **Get** vertraut. Diese wird automatisch aufgerufen, wenn ein Zugriff über den URL-Pfad "api/posts" erfolgt.
 5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten ApiController wird die API automatisch gestartet.
 6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die aktuelle URL an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browserfenster in XML-Darstellung:
 
@@ -157,7 +157,7 @@ In Ihrer Projektmappe wird vom Framework bereits automatisch eine Dokumentations
 
 Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die Ausgabe der **XML-Dokumentation** aktiviert werden.
 
-1. Öffnen Sie hierzu die Datei **Areas/HelpPage/App_Start/HelpPageConfig.cs** und kommentieren Sie folgende Zeile aus:
+1. Öffnen Sie hierzu die Datei **Areas/HelpPage/App_Start/HelpPageConfig.cs** und kommentieren Sie folgende Zeile in der Methode **Register** aus:
     
     ```C#
     config.SetDocumentationProvider(new XmlDocumentationProvider(
@@ -186,7 +186,7 @@ Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die
         }
     ```
 
-5. Starten Sie wieder die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare auftauchen.
+5. Erstellen und starten Sie die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare angezeigt werden.
 
 ## Zusammenfassung
 
