@@ -67,21 +67,7 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
   ![](_images/user-entity.png?raw=true "Abbildung 6")
 
 4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required** und **MaxLength = 50** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
-	<!-- ```C#
-	/// <summary>
-	/// Gets or sets the users name
-	/// </summary>
-	[Required]
-	[MaxLength(50)]
-	public string Name { get; set; }
-	```-->
 5. Fügen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft soll alle vom Benutzer geposteten Einträge enthalten. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Likes“.	
-	<!-- ```C#
-	/// <summary>
-	/// Gets or sets the users posts.
-	/// </summary>
-	public virtual ICollection<Post> Posts { get; set; }
-	``` -->
 6. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 	
 
@@ -90,18 +76,11 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 1. Erzeugen Sie einen neuen Ordner **DataContext** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataContext** und wählen **Hinzufügen/Vorhandenes Element**.
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataContext** aus dem aktuellen Hands-On und wählen alle Dateien aus.
-4. Die Projektmappe sollte nun wie folgt aussehen:
+4. Die Projektmappe sollte nun wie folgt aussehen: <br/><br/>
   ![](_images/dbcontext.png?raw=true "Abbildung 7")
 
 5. Öffnen Sie in der Aufgabenliste die erste Aufgabe oder öffnen Sie die Datei **ImageAppDbContext.cs**
-6. Fügen Sie der **ImageAppDbContext** Klasse die DbSets für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft **Images**. Über ein DbSet können Sie auf die Datenbankeinträge einer bestimmten Entität zugreifen (wie z.B. Posts).
-	<!--```C#
-    public DbSet<Post> Posts { get; set; }
-
-    public DbSet<Like> Likes { get; set; }
-
-    public DbSet<User> Users { get; set; }
-	```-->
+6. Fügen Sie der **ImageAppDbContext** Klasse 3 DbSets für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft **Images**. Über ein DbSet können Sie auf die Datenbankeinträge einer bestimmten Entität zugreifen (wie z.B. Posts).
 7. Öffnen Sie die Datei **ImageAppDbInitializer.cs**
 8. In dieser Datei können Sie die Datenbank mit Beispieldaten initialisieren. Ersetzen Sie den Rumpf der Methode **Seed** dazu mit folgendem Inhalt:
 
