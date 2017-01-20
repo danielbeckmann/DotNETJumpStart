@@ -56,7 +56,7 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
 
 5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code vertraut.
 5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten ApiController wird die API automatisch gestartet.
-6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die Adresse an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browser in XML-Darstellung:
+6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die aktuelle URL an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browserfenster in XML-Darstellung:
 
  ![](_images/xml-output-browser.png?raw=true "Abbildung 2")
 
@@ -70,12 +70,12 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 2. Fügen Sie folgende Zeilen ans Ende der Methode **Register** hinzu:
 
     ```C#
-        // Remove xml serializer
-        config.Formatters.Remove(config.Formatters.XmlFormatter);
+    // Remove xml serializer
+    config.Formatters.Remove(config.Formatters.XmlFormatter);
 
-        // Ignore EF object loop references
-        GlobalConfiguration.Configuration.Formatters.JsonFormatter.
-            SerializerSettings.Re‌ferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;    ```
+    // Ignore EF object loop references
+    GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Re‌ferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;    
+	```
 
 3. Starten Sie die Webanwendung und rufen "**/api/posts**" erneut im Browser auf. Die Ausgabe sollte nun in JSON erfolgen:
 
