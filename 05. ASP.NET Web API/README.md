@@ -7,7 +7,7 @@ Hierzu werden Sie eine Schnittstelle implementieren, über die eine App Posts ab
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API.pptx) zu diesem Modul an.
 
 ## Ziele
 
@@ -30,16 +30,17 @@ In diesem Hands-On lernen Sie:
 
 #### Aufgabe 1 - Dto-Klassen hinzufügen
 
-APIs verwenden üblicherweise ein einfacheres Datenmodell, als das, was für den Datenbankzugriff verwendet wird (sogenannte DTOs, Data-Transfer-Objekte). Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
+APIs verwenden üblicherweise ein einfacheres Datenmodell, als das was für den Datenbankzugriff verwendet wird. Diese Datenklassen werden als DTOs (Data-Transfer-Objekte) bezeichnet. Diese Datenklassen wurden bereits für Sie vorbereitet und müssen noch hinzugefügt werden:
 
-1.	Erzeugen Sie einen neuen Ordner mit dem Namen "**Dtos**" unterhalb des Ordners "**Models**". Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner "**Models/Dtos**" und wählen **Hinzufügen/Vorhandenes Element**.
-3.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wählen alle Dateien aus.
-4.	Die Projektmappe sollte nun wie folgt aussehen:
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+2.	Erzeugen Sie einen neuen Ordner mit dem Namen "**Dtos**" unterhalb des Ordners "**Models**". Sie können das über einen Rechtsklick auf den Ordner im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
+3.	Machen Sie einen Rechtsklick auf den neu erstellten Ordner "**Models/Dtos**" und wählen **Hinzufügen/Vorhandenes Element**.
+4.	Im Dialogfeld navigieren Sie in den Ordner **Models/Dtos** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+5.	Die Projektmappe sollte nun wie folgt aussehen:
 
  ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
-5. Vergleichen Sie den Inhalt der einzelnen **Dtos** mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
+6. Vergleichen Sie den Inhalt der einzelnen **Dtos** mit den Modelklassen, die von der Webanwendung für den Datenzugriff verwendet werden.
 
 
 #### Aufgabe 2 - ApiController vorbereiten
@@ -53,11 +54,11 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
 
  ![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
 
-5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code vertraut.
-5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten Controller wird die API automatisch mit gestartet.
-6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die Adresse an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browser in XML-Darstellung:
+5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code der Methode **Get** vertraut. Diese wird automatisch aufgerufen, wenn ein Zugriff über den URL-Pfad "api/posts" erfolgt.
+5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten ApiController wird die API automatisch gestartet.
+6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die aktuelle URL an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browserfenster in XML-Darstellung:
 
- ![](_images/xml-output.png?raw=true "Abbildung 2")
+ ![](_images/xml-output-browser.png?raw=true "Abbildung 2")
 
 7. Schließen Sie das Browserfenster und beenden Sie das aktive Debugging mit Umschalt+F5.
 
@@ -69,16 +70,16 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 2. Fügen Sie folgende Zeilen ans Ende der Methode **Register** hinzu:
 
     ```C#
-        // Remove xml serializer
-        config.Formatters.Remove(config.Formatters.XmlFormatter);
+    // Remove xml serializer
+    config.Formatters.Remove(config.Formatters.XmlFormatter);
 
-        // Ignore EF object loop references
-        GlobalConfiguration.Configuration.Formatters.JsonFormatter.
-            SerializerSettings.Re‌ferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;    ```
+    // Ignore EF object loop references
+    GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Re‌ferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;    
+	```
 
 3. Starten Sie die Webanwendung und rufen "**/api/posts**" erneut im Browser auf. Die Ausgabe sollte nun in JSON erfolgen:
 
-  ![](_images/json-output.png?raw=true "Abbildung 2")
+  ![](_images/json-output-browser.png?raw=true "Abbildung 2")
 
 4. Beenden Sie das Debugging.
 
@@ -156,7 +157,7 @@ In Ihrer Projektmappe wird vom Framework bereits automatisch eine Dokumentations
 
 Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die Ausgabe der **XML-Dokumentation** aktiviert werden.
 
-1. Öffnen Sie hierzu die Datei **Areas/HelpPage/App_Start/HelpPageConfig.cs** und kommentieren Sie folgende Zeile aus:
+1. Öffnen Sie hierzu die Datei **Areas/HelpPage/App_Start/HelpPageConfig.cs** und kommentieren Sie folgende Zeile in der Methode **Register** aus:
     
     ```C#
     config.SetDocumentationProvider(new XmlDocumentationProvider(
@@ -185,7 +186,7 @@ Um Ihre Quellcode-Kommentare ebenfalls in der Dokumentation anzuzeigen, muss die
         }
     ```
 
-5. Starten Sie wieder die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare auftauchen.
+5. Erstellen und starten Sie die Webanwendung und navigieren zur **API-Dokumentation**. Dort sollten nun die Kommentare angezeigt werden.
 
 ## Zusammenfassung
 

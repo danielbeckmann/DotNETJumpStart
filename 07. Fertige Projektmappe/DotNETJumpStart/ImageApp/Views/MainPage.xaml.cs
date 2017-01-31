@@ -41,11 +41,5 @@ namespace ImageApp.Views
         {
             this.Frame.Navigate(typeof(AddPostPage));
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var m = new MessageDialog("liked");
-            await m.ShowAsync();
-        }
     }
 }

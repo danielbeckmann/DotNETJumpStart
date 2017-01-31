@@ -9,10 +9,10 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
+using ImageApp.Utils;
 using RestSharp.Portable.HttpClient;
 using RestSharp.Portable;
 using ImageApp.DataModel;
-using ImageApp.Utils;
 
 namespace ImageApp.ViewModels
 {

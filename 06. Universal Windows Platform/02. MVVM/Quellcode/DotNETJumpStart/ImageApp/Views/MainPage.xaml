@@ -36,16 +36,6 @@
                         <!-- TODO: add grid template here -->
                         <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
                         <Image Source="{Binding ImageUri}" Grid.Row="1" />
-
-                        <StackPanel Grid.Row="2" Margin="0,12,0,0" Orientation="Horizontal">
-                            <Button Content="&#xE19F;" FontFamily="Segoe UI Symbol" Style="{StaticResource TextBlockButtonStyle}"
-                                    Command="{Binding DataContext.LikeCommand, ElementName=mainPage}" CommandParameter="{Binding}"/>
-                            <TextBlock FontSize="18" Margin="0,6,0,0">
-                                <Run Text="(" />
-                                <Run Text="0" />
-                                <Run Text=")" />
-                            </TextBlock>
-                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

@@ -3,7 +3,8 @@
 ## Übersicht 
 
 In diesem Modul lernen Sie die Grundlagen zu ASP.NET MVC kennen. Hierzu werden
-Sie die Businesslogik und Views zum Verwalten der Posts-Entität erstellen.
+Sie die Businesslogik und Views zum Verwalten der Posts-Entität erstellen. 
+Erste Aspekte von MVC haben Sie bereits im vorherigen Modul kennengelernt, als Sie den HomeController dazu verwendet haben, um auf der Startseite Posts anzuzeigen.
 
 ## Präsentation
 
@@ -11,13 +12,13 @@ Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.p
 
 ## Ziele
 
-In diesem Hands-On lernen Sie   
-- Wie man Scaffolding verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
-- Wie man Entitysets gezielt nach Einträgen filtert  
-- Wie man den Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+In diesem Hands-On lernen Sie:   
+- Wie man Scaffolding verwendet, um Views auf Basis einer Vorlage anzulegen  
+- Wie man EntitySets gezielt nach Einträgen filtert  
+- Wie man den Razor-Syntax verwendet, um Eigenschaften des Datenmodells anzuzeigen  
 - Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann  
 - Wie man die seitenübergreifende Navigationsleiste bearbeiten kann  
-- Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet  
+- Wie man CSS-Stile zu einer Seite hinzufügt und diese verwendet 
 
 ---
 
@@ -41,10 +42,10 @@ In dieser Übung werden wir:
 3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Controllers** aus dem aktuellen Hands-On und wählen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/solution-explorer.png?raw=true "Abbildung 1")
+  ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
 5. Öffnen Sie die Datei **PostsController.cs**
-6. Wir fügen nun den Code hinzu, der einen neuen Post erstellt. Ersetzen Sie hierzu den Code der Methode **public ActionResult Create(Post post)** durch:
+6. Wir fügen nun den Quellcode hinzu, der einen neuen Post erstellt. Ersetzen Sie hierzu den Quellcode der Methode **Create(Post post)** durch:
 
     ```C#
         // Validate that a image was selected
@@ -78,7 +79,7 @@ In dieser Übung werden wir:
         return View(post);
     ```
 
-7. Wir fügen nun den Code hinzu, der einen Post löscht. Ersetzen Sie hierzu den Code der Methode **ActionResult DeleteConfirmed(int id)** durch:
+7. Wir fügen nun den Quellcode hinzu, der einen Post löscht. Ersetzen Sie hierzu den Quellcode der Methode **DeleteConfirmed(int id)** durch:
 
     ```C#
         Post post = db.Posts.Find(id);
@@ -104,28 +105,28 @@ In dieser Übung werden wir:
 1. Erzeugen Sie einen neuen Ordner **Views/Posts** im aktuellen Projekt. Sie können das über einen Rechtsklick auf den Ordner **Views** im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
 2. Die Projektmappe sollte nun wie folgt aussehen:
 	
-![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
+  ![](_images/solution-explorer-2.png?raw=true "Abbildung 2")
 
 #### Aufgabe 3 - Hinzufügen von Ansichten für das Erstellen, Details, Editieren und Löschen von Posts
 
 1. Wählen Sie den Ordner **Views/Posts** an und fügen ihm über einen Rechtsklick durch einen Klick auf die Schaltfläche **Hinzufügen/Neues Gerüstelement** eine neue Ansicht hinzu
 2. Wählen Sie im aufgehenden Dialog die Vorlage **MVC5-Ansicht**
 
-![](_images/mvc-view.png?raw=true "Abbildung 3")
+  ![](_images/mvc-view.png?raw=true "Abbildung 3")
 
 3. Erstellen Sie eine Ansicht unter der Vorlage **Create** mit dem Namen **Create** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
-![](_images/scaffolding-1.png?raw=true "Abbildung 4")
+  ![](_images/scaffolding-1.png?raw=true "Abbildung 4")
 
 4. Wiederholen Sie die Schritte **1** bis **3** für die Ansichten mit den Namen **Delete**, **Details** und **Edit** sowie deren korrespondierenden Vorlagen
 5. Erstellen Sie eine Ansicht unter der Vorlage **List** mit dem Namen **Index** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
-![](_images/scaffolding-2.png?raw=true "Abbildung 5")
+  ![](_images/scaffolding-2.png?raw=true "Abbildung 5")
 
 6. Die Projektmappe sollte nun wie folgt aussehen:
 
-![](_images/solution-explorer-3.png?raw=true "Abbildung 6")
-
+  ![](_images/solution-explorer-3.png?raw=true "Abbildung 6")
+  
 #### Aufgabe 4 - Seitenübergreifende Navigationsleiste bearbeiten
 
 1. Öffnen Sie die Datei **Views/Shared/_Layout.cshtml**
@@ -137,9 +138,9 @@ In dieser Übung werden wir:
 	
 3. Fügen Sie dieser Auflistung einen weiteren **ActionLink** mit dem Titel **Posts** hinzu, der die Action **Index** innerhalb des *PostsController* aufruft
 
-    <!--```XML
+    ```XML
 	<li>@Html.ActionLink("Posts", "Index", "Posts", new { area = "" }, null)</li>
-	```-->
+	```
 	
 4. Öffnen Sie die Datei **Views/Home/Index.cshtml**
 5. Finden Sie das Element, dass das Bild eines Posts anzeigt
@@ -150,19 +151,19 @@ In dieser Übung werden wir:
 	
 6. Fügen Sie **unterhalb** dieses Elements einen **ActionLink** mit dem Titel **Details** ein, der die Action **Details** innerhalb des **PostsController** aufruft
 
-    <!--```XML
+    ```XML
 	<span>@Html.ActionLink("Details", "Details", "Posts", new { id = item.Id }, null)</span>
-    ```-->
+    ```
 	
 7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
 8. Die Anwendung sollte nun wie folgt aussehen:
 
-![](_images/posts.png?raw=true "Abbildung 7")
+  ![](_images/posts.png?raw=true "Abbildung 7")
 
 9. Klicken auf einen der **Details** Links um zu der Detailseite eines Post zu gelangen.
 10. Klicken Sie in der **Navigationsleiste** auf den Eintrag **Posts**, um zur Auflistung aller Posts zu gelangen.
 
-![](_images/posts-list.png?raw=true "Abbildung 8")
+  ![](_images/posts-list.png?raw=true "Abbildung 8")
 
 <a name="Exercise2"></a>
 ### Übung 2 - Ansichten anpassen
@@ -174,7 +175,7 @@ In dieser Übung werden wir:
 
 #### Aufgabe 1 - Mehr Felder in der Übersicht aller Posts
 
-1. Öffnen sie die Datei **Views/Posts/Index.cshtml**
+1. Öffnen Sie die Datei **Views/Posts/Index.cshtml**
 2. Ersetzen Sie den Inhalt der Datei mit folgendem:  
 TODO: Wirklich den ganzen Code vorgeben?
 
@@ -313,11 +314,12 @@ TODO: Wirklich den ganzen Code vorgeben?
 8. Rufen Sie die Detailansicht eines Posts auf
 9. Ihre Anwendung sollte nun wie folgt aussehen:
 
-![](_images/posts-details.png?raw=true "Abbildung 9")
+  ![](_images/posts-details.png?raw=true "Abbildung 9")
 
 #### Aufgabe 3 - Seite um einen CSS-Style erweitern
 
-1. Öffnen sie die Datei **Content/Site.css**
+TODO: brauchen wir das? - wenn ja, dann beschreiben was das macht 
+1. Öffnen Sie die Datei **Content/Site.css**
 2. Fügen Sie folgenden CSS-Style ein
 
     ```CSS
@@ -401,7 +403,7 @@ TODO: Wirklich den ganzen Code vorgeben?
 8. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
 9. Ihre Anwendung sollte nun wie folgt aussehen:
 
-![](_images/posts-edit.png?raw=true "Abbildung 10")
+  ![](_images/posts-edit.png?raw=true "Abbildung 10")
 
 10. Testen Sie den Upload, indem Sie das Bild eines Posts ersetzen.
 11. Sie sehen bei dem neu hochgeladenen Bild nun erstmals Ihr eingestelltes Wasserzeichen
@@ -466,7 +468,7 @@ TODO: Wirklich den ganzen Code vorgeben?
 In diesem Hands-On haben Sie gelernt:
 - Was Scaffolding ist und wie man es verwendet, um Ansicht auf Basis einer Vorlage anzulegen  
 - Wie man Entitysets gezielt nach Einträgen filtert  
-- Wie man die Razor-Syntax verwendet, um Eigenschaften des zugrundeliegenden Datenmodells anzuzeigen  
+- Wie man die Razor-Syntax verwendet, um Eigenschaften des Datenmodells anzuzeigen  
 - Wie man über das Absenden eines Formulars nicht nur Zeichenketten und Zahlen, sondern auch Bilder übermitteln kann  
 - Wie man die seitenübergreifende Navigationsleiste bearbeiten kann  
-- Wie man CSS-Style zu einer Seite hinzufügt und dieses anwendet  
+- Wie man CSS-Stile zu einer Seite hinzufügt und diese verwendet 
