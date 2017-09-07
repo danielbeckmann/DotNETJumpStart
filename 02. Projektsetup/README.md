@@ -6,7 +6,7 @@ In diesem Modul werden die Vorbereitungen für die darauffolgenden Hands-On-Sessi
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Vorbereitung und Projektsetup.pptx) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Vorbereitung%20und%20Projektsetup.pptx) zu diesem Modul an.
 
 ## Ziele
 

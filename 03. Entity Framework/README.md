@@ -6,7 +6,7 @@ In diesem Modul lernen Sie die Grundlagen zum Entity Framework kennen.
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Entity Framework.pptx) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Entity%20Framework.pptx) zu diesem Modul an.
 
 ## Ziele
 

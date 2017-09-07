@@ -7,7 +7,7 @@ Hierzu werden Sie eine Schnittstelle implementieren, über die eine App Posts ab
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Entwicklung einer Schnittstelle mit ASP.NET Web API.pptx) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Entwicklung%20einer%20Schnittstelle%20mit%20ASP.NET%20Web%20API.pptx) zu diesem Modul an.
 
 ## Ziele
 

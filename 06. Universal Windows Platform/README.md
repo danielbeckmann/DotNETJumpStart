@@ -6,7 +6,7 @@ In diesem Modul wird die Entwicklung einer App für die universelle Windows Platt
 
 ## Präsentation
 
-Sehen Sie sich die zu dem Modul gehörende [Präsentation](Entwicklung einer App für die universelle Windows Plattform.pptx) an.
+Sehen Sie sich die zu dem Modul gehörende [Präsentation](Entwicklung%20einer%20App%20für%20die%20universelle%20Windows%20Plattform.pptx) an.
 
 ## Hands-Ons
 

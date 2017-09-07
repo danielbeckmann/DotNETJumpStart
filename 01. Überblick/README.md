@@ -6,4 +6,4 @@ Dieses Modul enthält eine Einführung und einen Überblick über die Workshop Inhal
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Überblick Workshop.pptx) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Überblick%20Workshop.pptx) zu diesem Modul an.

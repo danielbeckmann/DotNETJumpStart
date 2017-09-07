@@ -8,7 +8,7 @@ Erste Aspekte von MVC haben Sie bereits im vorherigen Modul kennengelernt, als S
 
 ## Präsentation
 
-Sehen Sie sich die [Präsentation](Aufbau einer Webapplikation mit ASP.NET MVC.pptx) zu diesem Modul an.
+Sehen Sie sich die [Präsentation](Aufbau%20einer%20Webapplikation%20mit%20ASP.NET%20MVC.pptx) zu diesem Modul an.
 
 ## Ziele
 
