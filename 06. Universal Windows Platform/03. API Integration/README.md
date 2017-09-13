@@ -28,7 +28,7 @@ RestSharp kann am einfachsten über NuGet installiert werden.
 
 1. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **ImageApp** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 1")
-2. Im Dialogfeld wählen Sie links **Online** aus und geben im Suchfeld **FubarCoder.RestSharp.Portable** ein.<br/><br/>
+2. Im sich öffnenden Fenster wählen Sie den Reiter **Durchsuchen (Browse)** aus und geben im Suchfeld **FubarCoder.RestSharp.Portable** ein.<br/><br/>
    ![](_images/restsharp-nuget.png?raw=true "Abbildung 2")
 3. Installieren Sie das Paket **FubarCoder.RestSharp.Portable**. Stimmen Sie den Nutzungsbedingungen zu.
 
@@ -119,7 +119,7 @@ Um die Sortierungsfunktion der API für die Post-Einträge zu verwenden, muss ei
 	private Sorting currentSorting = Sorting.Latest;
     ```
 	
-3. Ersetzen Sie die Methode **GetPostsAsync** durch den folgenden Codeblock und ersetzen ggf. den Platzhalter für die API-Adresse. Vergleichen Sie die alte und neue Implementierung der Methode. Die Methode enthält nun einen optionalen Parameter zur Sortierung.
+3. Ersetzen Sie die Methode **GetPostsAsync** durch den folgenden Codeblock und ersetzen ggf. die API-Adresse. Vergleichen Sie die alte und neue Implementierung der Methode. Die Methode enthält nun einen optionalen Parameter zur Sortierung.
 
     ```C#
 	/// <summary>
@@ -132,7 +132,7 @@ Um die Sortierungsfunktion der API für die Post-Einträge zu verwenden, muss ei
 
 	    using (var client = new RestClient("http://acando-workshop.azurewebsites.net/api/"))
 	    {
-		    var request = new RestRequest("posts/{sorting}", HttpMethod.Get);
+		    var request = new RestRequest("posts/{sorting}", Method.GET);
 		    request.AddUrlSegment("sorting", sorting.ToString());
 		    var result = await client.Execute<List<Post>>(request);
 
@@ -141,8 +141,17 @@ Um die Sortierungsfunktion der API für die Post-Einträge zu verwenden, muss ei
 	}
     ```
 
-4. Implementieren Sie den fehlenden Code der beiden Methoden **SortByRating** und **SortByDate** für die beiden Schaltflächen auf der Hauptseite, indem Sie von dort aus die Methode **GetPostsAsync** mit der jeweiligen Sortierung aufrufen.
-5. Starten Sie das Debugging und Testen Sie die Sortierung.
+4. Ersetzen Sie die Methode **RefreshData** durch den folgenden Codeblock, der die Daten auf Basis der letzten Sortierung abruft:
+
+    ```C#
+	private async void RefreshData(object obj)
+	{
+		await this.GetPostsAsync(this.currentSorting);
+	}
+    ```
+
+5. Implementieren Sie den fehlenden Code der beiden Methoden **SortByRating** und **SortByDate** für die beiden Schaltflächen auf der Hauptseite, indem Sie von dort aus die Methode **GetPostsAsync** mit der jeweiligen Sortierung aufrufen.
+6. Starten Sie das Debugging und Testen Sie die Sortierung.
 
 Mit Abschluss dieser Übung haben Sie die Sortierungsfunktion für die Posts implementiert.
 	

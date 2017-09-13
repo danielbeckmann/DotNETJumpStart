@@ -134,7 +134,7 @@ namespace ImageApp.ViewModels
 #### Aufgabe 2 - Datenbindung auf der XAML-View erstellen
 In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite eingebunden und die Datenbindung hergestellt.
 
-1. Öffnen Sie die **MainPage.xaml** im XAML-Designer (über einen Doppelklick) und fügen dem **Page**-Element das folgende Attribut hinzu: **xmlns:vm="using:ImageApp.ViewModels"**
+1. Öffnen Sie die **MainPage.xaml** im XAML-Designer (über einen Doppelklick).
 2. Fügen Sie oberhalb des **Grid**-Elements den folgenden Block ein, um die MainPage mit dem ViewModel zu verbinden:
 
     ```XML  
@@ -151,7 +151,7 @@ In diesem Schritt wird das eben erstellte **MainViewModel** auf der Hauptseite e
     <Image Source="{Binding ImageUri}" Grid.Row="1" />
     ``` 
   
-5. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das GridView gebunden und es werden die Bilder mit ihren Titel in einer Listendarstellung angezeigt.
+5. Starten Sie das Debugging. Die Posts-Auflistung wird nun auf das GridView gebunden und es werden die Beispielbilder mit ihren Titel in einer Listendarstellung angezeigt.
 
 Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten Datenbindung erzeugt.
 
@@ -166,20 +166,20 @@ Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten D
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Name="mainPage"
-    xmlns:vm="using:ImageApp.ViewModels">
+    xmlns:vm="using:ImageApp.ViewModels"
+    xmlns:common="using:ImageApp.Common"
+    x:Name="mainPage">
 
-    <!-- TODO: add Page.DataContext here -->
     <Page.DataContext>
         <vm:MainViewModel />
     </Page.DataContext>
-    
+
     <!-- TODO: add Page.Resources here -->
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
         <GridView IsItemClickEnabled="False" 
                   SelectionMode="None"
-                  ItemsSource="{Binding Posts}">
+                   ItemsSource="{Binding Posts}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12" Width="320" Height="320">
@@ -188,8 +188,6 @@ Mit diesen Schritten haben Sie das ViewModel für die Hauptseite mit der ersten D
                             <RowDefinition/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
-
-                        <!-- TODO: add grid template here -->
                         <TextBlock Text="{Binding Title}" FontSize="42" Grid.Row="0" />
                         <Image Source="{Binding ImageUri}" Grid.Row="1" />
                     </Grid>
@@ -229,7 +227,7 @@ Wird ein **ConverterParameter** angegeben, so wird der Sichtbarkeitszustand inve
 In diesem Schritt wird der **CollectionToVisibilityConverter** in die Hauptseite eingebunden.
 
 1. Öffnen Sie die Datei **CollectionToVisibilityConverter** im **Projektmappen-Explorer** im Ordner **Common**. Inspizieren Sie den Code, um sich mit der Funktionsweise eines Converters vertraut zu machen.
-2. Öffnen Sie die **MainPage.xaml** im XAML-Designer und fügen dem **Page-Element** das folgende Attribut hinzu: **xmlns:common="using:ImageApp.Common"**
+2. Öffnen Sie die **MainPage.xaml** im XAML-Designer.
 3. Fügen Sie oberhalb des **Grid-Elements** den folgenden Block ein:
 
     ```XML  

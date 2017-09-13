@@ -48,6 +48,7 @@ In dieser Übung werden wir:
 6. Wir fügen nun den Quellcode hinzu, der einen neuen Post erstellt. Ersetzen Sie hierzu den Quellcode der Methode **Create(Post post)** durch:
 
     ```C#
+	public ActionResult Create(Post post)
         // Validate that a image was selected
         if (Request.Files.Count == 0 || Request.Files[0].ContentLength == 0)
         {
@@ -77,11 +78,13 @@ In dieser Übung werden wir:
         }
 
         return View(post);
+	}
     ```
 
 7. Wir fügen nun den Quellcode hinzu, der einen Post löscht. Ersetzen Sie hierzu den Quellcode der Methode **DeleteConfirmed(int id)** durch:
 
     ```C#
+	public ActionResult DeleteConfirmed(int id)
         Post post = db.Posts.Find(id);
         if (post == null)
         {
@@ -98,6 +101,7 @@ In dieser Übung werden wir:
         db.SaveChanges();
 
         return RedirectToAction("Index");
+	}
     ```
 
 #### Aufgabe 2 - Vorbereiten der Projektmappe für neue Ansichten
@@ -109,7 +113,7 @@ In dieser Übung werden wir:
 
 #### Aufgabe 3 - Hinzufügen von Ansichten für das Erstellen, Details, Editieren und Löschen von Posts
 
-1. Wählen Sie den Ordner **Views/Posts** an und fügen ihm über einen Rechtsklick durch einen Klick auf die Schaltfläche **Hinzufügen/Neues Gerüstelement** eine neue Ansicht hinzu
+1. Wählen Sie den Ordner **Views/Posts** an und fügen ihm über einen Rechtsklick durch einen Klick auf die Schaltfläche **Hinzufügen/Neues Gerüstelement (bzw. New Scaffoldet Item)** eine neue Ansicht hinzu
 2. Wählen Sie im aufgehenden Dialog die Vorlage **MVC5-Ansicht**
 
   ![](_images/mvc-view.png?raw=true "Abbildung 3")
@@ -119,7 +123,7 @@ In dieser Übung werden wir:
   ![](_images/scaffolding-1.png?raw=true "Abbildung 4")
 
 4. Wiederholen Sie die Schritte **1** bis **3** für die Ansichten mit den Namen **Delete**, **Details** und **Edit** sowie deren korrespondierenden Vorlagen
-5. Erstellen Sie eine Ansicht unter der Vorlage **List** mit dem Namen **Index** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
+5. Erstellen Sie zusätzlich eine Ansicht mit dem Namen **Index** unter der Vorlage **List** für die Modellklasse **Post** innerhalb der Datenkontextklasse **ImageAppDbContext**
 
   ![](_images/scaffolding-2.png?raw=true "Abbildung 5")
 
@@ -130,7 +134,7 @@ In dieser Übung werden wir:
 #### Aufgabe 4 - Seitenübergreifende Navigationsleiste bearbeiten
 
 1. Öffnen Sie die Datei **Views/Shared/_Layout.cshtml**
-2. Finden Sie das Markup für die Auflistung der Menünavigation:
+2. Suchen Sie das Markup für die Auflistung der Menünavigation:
 
     ```XML
 	<ul class="nav navbar-nav"> 
@@ -143,7 +147,7 @@ In dieser Übung werden wir:
 	```
 	
 4. Öffnen Sie die Datei **Views/Home/Index.cshtml**
-5. Finden Sie das Element, dass das Bild eines Posts anzeigt
+5. Suchen Sie das Element, dass das Bild eines Posts anzeigt
 
     ```XML
 	<a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
@@ -177,7 +181,6 @@ In dieser Übung werden wir:
 
 1. Öffnen Sie die Datei **Views/Posts/Index.cshtml**
 2. Ersetzen Sie den Inhalt der Datei mit folgendem:  
-TODO: Wirklich den ganzen Code vorgeben?
 
     ```XML
     @model IEnumerable<DotNETJumpStart.Models.Post>
@@ -247,7 +250,7 @@ TODO: Wirklich den ganzen Code vorgeben?
 #### Aufgabe 2 - Detailansicht eines Posts erweitern
 	
 1. Öffnen Sie die Datei **Views/Posts/Details.cshtml**
-2. Suchen Sie **Description List** Element
+2. Suchen Sie das **Description List** Element
 
     ```XML
 	<dl class="dl-horizontal">
@@ -312,15 +315,19 @@ TODO: Wirklich den ganzen Code vorgeben?
 
 7. Speichern Sie Ihre Änderungen und starten Sie die Anwendung
 8. Rufen Sie die Detailansicht eines Posts auf
-9. Ihre Anwendung sollte nun wie folgt aussehen:
+9. Die Seite sollte nun wie folgt aussehen:
 
-  ![](_images/posts-details.png?raw=true "Abbildung 9")
+  ![](_images/posts-details.png?raw=true "Abbildung 9")  
+  
+10. Rufen Sie die Übersicht der Posts auf
+11. Die Seite sollte nun wie folgt aussehen:
+
+  ![](_images/posts-list-details.png?raw=true "Abbildung 10")
 
 #### Aufgabe 3 - Seite um einen CSS-Style erweitern
 
-TODO: brauchen wir das? - wenn ja, dann beschreiben was das macht 
-1. Öffnen Sie die Datei **Content/Site.css**
-2. Fügen Sie folgenden CSS-Style ein
+1. Öffnen Sie die Datei **Content/Site.css**. In dieser Datei können Sie allgemeine Stile definieren.
+2. Fügen Sie folgenden CSS-Style ein, der dem Upload-Button für die nächste Aufgabe, ein besseres Look-and-Feel verleiht:
 
     ```CSS
 	.btn-file {
@@ -355,7 +362,7 @@ TODO: brauchen wir das? - wenn ja, dann beschreiben was das macht
 	@using (Html.BeginForm())
     ```
 	
-3. Ersetzen Sie diesen Aufruf mit so, dass das Formular auch Bilder entgegen nehmen kann
+3. Ersetzen Sie diesen Aufruf durch den nachfolgenden, damit das Formular auch Bilder entgegennehmen kann
 
     ```XML
 	@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -406,7 +413,7 @@ TODO: brauchen wir das? - wenn ja, dann beschreiben was das macht
   ![](_images/posts-edit.png?raw=true "Abbildung 10")
 
 10. Testen Sie den Upload, indem Sie das Bild eines Posts ersetzen.
-11. Sie sehen bei dem neu hochgeladenen Bild nun erstmals Ihr eingestelltes Wasserzeichen
+11. Sie können bei dem neu hochgeladenen Bild nun erstmals Ihr eingestelltes Wasserzeichen sehen.
 
 #### Aufgabe 5 - Ansicht zum Erstellen eines Posts um ein Upload-Feld erweitern
 

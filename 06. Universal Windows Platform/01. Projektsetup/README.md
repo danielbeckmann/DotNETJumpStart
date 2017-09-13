@@ -46,7 +46,7 @@ Falls auf dem System keine Entwicklerlizenz installiert ist, werden Sie nun mit 
 
 #### Aufgabe 2: Abrufen einer Windows Entwickler Lizenz
 
-Wenn Sie zum ersten Mal eine App auf einem Gerät ausführen oder debuggen wollen, werden Sie aufgefordert, eine Entwicklerlizenz für diesen Computer oder dieses Gerät herunterzuladen. Diese ist zum Entwickeln und Testen kostenlos.
+Wenn Sie zum ersten Mal eine App auf einem Gerät ausführen oder debuggen wollen, werden Sie aufgefordert, eine Entwicklerlizenz für diesen Computer oder dieses Gerät herunterzuladen. Diese ist zum Entwickeln und Testen kostenlos. **Falls Sie nicht nach einer Lizenz gefragt werden, können Sie diesen Schritt überspringen**.
 
 1. Lesen Sie sich die Lizenzbedingungen durch und klicken Sie auf die Schaltfläche zum Akzeptieren der Bedingungen<br/><br/>
  ![](_images/license-1.png?raw=true "Abbildung 4")<br/>
@@ -95,11 +95,11 @@ Diese Einstellungen können im sogenannten **App-Manifest** getroffen werden.
 4. Machen Sie im **Projektmappen-Explorer** einen Doppelklick auf das **Package.appxmanifest**, um das Manifest zu öffnen.
 5. Ändern Sie den Anzeigenamen der App zu einem beliebigen Namen (hier **SnapIt**) und wechseln dann auf den Reiter **Visuelle Assets**.<br/><br/>
    ![](_images/manifest-1.png?raw=true "Abbildung 10")<br/>
-6. Wählen Sie links im Menü **Alle Bildanlagen** aus.
-7. Wählen Sie in der Kategorie **Kachel** bei der Option **Name anzeigen** aus, dass der App-Name auf dem **Quadratischen 150x150 Logo** angezeigt werden soll.
-8. Tragen Sie in der Kategorie **Begrüßungsbildschirm** als Hintergrundfarbe "**white**" ein.<br/><br/>
+6. Wählen Sie links den Bereich **Alle Bildanlagen (All Visual Assets)** aus.
+7. Aktivieren Sie in den **Anzeigeeinstellungen (Display Settings) das Medium Tile. 
+8. Tragen Sie bei **Begrüßungsbildschirm (Splash Screen)** als Hintergrundfarbe "**white**" ein.<br/><br/>
    ![](_images/manifest-2.png?raw=true "Abbildung 11")<br/><br/>
-9. Wechseln Sie nun auf den Reiter **Funktionen** und stellen Sie sicher, dass die Funktion **Internet (Client)** ausgewählt ist.<br/><br/>
+9. Wechseln Sie nun auf den Reiter **Funktionen (Capabilities)** und stellen Sie sicher, dass die Funktion **Internet (Client)** ausgewählt ist.<br/><br/>
    ![](_images/manifest-3.png?raw=true "Abbildung 12")<br/>
 10. Wählen Sie **Debugging starten** aus dem Menü **Debuggen** oder drücken Sie **F5**.
 11. Die App sollte nun gestartet werden. Sie sollten bereits im Ladebildschirm das eingestellte Logo sehen.
@@ -130,7 +130,7 @@ Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) ang
 
     ```XML  
 	<Page
-        x:Class="ImageApp.Views.MainPage"
+        x:Class="ImageApp.MainPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="using:ImageApp"
@@ -181,13 +181,13 @@ Zunächst wird die bereits bestehende Hauptseite der App (**MainPage.xaml**) ang
     ``` 
   
 4. Inspizieren Sie den XAML-Code und die daraus resultierenden Steuerelemente im Designer.
-5. Starten Sie das Debugging und sehen sich das Ergebnis an. Das **Grid** wird nicht angezeigt, da es bisher keine Einträge enthält.<br/><br/>
+5. Starten Sie das Debugging und sehen sich das Ergebnis an. Das **GridView** wird nicht angezeigt, da es bisher keine Einträge enthält.<br/><br/>
  ![](_images/main-page.png?raw=true "Abbildung 15")<br/>
 
 #### Aufgabe 2 - In-App-Navigation hinzufügen
 In dieser Aufgabe wird die Navigation von der Hauptseite zur **"Post hinzufügen"**-Seite eingerichtet und die Schaltfläche zum Zurücknavigieren für alle Views aktiviert.
 
-1. Machen Sie im XAML-Designer einen Doppelklick auf den **Hinzufügen-Button** in der App-Bar der Hauptseite.
+1. Selektieren Sie im XAML-Quellcode die **CommandBar** und machen einen Doppelklick in der Design-Vorschau auf den **Kamera-Button** in der App-Bar der Hauptseite.
 2. Im neu hinzugefügten **AppBarButton_Click**-Handler fügen Sie den folgenden Code zur Navigation ein:
 
     ```C#

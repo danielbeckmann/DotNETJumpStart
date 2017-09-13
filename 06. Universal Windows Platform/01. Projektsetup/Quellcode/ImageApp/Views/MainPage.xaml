@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="ImageApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImageApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:ImageApp.ViewModels"
+    xmlns:common="using:ImageApp.Common"
+    x:Name="mainPage">
+
+    <!-- TODO: add Page.DataContext here -->
+
+    <!-- TODO: add Page.Resources here -->
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,50,0,0">
+        <GridView IsItemClickEnabled="False" 
+                  SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="12" Width="320" Height="320">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- TODO: add grid template here -->
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <!-- TODO: add info label here -->
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Camera" Label="Hinzufügen" Click="AppBarButton_Click" />
+            <AppBarButton Icon="Refresh" Label="Aktualisieren" />
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Sort" Label="Nach Bewertung sortieren" />
+                <AppBarButton Icon="Sort" Label="Nach Datum sortieren" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

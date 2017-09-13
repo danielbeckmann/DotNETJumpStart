@@ -52,8 +52,7 @@ In dieser Aufgabe wird das Projekt in Visual Studio angelegt.
 3. Im Dialog **Neues Projekt**:
    1. Wählen Sie **Vorlagen/Visual C#/Web**.
    2. Wählen Sie **ASP.NET-Webanwendung (.NET Framework)**.
-   3. Deselektieren Sie auf der rechten Seite die **Application Insights**.
-   4. Benennen Sie das Projekt **DotNETJumpStart** und bestätigen mit **OK**.<br/><br/>
+   3. Benennen Sie das Projekt **DotNETJumpStart** und bestätigen mit **OK**.<br/><br/>
    ![](_images/new-web-project.png?raw=true "Abbildung 1")
 4. Im Dialog für das **ASP.NET-Projekt**:
    1. Wählen Sie **Web API** aus.<br/><br/>

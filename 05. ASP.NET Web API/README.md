@@ -56,7 +56,7 @@ Die Endpunkte der Schnittstelle werden in einzelnen Controllern definiert. Hierz
 
 5. Öffnen Sie die Datei **PostsController.cs** und machen sich mit dem Code der Methode **Get** vertraut. Diese wird automatisch aufgerufen, wenn ein Zugriff über den URL-Pfad "api/posts" erfolgt.
 5. Starten Sie mit **F5** die Webanwendung. Durch die hinzugefügten ApiController wird die API automatisch gestartet.
-6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die aktuelle URL an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browserfenster in XML-Darstellung:
+6. Im sich öffnenden Browserfenster hängen Sie folgenden Pfad an die aktuelle URL an: "**/api/posts**". Sie sehen daraufhin die Ausgabe der Posts im Browserfenster in XML-Darstellung. Unter Umständen erzwingt der Browser auch direkt die Darstellung im JSON-Format (siehe nächste Aufgabe). Sie sollten die nächste Aufgabe trotzdem durchführen, um die XML-Darstellung komplett zu deaktivieren.
 
  ![](_images/xml-output-browser.png?raw=true "Abbildung 2")
 
@@ -93,7 +93,7 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
         [Route("api/posts/latest")]
         public IEnumerable<PostDto> GetLatest()
         {
-            return this.db.Posts.OrderByDescending(o => o.Likes).ToList().Select(p => PostDto.Map(p));
+            return this.db.Posts.OrderByDescending(o => o.Created).ToList().Select(p => PostDto.Map(p));
         }
     ```
 	
@@ -101,7 +101,7 @@ Heutzutage wird in den meisten Fällen das Datenformat **JSON** verwendet und ni
 
     ```C#
         // GET api/posts/popular
-        // TODO: Define the route here (api/posts/latest)
+        // TODO: Define the route here (api/posts/popular)
         public IEnumerable<PostDto> GetPopular()
         {
             // TODO: Return the posts, ordered by popularity (by Likes.Count)

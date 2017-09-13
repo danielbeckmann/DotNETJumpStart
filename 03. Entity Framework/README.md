@@ -148,7 +148,7 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
 
 #### Aufgabe 6 - DbContext und DbInitializer bekannt machen 
 1. Öffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
-2. Fügen Sie den folgenden am Ende der Datei direkt vor dem schließenden **</configuration>**-Tag ein.
+2. Fügen Sie den folgenden Abschnitt am Ende der Datei direkt vor dem schließenden **</configuration>**-Tag ein.
 
     ```XML
       <connectionStrings>
