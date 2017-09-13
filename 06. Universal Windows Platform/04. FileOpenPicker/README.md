@@ -4,6 +4,10 @@
 
 In diesem Hands-On lernen Sie den FileOpenPicker der Windows API kennen und werden ihn dazu verwenden,
  ein neues Bild über die App hochzuladen. Hierzu werden Sie ebenfalls die API-Anbindung zum images-Endpunkt umsetzen.
+ 
+## Hinweis
+
+Die fertige Projektmappe nach dieser Übung finden Sie im Modul 7 (07. Fertige Projektmappe/DotNETJumpStart)
 
 ## Ziele
 
