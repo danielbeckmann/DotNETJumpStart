@@ -1,12 +1,12 @@
 # Modul 3 - Datenmodellierung und -abfrage mit dem Entity Framework
 
-## Übersicht 
+## Ãœbersicht 
 
 In diesem Modul lernen Sie die Grundlagen zum Entity Framework kennen.
 
-## Präsentation
+## PrÃ¤sentation
 
-Sehen Sie sich die [Präsentation](Entity%20Framework.pptx) zu diesem Modul an.
+Sehen Sie sich die [PrÃ¤sentation](Entity%20Framework.pptx) zu diesem Modul an.
 
 ## Ziele
 
@@ -16,20 +16,20 @@ Sehen Sie sich die [Präsentation](Entity%20Framework.pptx) zu diesem Modul an.
 
 ---
 
-## Übungen
+## Ãœbungen
 
-Dieses Hands-On besteht aus den folgenden Übungen:<br/>
+Dieses Hands-On besteht aus den folgenden Ãœbungen:<br/>
 1. <a href="#Exercise1">Erstellen des Datenmodells</a><br/>
 2. <a href="#Exercise2">Datenzugriff</a><br />
 3. <a href="#Exercise3">Datenanzeige mit der Razor-Syntax</a>
 
 <a name="Exercise1"></a>
-### Übung 1: Erstellen des Datenmodells
+### Ãœbung 1: Erstellen des Datenmodells
 
-In dieser Übung werden wir:
+In dieser Ãœbung werden wir:
 - Das NuGet Paket **EntityFramework** installieren
 - Das Datenmodell mit Code First erstellen
-- Eigenschaften zu Entitäten hinzufügen
+- Eigenschaften zu EntitÃ¤ten hinzufÃ¼gen
 - Testdaten erzeugen
 - Eine Verbindung zur LocalDB herstellen
 
@@ -39,50 +39,50 @@ Abbildung 1: Das fertige Datenmodell
 #### Aufgabe 1 - NuGet-Paket EntityFramework installieren
 In dieser Aufgabe wird das NuGet-Paket **EntityFramework** installiert.
 
-1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder öffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
-2. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wählen **NuGet-Pakete verwalten...**".<br/><br/>
+1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter oder Ã¶ffnen Sie die fertige Projektmappe aus dem vorherigen Hands-On.
+2. Im **Projektmappen-Explorer** machen Sie einen Rechtsklick auf das Projekt **DotNETJumpStart** und wÃ¤hlen **NuGet-Pakete verwalten...**".<br/><br/>
    ![](_images/manage-nuget-packages.png?raw=true "Abbildung 2")
-3. Im Paketmanager, unter dem Reiter "**Durchsuchen**", wählen Sie links das Paket **EntityFramework** und klicken anschließend rechts auf **Installieren**<br/><br/>
+3. Im Paketmanager, unter dem Reiter "**Durchsuchen**", wÃ¤hlen Sie links das Paket **EntityFramework** und klicken anschlieÃŸend rechts auf **Installieren**<br/><br/>
    ![](_images/NuGet-EntityFramework.png?raw=true "Abbildung 3")
 
 Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwicklung zu beginnen.  
 
-#### Aufgabe 2 - Hinzufügen der Entitäten
+#### Aufgabe 2 - HinzufÃ¼gen der EntitÃ¤ten
 
-1. Machen Sie einen Rechtsklick im **Projektmappen-Explorer** auf den Ordner **Models** und wählen **Hinzufügen/Vorhandenes Element**
-2. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Models** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1. Machen Sie einen Rechtsklick im **Projektmappen-Explorer** auf den Ordner **Models** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**
+2. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Models** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 3. Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](_images/start.png?raw=true "Abbildung 4")
 
-#### Aufgabe 3 - Hinzufügen weiterer Eigenschaften
+#### Aufgabe 3 - HinzufÃ¼gen weiterer Eigenschaften
 
-1. Öffnen Sie die Aufgabenliste über die Menüleiste **Ansicht/Aufgabenleiste** oder drücken Sie die Tasten **STRG+W, T**
+1. Ã–ffnen Sie die Aufgabenliste Ã¼ber die MenÃ¼leiste **Ansicht/Aufgabenleiste** oder drÃ¼cken Sie die Tasten **STRG+W, T** (Oder VS2017 	STRG+^, T)
 2. Das Aufgabenfenster sollte wie folgt aussehen:
 
   ![](_images/todos.png?raw=true "Abbildung 5")
 
-3. Doppelklicken Sie auf den ersten Eintrag oder öffnen Sie die Datei **Models/User.cs**
+3. Doppelklicken Sie auf den ersten Eintrag oder Ã¶ffnen Sie die Datei **Models/User.cs**
 
   ![](_images/user-entity.png?raw=true "Abbildung 6")
 
-4. Fügen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required** und **MaxLength = 50** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Identifier“.
-5. Fügen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft soll alle vom Benutzer geposteten Einträge enthalten. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft „Likes“.	
-6. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
+4. FÃ¼gen Sie der Klasse User die Eigenschaft **Name** vom Typ **String** mit den Attributen **Required** und **MaxLength = 50** hinzu. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft â€Identifierâ€œ.
+5. FÃ¼gen Sie der Klasse User die Eigenschaft **Posts** hinzu. Diese Eigenschaft soll alle vom Benutzer geposteten EintrÃ¤ge enthalten. Orientieren Sie sich dabei an der bereits vorhandenen Eigenschaft â€Likesâ€œ.	
+6. Erstellen Sie die Projektmappe Ã¼ber die MenÃ¼leiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 	
 
 #### Aufgabe 4 - DbContext bearbeiten 
 
-1. Erzeugen Sie einen neuen Ordner **DataContext** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataContext** und wählen **Hinzufügen/Vorhandenes Element**.
-3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataContext** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1. Erzeugen Sie einen neuen Ordner **DataContext** im aktuellen Projekt. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
+2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **DataContext** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**.
+3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/DataContext** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen: <br/><br/>
   ![](_images/dbcontext.png?raw=true "Abbildung 7")
 
-5. Öffnen Sie in der Aufgabenliste die erste Aufgabe oder öffnen Sie die Datei **ImageAppDbContext.cs**
-6. Fügen Sie der **ImageAppDbContext** Klasse 3 DbSets für die Entitäten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft **Images**. Über ein DbSet können Sie auf die Datenbankeinträge einer bestimmten Entität zugreifen (wie z.B. Posts).
-7. Öffnen Sie die Datei **ImageAppDbInitializer.cs**
-8. In dieser Datei können Sie die Datenbank mit Beispieldaten initialisieren. Ersetzen Sie den Rumpf der Methode **Seed** dazu mit folgendem Inhalt:
+5. Ã–ffnen Sie in der Aufgabenliste die erste Aufgabe oder Ã¶ffnen Sie die Datei **ImageAppDbContext.cs**
+6. FÃ¼gen Sie der **ImageAppDbContext** Klasse 3 DbSets fÃ¼r die EntitÃ¤ten **User**, **Post** und **Like** hinzu. Orientieren Sie sich dabei an der bestehen Eigenschaft **Images**. Ãœber ein DbSet kÃ¶nnen Sie auf die DatenbankeintrÃ¤ge einer bestimmten EntitÃ¤t zugreifen (wie z.B. Posts).
+7. Ã–ffnen Sie die Datei **ImageAppDbInitializer.cs**
+8. In dieser Datei kÃ¶nnen Sie die Datenbank mit Beispieldaten initialisieren. Ersetzen Sie den Rumpf der Methode **Seed** dazu mit folgendem Inhalt:
 
 	```C#
     protected override void Seed(ImageAppDbContext context)
@@ -136,19 +136,19 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
     }
 	```
 	
-9. Erstellen Sie die Projektmappe über die Menüleiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
+9. Erstellen Sie die Projektmappe Ã¼ber die MenÃ¼leiste **Erstellen/Projektmappe neu erstellen** und stellen Sie sicher, dass keine Fehler auftreten.
 
 #### Aufgabe 5 - Testbilder bereitstellen
-1. Erzeugen Sie einen neuen Ordner **Uploads** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Uploads** und wählen **Hinzufügen/Vorhandenes Element**.
-3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Uploads** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+1. Erzeugen Sie einen neuen Ordner **Uploads** im aktuellen Projekt. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
+2. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Uploads** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**.
+3. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Uploads** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 4. Die Projektmappe sollte nun wie folgt aussehen:
 
 ![](_images/uploads.png?raw=true "Abbildung 8")
 
 #### Aufgabe 6 - DbContext und DbInitializer bekannt machen 
-1. Öffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
-2. Fügen Sie den folgenden Abschnitt am Ende der Datei direkt vor dem schließenden **</configuration>**-Tag ein.
+1. Ã–ffnen Sie die Datei **Web.config** im **Stammverzeichnis** Ihrer Projektmappe
+2. FÃ¼gen Sie den folgenden Abschnitt am Ende der Datei direkt vor dem schlieÃŸenden **</configuration>**-Tag ein.
 
     ```XML
       <connectionStrings>
@@ -172,29 +172,29 @@ Nach einem Moment ist das Paket installiert und Sie sind bereit mit der Entwickl
     </entityFramework>
 	```
 	
-4. Speichern Sie Ihre Änderungen und erstellen die Projektmappe neu.
+4. Speichern Sie Ihre Ã„nderungen und erstellen die Projektmappe neu.
 
-Durch diese Änderung haben Sie sichergestellt, das 1.) Die Datenbank in einer lokalen Datei (app-db.mdf) erzeugt wird, falls sie noch nicht vorhanden ist und B) Die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
+Durch diese Ã„nderung haben Sie sichergestellt, das 1.) Die Datenbank in einer lokalen Datei (app-db.mdf) erzeugt wird, falls sie noch nicht vorhanden ist und B) Die Testdaten aus dem DbInitializer vor dem ersten Datenzugriff erstellt werden.
 
 <a name="Exercise2"></a>
-### Übung 2: Datenzugriff
+### Ãœbung 2: Datenzugriff
 
-In dieser Übung werden wir:
+In dieser Ãœbung werden wir:
 - Ein Bild aus einem HttpRequest speichern
-- Einem Bild ein Wasserzeichen hinzufügen
+- Einem Bild ein Wasserzeichen hinzufÃ¼gen
 - Daten festlegen, die in einer View angezeigt werden sollen
 
-#### Aufgabe 1 - Hinzufügen der ImageUtils und Bearbeiten der Controller
+#### Aufgabe 1 - HinzufÃ¼gen der ImageUtils und Bearbeiten der Controller
 
 1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter.
-2. Erzeugen Sie einen neuen Ordner **Utils** im aktuellen Projekt. Sie können das über einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **Hinzufügen/Neuer Ordner** wählen.
-3. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Utils** und wählen **Hinzufügen/Vorhandenes Element**.
-4. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Utils** aus dem aktuellen Hands-On und wählen alle Dateien aus.
+2. Erzeugen Sie einen neuen Ordner **Utils** im aktuellen Projekt. Sie kÃ¶nnen das Ã¼ber einen Rechtsklick auf das Projekt im Projektmappen-Explorer tun, indem Sie dort **HinzufÃ¼gen/Neuer Ordner** wÃ¤hlen.
+3. Machen Sie einen Rechtsklick auf den neu erstellten Ordner **Utils** und wÃ¤hlen **HinzufÃ¼gen/Vorhandenes Element**.
+4. Im Dialogfeld navigieren Sie in den Ordner **Dateien/Utils** aus dem aktuellen Hands-On und wÃ¤hlen alle Dateien aus.
 5. Die Projektmappe sollte nun wie folgt aussehen:
 
  ![](_images/solution-explorer.png?raw=true "Abbildung 1")
 
-6. Öffnen Sie die Datei **Utils/ImageUtility.cs** oder öffnen Sie in der Aufgabenliste die erste Aufgabe 
+6. Ã–ffnen Sie die Datei **Utils/ImageUtility.cs** oder Ã¶ffnen Sie in der Aufgabenliste die erste Aufgabe 
 7. Navigieren Sie zu der Funktion **ResizeImageAndSaveToDisk**
 8. Verpassen Sie den hochgeladenen Bildern ein Wasserzeichen mit **Ihrem Namen**
 
@@ -202,17 +202,17 @@ In dieser Übung werden wir:
 	webImage = webImage.AddTextWatermark(".NET Jumpstart");
     ```
 	
-9. Speichern und schließen Sie die Datei
+9. Speichern und schlieÃŸen Sie die Datei
 
 #### Aufgabe 2 - HomeController bearbeiten
-1. Öffnen Sie die Datei **Controllers/HomeController**
+1. Ã–ffnen Sie die Datei **Controllers/HomeController**
 2. Stellen Sie sicher, dass folgende using-Direktiven im HomeController enthalten sind:
 
     ```C#
 	using DotNETJumpStart.Models;
     ```
 	
-3. Ändern Sie die Methode **Index()** so ab, dass Sie einen Datenbankzugriff macht und die 10 neuesten Posts ausliest.
+3. Ã„ndern Sie die Methode **Index()** so ab, dass Sie einen Datenbankzugriff macht und die 10 neuesten Posts ausliest.
 
     ```C#
 	private ImageAppDbContext db = new ImageAppDbContext();
@@ -224,40 +224,40 @@ In dieser Übung werden wir:
 	}
 	```
 	
-4. Speichern und schließen Sie die Datei
+4. Speichern und schlieÃŸen Sie die Datei
 
 #### Aufgabe 3 - Anwendung starten
-1. Starten Sie Ihre Anwendung über die Menüleiste **Debuggen/Debugging starten** oder das Tastenkürzel **F5**
-2. Durch den Zugriff auf den **ImageAppDbContext** im **HomeController** wird die Datenbank automatisch generiert und Testdaten werden eingefügt
-3. Beenden Sie das Debugging durch das Schließen des Browsers oder über die Menüleiste **Debugging/Debugging beenden** innerhalb von Visual Studio
+1. Starten Sie Ihre Anwendung Ã¼ber die MenÃ¼leiste **Debuggen/Debugging starten** oder das TastenkÃ¼rzel **F5**
+2. Durch den Zugriff auf den **ImageAppDbContext** im **HomeController** wird die Datenbank automatisch generiert und Testdaten werden eingefÃ¼gt
+3. Beenden Sie das Debugging durch das SchlieÃŸen des Browsers oder Ã¼ber die MenÃ¼leiste **Debugging/Debugging beenden** innerhalb von Visual Studio
 
 #### Aufgabe 4 - Tabelldaten anzeigen
-1. Öffnen Sie den **Server-Explorer**. Am einfachsten geben Sie **Server-Explorer** oben rechts in die Suche ein oder drücken Strg+W+L auf der Tastatur.
-2. Suchen Sie die zuvor hinzugefügte Verbindung zur lokalen Datenbank und klappen Sie sie auf (unter Datenverbindungen / DefaultConnection / Tabellen)
-3. Ihr Server-Explorer sollte nun die Tabellen der einzelnen Entitäten (Image, Like, Post und User enthalten):
+1. Ã–ffnen Sie den **Server-Explorer**. Am einfachsten geben Sie **Server-Explorer** oben rechts in die Suche ein oder drÃ¼cken Strg+W+L auf der Tastatur.
+2. Suchen Sie die zuvor hinzugefÃ¼gte Verbindung zur lokalen Datenbank und klappen Sie sie auf (unter Datenverbindungen / DefaultConnection / Tabellen)
+3. Ihr Server-Explorer sollte nun die Tabellen der einzelnen EntitÃ¤ten (Image, Like, Post und User enthalten):
 
 ![](_images/table-view.png?raw=true "Abbildung 9")
 
-5. Machen Sie einen Rechtsklick auf die Tabelle **Post** und wählen den Menüeintrag **Tabellendaten anzeigen**
+5. Machen Sie einen Rechtsklick auf die Tabelle **Post** und wÃ¤hlen den MenÃ¼eintrag **Tabellendaten anzeigen**
 6. Ihre Projektmappe sollte nun wie folgt aussehen
 
 ![](_images/data-view.png?raw=true "Abbildung 10")
 
 <a name="Exercise3"></a>
-### Übung 3: Datenanzeige mit der Razor-Syntax
+### Ãœbung 3: Datenanzeige mit der Razor-Syntax
 
-In dieser Übung werden wir:
+In dieser Ãœbung werden wir:
 - Die Razor-Syntax im HTML verwenden, um auf Daten des Models zuzugreifen und diese auf der View anzuzeigen.
 
 #### Aufgabe 1 - Posts auf der Startseite anzeigen
 1. Arbeiten Sie an Ihrer bereits vorhandenen Projektmappe weiter.
-2. Öffnen Sie die Datei **Views/Home/Index.cshtml**
+2. Ã–ffnen Sie die Datei **Views/Home/Index.cshtml**
 3. Um die Daten aus der zuvor angepassten **Index**-Methode des **HomeController**s anzuzeigen, ersetzen Sie den Inhalt der Datei mit folgendem Code:
 
 	```HTML
 	@model IEnumerable<DotNETJumpStart.Models.Post>
 	@{
-		ViewBag.Title = "Übersicht";
+		ViewBag.Title = "Ãœbersicht";
 	}
 	<h3>Die letzten Postings:</h3>
 	<ul>
@@ -271,23 +271,23 @@ In dieser Übung werden wir:
 	</ul>
 	```
 	
-4. Speichern Sie die Datei und machen Sie sich mit der Struktur vertraut. Betrachten Sie, wie die vom HomeController zurückgegebene Liste mit Post-Einträgen in der View verwendet wird.
-5. Starten Sie Ihre Anwendung über das Tastenkürzel **F5** oder über die Menüleiste **Debuggen/Debuggen starten**
+4. Speichern Sie die Datei und machen Sie sich mit der Struktur vertraut. Betrachten Sie, wie die vom HomeController zurÃ¼ckgegebene Liste mit Post-EintrÃ¤gen in der View verwendet wird.
+5. Starten Sie Ihre Anwendung Ã¼ber das TastenkÃ¼rzel **F5** oder Ã¼ber die MenÃ¼leiste **Debuggen/Debuggen starten**
 6. Ihre Website sollte nun wie folgt aussehen:
 
 ![](_images/posts-on-start.png?raw=true "Abbildung 1")
 
-#### Aufgabe 2 - Bilder in voller Größe anzeigen
+#### Aufgabe 2 - Bilder in voller GrÃ¶ÃŸe anzeigen
 1. Beenden Sie das Debugging **nicht**
 2. Wechseln Sie zu **Visual Studio**
-3. Öffnen Sie die Datei **Views/Home/Index.cshtml**
-4. Umhüllen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im Großformat anzeigt
+3. Ã–ffnen Sie die Datei **Views/Home/Index.cshtml**
+4. UmhÃ¼llen Sie das Element, das das **Bild** eines Posts (**\<img /\>**) darstellt, mit einen Link (**\<a\>... \</a\>**), der das Bild im GroÃŸformat anzeigt
 
 	```HTML
     <a href="~/Uploads/@item.Image.FileName"><img src="~/Uploads/@item.Image.FileName" width="200" alt="Bild" style="vertical-align:middle" /></a>
 	```
 	
-5. Speichern Sie Ihre Änderungen
+5. Speichern Sie Ihre Ã„nderungen
 6. Wechseln Sie in Ihren Browser
 7. **Aktualisieren** Sie die Seite
 8. Klicken Sie auf eines der Bilder:
@@ -299,12 +299,12 @@ In dieser Übung werden wir:
 
 ## Zusammenfassung
 Mit Beendung dieser Session haben Sie gelernt:  
-- Wie man einen DbInitializer verwendet, um die Datenbank zu Beginn mit Daten zu füllen
+- Wie man einen DbInitializer verwendet, um die Datenbank zu Beginn mit Daten zu fÃ¼llen
 - Was der DbContext tut
-- Wie Eigenschaften einer Entität deklariert werden müssen
+- Wie Eigenschaften einer EntitÃ¤t deklariert werden mÃ¼ssen
 - Wie Sie die Aufgabenliste von Visual Studio verwenden  
-- Wie man einem Bild ein Wasserzeichen hinzufügt
+- Wie man einem Bild ein Wasserzeichen hinzufÃ¼gt
 - Wie man LINQ verwendet
 - Wie Sie Razor-Syntax verwenden, um auf Eigenschaften eines ViewModels zuzugreifen
 - Wie Sie HTML-Syntax verwenden, um Daten aus einem ViewModel anzuzeigen
-- Dass Sie Änderungen am Code auch vornehmen können, während sich die Anwendung im Debugging befindet
+- Dass Sie Ã„nderungen am Code auch vornehmen kÃ¶nnen, wÃ¤hrend sich die Anwendung im Debugging befindet
