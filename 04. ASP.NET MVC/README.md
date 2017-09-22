@@ -322,7 +322,7 @@ In dieser Übung werden wir:
 10. Rufen Sie die Übersicht der Posts auf
 11. Die Seite sollte nun wie folgt aussehen:
 
-  ![](_images/posts-list-details.png?raw=true "Abbildung 10")
+  ![](_images/post-list-details.png.png?raw=true "Abbildung 10")
 
 #### Aufgabe 3 - Seite um einen CSS-Style erweitern
 
