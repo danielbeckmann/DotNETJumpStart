@@ -29,11 +29,17 @@ namespace DotNETJumpStart.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            // Find related user
+            // Get or create user
             var user = db.Users.FirstOrDefault(u => u.Identifier == postDto.UserIdentifier);
             if (user == null)
             {
-                return BadRequest("Invalid user");
+                user = new User
+                {
+                    Identifier = postDto.UserIdentifier
+                };
+
+                db.Users.Add(user);
+                db.SaveChanges();
             }
 
             // Find related image
