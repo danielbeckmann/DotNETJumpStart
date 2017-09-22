@@ -75,7 +75,7 @@ In dieser Aufgabe werden Sie die NuGet-Pakete für das eben erstellte Projekt ak
    
 3. **Entity Framework** installieren:   
    Auf den Reiter Durchsuchen klicken und Entity Framework eingeben. Das Entity Framework installieren.
-   ![](_images/update-nuget-packages.png?raw=true "Abbildung 51")
+   ![](_images/install-entity-framework.png?raw=true "Abbildung 6")
 
 Nach einem Moment sind alle Pakete auf dem neusten Stand und Sie sind bereit mit der Entwicklung zu starten.  
 Hinweis: Eventuell ist ein Neustart von Visual Studio notwendig.
@@ -88,7 +88,7 @@ In dieser Aufgabe werden Sie die Webanwendung starten.
 1. Starten Sie mit **F5** die Webanwendung mit Debugging.
 2. Der IIS-Webserver wird automatisch gestartet und ein Tab im Webbrowser geöffnet.
 3. Sie sollten nun die Startseite mit der ASP.NET-Standardvorlage sehen:<br/><br/>
-    ![](_images/asp.net-projekt.png?raw=true "Abbildung 6")
+    ![](_images/asp.net-projekt.png?raw=true "Abbildung 7")
 4. Schließen Sie das Browserfenster und beenden Sie das aktive Debugging mit Umschalt+F5.
 
 #### Aufgabe 4 - Machen Sie sich mit der Projektmappe vertraut
